@@ -29,7 +29,7 @@ public class Kirby_Movement : MonoBehaviour
 
     private void jumpCheck()
     {
-        if(_characterController.isGrounded && Input.GetKeyDown(Constants.keyJump))
+        if(_characterController.isGrounded && Input.GetKeyDown(KirbyConstants.keyJump))
         {
             _verticalSpeed = _jumpSpeed;   
 

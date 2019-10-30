@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Constants
+public class KirbyConstants
 {
-    public static KeyCode keyJump = KeyCode.Space;
+    public const KeyCode keyJump = KeyCode.Space;
     
 }
