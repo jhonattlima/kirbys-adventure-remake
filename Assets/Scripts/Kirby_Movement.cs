@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kirby_movement : MonoBehaviour
+public class Kirby_movement : KirbyComponent
 {
     public float moveSpeed = 1f;
     public float turnSpeed = 200f;
     public float jumpHeight = 2f;
-
-    private CharacterController _characterController;
     private float _verticalSpeed;
     private float _jumpSpeed;
     private float _maxJumpCooldown;
@@ -18,7 +16,6 @@ public class Kirby_movement : MonoBehaviour
 
     void Awake()
     {
-        _characterController = GetComponent<CharacterController>();
         _jumpSpeed = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y) * jumpHeight);
     }
 
@@ -33,7 +30,7 @@ public class Kirby_movement : MonoBehaviour
     {
         if(Input.GetKeyDown(KirbyConstants.keyJump))
         {
-            if(_characterController.isGrounded)
+            if(Actor.characterController.isGrounded)
             {
                 _verticalSpeed = _jumpSpeed;
             }
@@ -50,12 +47,12 @@ public class Kirby_movement : MonoBehaviour
         movement = transform.right * _inputHorizontal * moveSpeed;
         movement.y = _verticalSpeed;
         movement = movement * Time.deltaTime;
-        _characterController.Move(movement);
+        _kirby.characterController.Move(movement);
     }
 
     private void applyGravity()
     {
-        if(!_characterController.isGrounded)
+        if(!_kirby.characterController.isGrounded)
         {
             _verticalSpeed += Physics.gravity.y * Time.deltaTime;
         }
