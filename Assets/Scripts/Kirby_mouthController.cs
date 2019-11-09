@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kirby_mouthcontroller : MonoBehaviour
+public class Kirby_mouthController : MonoBehaviour
 {
-    Kirby_actor kirby;
+    private Kirby_actor _kirby;
 
     // Start is called before the first frame update
     void Start()
     {
-        kirby = GetComponentInParent<Kirby_actor>();
+        _kirby = GetComponentInParent<Kirby_actor>();
     }
 
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag(KirbyConstants.tagEnemy) 
-            && kirby.suckArea.gameObject.activeSelf)
+            && _kirby.suckArea.gameObject.activeSelf)
         {
             // give powers to Kirby
-            if(!kirby.hasPower)
+            if(!_kirby.hasPower 
+                && other.GetComponent<Enemy_actor>() 
+                && other.GetComponent<Enemy_actor>().hasPower)
             {
 
             }

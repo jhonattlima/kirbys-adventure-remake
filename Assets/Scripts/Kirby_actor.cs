@@ -7,12 +7,11 @@ public class Kirby_actor : MonoBehaviour
     public CapsuleCollider suckArea;
     public SphereCollider mouth;
     public CharacterController characterController;
-
-    // Start is called before the first frame update
-    void Start()
+    public bool hasPower;
+    void Awake()
     {
         suckArea = GetComponentInChildren<Kirby_markerSuckArea>().GetComponent<CapsuleCollider>();
-        mouth = GetComponentInChildren<Kirby_markerMouth>().GetComponent<SphereCollider>();
+        mouth = GetComponentInChildren<Kirby_mouthController>().GetComponent<SphereCollider>();
         characterController = GetComponent<CharacterController>();
     }
 }
