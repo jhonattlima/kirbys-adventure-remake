@@ -396,7 +396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054100617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2019026883}
@@ -484,10 +484,10 @@ GameObject:
   - component: {fileID: 2019026882}
   - component: {fileID: 2019026881}
   - component: {fileID: 2019026880}
-  - component: {fileID: 2019026885}
   - component: {fileID: 2019026884}
-  - component: {fileID: 2019026886}
   - component: {fileID: 2019026887}
+  - component: {fileID: 2019026885}
+  - component: {fileID: 2019026886}
   m_Layer: 0
   m_Name: Kirby
   m_TagString: Untagged
@@ -629,6 +629,7 @@ MonoBehaviour:
   suckArea: {fileID: 0}
   mouth: {fileID: 0}
   characterController: {fileID: 0}
+  hasPower: 0
 --- !u!1 &2026483029
 GameObject:
   m_ObjectHideFlags: 0
