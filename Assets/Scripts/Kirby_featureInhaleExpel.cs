@@ -76,7 +76,12 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
         {
             switch (_kirby.enemy_Actor.type)
             {
-                //TODO
+                case (int)Powers.Fire:
+                    break;
+                case (int)Powers.Shock:
+                    break;
+                case (int)Powers.Beam:
+                    break;
             }
         }
     }
