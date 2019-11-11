@@ -6,25 +6,18 @@ public class Kirby_mouthController : MonoBehaviour
 {
     private Kirby_actor _kirby;
 
-    // Start is called before the first frame update
     void Start()
     {
         _kirby = GetComponentInParent<Kirby_actor>();
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag(KirbyConstants.tagEnemy) 
-            && _kirby.suckArea.gameObject.activeSelf)
+        if(other.CompareTag(KirbyConstants.TAG_ENEMY) 
+            && _kirby.isSucking)
         {
-            // give powers to Kirby
-            if(!_kirby.hasPower 
-                && other.GetComponent<Enemy_actor>() 
-                && other.GetComponent<Enemy_actor>().hasPower)
-            {
-
-            }
+            _kirby.enemy_Actor = other.GetComponent<Enemy_actor>();
+            _kirby.isFullOfEnemy = true;
             Destroy(other.gameObject);
         }
     }
-
 }

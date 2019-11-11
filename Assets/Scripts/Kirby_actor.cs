@@ -7,7 +7,12 @@ public class Kirby_actor : MonoBehaviour
     public CapsuleCollider suckArea;
     public SphereCollider mouth;
     public CharacterController characterController;
-    public bool hasPower;
+    public bool hasPower = false;
+    public bool isFullOfEnemy = false;
+    public bool isFullOfAir = false;
+    public bool isSucking = false;
+    public Enemy_actor enemy_Actor = null;
+
     void Awake()
     {
         suckArea = GetComponentInChildren<Kirby_markerSuckArea>().GetComponent<CapsuleCollider>();

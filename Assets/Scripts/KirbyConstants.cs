@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class KirbyConstants
 {
-    public const KeyCode keyJump = KeyCode.Space;
-    public const KeyCode keySuck = KeyCode.Z;
-    public const string tagEnemy = "Enemy";
-    
+    public const KeyCode KEY_JUMP = KeyCode.UpArrow;
+    public const KeyCode KEY_SUCK = KeyCode.Z;
+    public const KeyCode KEY_POOP = KeyCode.LeftShift;
+    public const KeyCode KEY_ACTIVATE_POWER = KeyCode.DownArrow;
+    public const string TAG_ENEMY = "Enemy"; 
 }

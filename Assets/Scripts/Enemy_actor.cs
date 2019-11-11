@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy_actor : MonoBehaviour
 {
     public bool hasPower;
+    public int type;
 
     // Start is called before the first frame update
     void Start()

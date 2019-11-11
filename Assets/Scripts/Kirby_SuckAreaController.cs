@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kirby_markerSuckArea : MonoBehaviour
+public class Kirby_SuckAreaController : MonoBehaviour
 {
     private Transform transformMouth;
     private Kirby_actor kirby;
@@ -14,7 +14,7 @@ public class Kirby_markerSuckArea : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other) {
-        if(other.CompareTag(KirbyConstants.tagEnemy))
+        if(other.CompareTag(KirbyConstants.TAG_ENEMY))
         {
             other.transform.position = Vector3.MoveTowards(other.transform.position, transformMouth.position, _suckSpeed * Time.deltaTime);
         }
