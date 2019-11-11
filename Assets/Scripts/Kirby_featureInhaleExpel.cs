@@ -13,7 +13,31 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
 
     void Update()
     {
-        suck();
+        checkAction();
+    }
+
+        private void checkAction()
+    {
+        if(Input.GetKeyDown(KirbyConstants.KEY_ACTIVATE_POWER))
+        {
+            if(_kirby.isFullOfEnemy
+                && _kirby.enemy_Actor.hasPower)
+            {
+                activatePower();
+            } else if (_kirby.isFullOfEnemy
+                && !_kirby.enemy_Actor.hasPower)
+            {
+                expelStar();
+            }
+        } else if (Input.GetKeyDown(KirbyConstants.KEY_SUCK))
+        {
+            if(_kirby.isFullOfEnemy)
+            {
+                expelEnemy();
+            } else {
+                suck();
+            }
+        }
     }
 
     // If kirby is in the ground
@@ -37,13 +61,13 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
             _kirby.isSucking = false;
         }
     }
-
+    
     // TO DO
     // If kirby is full of enemy
     // and enemy has power
     // and player presses getPowerKey
     // Then activates power
-    private void ActivatePower()
+    private void activatePower()
     {
         if(_kirby.isFullOfEnemy
             && _kirby.enemy_Actor.hasPower
@@ -61,16 +85,17 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
     // and if fullOfair
     // then throw a low range cloud
     // and is not fullOfair anymore
-    public void expelAir()
+    private void expelAir()
     {
         
     }
 
     // TO DO
-    // if kirby has power
+    // and kirby is fullOfenemy
+    // if enemy has no power
     // and player presses poop key
     // poops a star
-    public void expelStar()
+    private void expelStar()
     {
         
     }
@@ -80,7 +105,7 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
     // and player presses keySuck
     // Then throws a horizontal move star
     // And is not fullOfenemy anymore
-    public void expelEnemy()
+    private void expelEnemy()
     {
         
     }
