@@ -15,7 +15,7 @@ public class Kirby_actor : MonoBehaviour
 
     void Awake()
     {
-        suckArea = GetComponentInChildren<Kirby_markerSuckArea>().GetComponent<CapsuleCollider>();
+        suckArea = GetComponentInChildren<Kirby_SuckAreaController>().GetComponent<CapsuleCollider>();
         mouth = GetComponentInChildren<Kirby_mouthController>().GetComponent<SphereCollider>();
         characterController = GetComponent<CharacterController>();
     }
