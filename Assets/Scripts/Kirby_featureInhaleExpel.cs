@@ -16,9 +16,18 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
         checkAction();
     }
 
-        private void checkAction()
+    private void checkAction()
     {
-        if(Input.GetKeyDown(KirbyConstants.KEY_ACTIVATE_POWER))
+        if (Input.GetKeyDown(KirbyConstants.KEY_SUCK))
+        {
+            if(_kirby.isFullOfEnemy)
+            {
+                expelEnemy();
+            } else {
+                suck();
+            }
+        }
+        else if(Input.GetKeyDown(KirbyConstants.KEY_ACTIVATE_POWER))
         {
             if(_kirby.isFullOfEnemy
                 && _kirby.enemy_Actor.hasPower)
@@ -28,14 +37,6 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
                 && !_kirby.enemy_Actor.hasPower)
             {
                 expelStar();
-            }
-        } else if (Input.GetKeyDown(KirbyConstants.KEY_SUCK))
-        {
-            if(_kirby.isFullOfEnemy)
-            {
-                expelEnemy();
-            } else {
-                suck();
             }
         }
     }
@@ -61,7 +62,7 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
             _kirby.isSucking = false;
         }
     }
-    
+
     // TO DO
     // If kirby is full of enemy
     // and enemy has power
