@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,87 +14,73 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
 
     void Update()
     {
-        checkAction();
+        checkSuckAction();
+        checkActivatePowerAction();
     }
 
-    private void checkAction()
+    private void checkSuckAction()
     {
-        if (Input.GetKeyDown(KirbyConstants.KEY_SUCK))
+        if (!_kirby.isFullOfAir 
+            && !_kirby.isFullOfEnemy 
+            && _kirby.characterController.isGrounded
+            && Input.GetKey(KirbyConstants.KEY_SUCK))
         {
-            if(_kirby.isFullOfEnemy)
-            {
-                expelEnemy();
-            } else {
-                suck();
-            }
+            suckOn();
+            _kirby.isSucking = true;
         }
-        else if(Input.GetKeyDown(KirbyConstants.KEY_ACTIVATE_POWER))
+        else if(Input.GetKeyDown(KirbyConstants.KEY_SUCK))
+        {
+            if(_kirby.isFullOfAir)
+            {
+                expelAir();
+            } 
+        }
+        else 
+        {
+            suckOff();
+        }
+    }
+
+    private void checkActivatePowerAction()
+    {
+        if (Input.GetKeyDown(KirbyConstants.KEY_ACTIVATE_POWER))
         {
             if(_kirby.isFullOfEnemy
                 && _kirby.enemy_Actor.hasPower)
             {
                 activatePower();
-            } else if (_kirby.isFullOfEnemy
+            } 
+            else if (_kirby.isFullOfEnemy 
                 && !_kirby.enemy_Actor.hasPower)
             {
-                expelStar();
+                _kirby.enemy_Actor = null;
+                _kirby.isFullOfEnemy = false;
             }
         }
     }
 
-    // If kirby is in the ground
-    // And is not full of enemy or air
-    // then startSucking
-    // Set the bool to suck for true
-    // else set the bool to suck for false
-    private void suck()
+    public void suckOn()
     {
-        if(!_kirby.isFullOfAir
-            && !_kirby.isFullOfEnemy
-            && _kirby.characterController.isGrounded
-            && Input.GetKey(KirbyConstants.KEY_SUCK))
-        {
-            _kirby.suckArea.gameObject.SetActive(true);
-            _kirby.isSucking = true;
-        } 
-        else
-        {
-            _kirby.suckArea.gameObject.SetActive(false);
-            _kirby.isSucking = false;
-        }
+        _kirby.suckArea.gameObject.SetActive(true);
+        _kirby.isSucking = true;
     }
 
-    // TO DO
-    // If kirby is full of enemy
-    // and enemy has power
-    // and player presses getPowerKey
-    // Then activates power
-    private void activatePower()
+    public void suckOff()
     {
-        if(_kirby.isFullOfEnemy
-            && _kirby.enemy_Actor.hasPower
-            && Input.GetKeyDown(KirbyConstants.KEY_ACTIVATE_POWER))
-        {
-            switch (_kirby.enemy_Actor.type)
-            {
-                case (int)Powers.Fire:
-                    break;
-                case (int)Powers.Shock:
-                    break;
-                case (int)Powers.Beam:
-                    break;
-            }
-        }
+        _kirby.suckArea.gameObject.SetActive(false);
+        _kirby.isSucking = false;
     }
 
-    // TO DO
-    // if kirby  is in the air
-    // and if fullOfair
+        // TO DO
+    // if fullOfair
     // then throw a low range cloud
     // and is not fullOfair anymore
-    private void expelAir()
+    public void expelAir()
     {
-        
+        GameObject airBall = Instantiate(_kirby.airPrefab, _kirby.transform.position, _kirby.transform.rotation);
+        airBall.GetComponent<Kirby_powerAirBall>()
+            .setBulletDirection(GetComponent<Kirby_movement>()._isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
+        _kirby.isFullOfAir = false;
     }
 
     // TO DO
@@ -104,6 +91,24 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
     private void expelStar()
     {
         
+    }
+
+    // TO DO
+    // If kirby is full of enemy
+    // and enemy has power
+    // and player presses getPowerKey
+    // Then activates power
+    public void activatePower()
+    {
+        switch (_kirby.enemy_Actor.type)
+        {
+            case (int) Powers.Fire:
+                break;
+            case (int) Powers.Shock:
+                break;
+            case (int) Powers.Beam:
+                break;
+        }
     }
 
     // TO DO

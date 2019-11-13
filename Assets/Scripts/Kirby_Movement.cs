@@ -5,7 +5,6 @@ using UnityEngine;
 public class Kirby_movement : MonoBehaviour
 {
     public float moveSpeed = 1f;
-    public float turnSpeed;
     public float jumpHeight = 0.8f;
     public bool canFall;
     private float _turnSpeed;
@@ -14,10 +13,10 @@ public class Kirby_movement : MonoBehaviour
     private float _maxJumpCooldown;
     private float _inputHorizontal;
     private float _inputVertical;
-    private Vector3 movement;
     private Kirby_actor _kirby;
-    private bool _isLookingRight;
+    public bool _isLookingRight;
     private Quaternion _endRotation;
+    private float cooldownAction;
 
     // Things to check:
     // - How do I rotate Smoothly;
@@ -27,10 +26,10 @@ public class Kirby_movement : MonoBehaviour
     {
         _endRotation = transform.rotation;
         _jumpSpeed = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y) * jumpHeight);
-        _kirby = GetComponent<Kirby_actor>();
-        turnSpeed = moveSpeed * 5; 
+        _turnSpeed = moveSpeed * 10; 
         _isLookingRight = true;
         canFall = true;
+        _kirby = GetComponent<Kirby_actor>();
     }
 
     void Update()
@@ -38,6 +37,30 @@ public class Kirby_movement : MonoBehaviour
         jump();
         move();
         applyGravity();
+    }
+
+    // If kirby is not sucking
+    // Then move
+    private void move()
+    {            
+        if(!_kirby.isSucking)
+        {
+            _inputHorizontal = Input.GetAxis("Horizontal");
+            Vector3 movement = _kirby.directionRight * _inputHorizontal * moveSpeed;
+            movement = movement * Time.deltaTime;
+
+            //Debug.Log(movement * 10000);
+            
+            if(movement.x < 0 && _isLookingRight
+                || movement.x > 0 && !_isLookingRight)
+            {
+                turn();
+            }  
+
+            _kirby.characterController.Move(movement);
+        }
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _turnSpeed);
     }
 
     // If kirby is not fullOfEnemy
@@ -62,36 +85,20 @@ public class Kirby_movement : MonoBehaviour
         }
     }
 
-    // If kirby is not sucking
-    // Then move
-    private void move()
-    {
-        if(!_kirby.isSucking)
-        {
-            _inputHorizontal = Input.GetAxis("Horizontal");
-            movement = Vector3.right * _inputHorizontal * moveSpeed;
-            movement.y = _verticalSpeed;
-            movement = movement * Time.deltaTime;
-            
-            if(movement.x < 0 && _isLookingRight
-                || movement.x > 0 && !_isLookingRight)
-            {
-                turn();
-            }
-
-            _kirby.characterController.Move(movement);
-            transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _turnSpeed);
-        }
-    }
-
     private void turn()
     {
-        //Debug.Log("entered here");
-        _endRotation = Quaternion.LookRotation(Vector3.left);
+        if(_isLookingRight)
+        {
+            _endRotation = Quaternion.LookRotation(_kirby.directionLeft + _kirby.directionBack * 0.0001f);
+        }
+        else 
+        {
+            _endRotation = Quaternion.LookRotation(_kirby.directionRight);
+        }
         _isLookingRight = !_isLookingRight;
     }
 
-    // If kirby is in the air
+   
     // Then apply Gravity
     private void applyGravity()
     {
@@ -99,5 +106,8 @@ public class Kirby_movement : MonoBehaviour
         {
             _verticalSpeed += Physics.gravity.y * Time.deltaTime;
         }
+        Vector3 movement = Vector3.zero;
+        movement.y = _verticalSpeed * Time.deltaTime;
+        _kirby.characterController.Move(movement);
     }
 }
