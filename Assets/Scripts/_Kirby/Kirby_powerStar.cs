@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kirby_powerFire : MonoBehaviour
+public class Kirby_powerStar : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

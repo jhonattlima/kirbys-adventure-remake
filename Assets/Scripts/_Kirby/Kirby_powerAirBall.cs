@@ -9,7 +9,7 @@ public class Kirby_powerAirBall : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 0.5f);
     }
 
     void Update() 
@@ -17,8 +17,8 @@ public class Kirby_powerAirBall : MonoBehaviour
         transform.position += direction * _airSpeed * Time.deltaTime;
     }
 
-    public void setBulletDirection(Vector3 directionTogo)
+    public void setBulletDirection(Vector3 direction)
     {
-        direction = directionTogo;
+        this.direction = direction;
     }
 }
