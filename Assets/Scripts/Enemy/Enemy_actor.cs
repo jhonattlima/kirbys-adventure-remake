@@ -14,7 +14,7 @@ public class Enemy_actor : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("Kirby Triggered");
+        
     }
     
     private void OnCollisionEnter(Collision other) 

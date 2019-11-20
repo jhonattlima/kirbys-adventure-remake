@@ -28,6 +28,10 @@ public class Kirby_healthController : MonoBehaviour
         }
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit) {
+        
+    }
+
     public void takeDamage(int amountOfDamage)
     {
         healthPoints -= amountOfDamage;
