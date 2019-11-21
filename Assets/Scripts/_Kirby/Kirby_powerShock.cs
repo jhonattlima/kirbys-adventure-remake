@@ -24,13 +24,11 @@ public class Kirby_powerShock : MonoBehaviour
 
     public void shockOn()
     {
-        _kirby.isParalyzed = true;
-        _kirby.areaOfShockPower.SetActive(true);
+        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, true);
     }
 
     public void shockOff()
     {
-        _kirby.isParalyzed = false;
-        _kirby.areaOfShockPower.SetActive(false);
+        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false);
     }
 }

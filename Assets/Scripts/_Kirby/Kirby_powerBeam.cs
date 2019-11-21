@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine;
+using UnityEngine.Networking;
 
-public class Kirby_powerBeam : MonoBehaviour
+public class Kirby_powerBeam : NetworkBehaviour 
 {
     public Kirby_actor _kirby;
 
@@ -14,25 +16,19 @@ public class Kirby_powerBeam : MonoBehaviour
 
     void Update()
     {
+        // if(!isLocalPlayer) return;
+
         if(Input.GetKeyDown(KirbyConstants.KEY_SUCK) 
         && _kirby.characterController.isGrounded
         && !_kirby.isFullOfAir)
-        {
-            beamOn();
-        } else {
-            beamOff();
+        {   
+            // _kirby.serverKirbyController.CmdActivateBeam();  
+            activateBeam();
         }
     }
 
-    public void beamOn()
+    public void activateBeam()
     {
-        _kirby.isParalyzed = true;
-        _kirby.areaOfBeamPower.SetActive(true);
-    }
-
-    public void beamOff()
-    {
-        _kirby.isParalyzed = false;
-        _kirby.areaOfBeamPower.SetActive(false);
+        _kirby.animator.SetTrigger(KirbyConstants.ANIM_TRIGGER_POWER_BEAM);
     }
 }

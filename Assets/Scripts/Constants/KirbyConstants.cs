@@ -10,6 +10,11 @@ public class KirbyConstants
     public const KeyCode KEY_ACTIVATE_POWER = KeyCode.DownArrow;
     public const string TAG_ENEMY = "Enemy";
     public const string TAG_PLAYER = "Player";
+    public const string ANIM_NAME_POWER_BEAM = "BeamSweep";
+    public const string ANIM_TRIGGER_POWER_BEAM = "Power_Beam";
+    public const string ANIM_CHECK_POWER_FIRE = "Power_Fire";
+    public const string ANIM_CHECK_POWER_SHOCK = "Power_Shock";
+    public const string ANIM_CHECK_POWER_SUCK = "Power_Suck";
     public const int PLAYER_HEALTH_POINTS = 4;
     public const float COOLDOWN_ACTION = 0.5f;
     public const float COOLDOWN_INVULNERABLE = 3f;

@@ -68,14 +68,12 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
 
     public void suckOn()
     {
-        _kirby.areaOfSucking.gameObject.SetActive(true);
-        _kirby.isSucking = true;
+        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, true);
     }
 
     public void suckOff()
     {
-        _kirby.areaOfSucking.gameObject.SetActive(false);
-        _kirby.isSucking = false;
+        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, false);
     }
 
     // If fullOfair

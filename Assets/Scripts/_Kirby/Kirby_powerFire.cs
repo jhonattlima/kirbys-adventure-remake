@@ -24,13 +24,11 @@ public class Kirby_powerFire : MonoBehaviour
 
     public void fireOn()
     {
-        _kirby.isParalyzed = true;
-        _kirby.areaOfFirePower.SetActive(true);
+        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, true);
     }
 
     public void fireOff()
     {
-        _kirby.isParalyzed = false;
-        _kirby.areaOfFirePower.SetActive(false);
+        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, false);
     }
 }

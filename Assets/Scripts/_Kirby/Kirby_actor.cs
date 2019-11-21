@@ -6,9 +6,8 @@ public class Kirby_actor : MonoBehaviour
 {
     public SphereCollider mouth;
     public CapsuleCollider areaOfSucking;
-    public GameObject areaOfFirePower;
-    public GameObject areaOfShockPower;
-    public GameObject areaOfBeamPower;
+    public Animator animator;
+    public Server_KirbyController serverKirbyController;
     public CharacterController characterController;
     public Kirby_powerFire powerFire;
     public Kirby_powerBeam powerBeam;
@@ -54,19 +53,15 @@ public class Kirby_actor : MonoBehaviour
     private void Awake() 
     {
         characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+        serverKirbyController = GetComponent<Server_KirbyController>();
         mouth = GetComponentInChildren<Kirby_mouthController>().GetComponent<SphereCollider>();
         areaOfSucking = GetComponentInChildren<Kirby_SuckAreaController>().GetComponent<CapsuleCollider>();
+        mouth.gameObject.SetActive(false);
+        areaOfSucking.gameObject.SetActive(false);
 
         powerFire = GetComponent<Kirby_powerFire>();
-        areaOfFirePower = GetComponentInChildren<Kirby_powerFireArea>().gameObject;
-        areaOfFirePower.SetActive(false);
-    
         powerShock = GetComponent<Kirby_powerShock>();
-        areaOfShockPower = GetComponentInChildren<Kirby_powerShockArea>().gameObject;
-        areaOfShockPower.SetActive(false);
-
         powerBeam = GetComponent<Kirby_powerBeam>();
-        areaOfBeamPower = GetComponentInChildren<Kirby_powerBeamArea>().gameObject;
-        areaOfBeamPower.SetActive(false);
     }
 }

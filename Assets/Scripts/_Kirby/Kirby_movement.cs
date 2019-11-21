@@ -12,7 +12,7 @@ public class Kirby_movement : MonoBehaviour
     private float _maxJumpCooldown;
     private float _inputHorizontal;
     private float _inputVertical;
-    public Quaternion _endRotation;
+    private Quaternion _endRotation;
     private float cooldownAction;
     private Kirby_actor _kirby;
 
@@ -26,7 +26,7 @@ public class Kirby_movement : MonoBehaviour
 
     void Update()
     {
-        if(!_kirby.isParalyzed)
+        if(!_kirby.isParalyzed && !_kirby.isSucking)
         {
             jump();
             move();
@@ -39,19 +39,16 @@ public class Kirby_movement : MonoBehaviour
     // Then move
     private void move()
     {            
-        if(!_kirby.isSucking)
+        _inputHorizontal = Input.GetAxis("Horizontal");
+        Vector3 movement = _kirby.directionRight * _inputHorizontal * moveSpeed * Time.deltaTime;
+        
+        if(movement.x < 0 && _kirby.isLookingRight
+            || movement.x > 0 && !_kirby.isLookingRight)
         {
-            _inputHorizontal = Input.GetAxis("Horizontal");
-            Vector3 movement = _kirby.directionRight * _inputHorizontal * moveSpeed * Time.deltaTime;
-            
-            if(movement.x < 0 && _kirby.isLookingRight
-                || movement.x > 0 && !_kirby.isLookingRight)
-            {
-                turn();
-            }  
+            turn();
+        }  
 
-            _kirby.characterController.Move(movement);
-        }
+        _kirby.characterController.Move(movement);
     }
 
     // If kirby is not fullOfEnemy
@@ -61,7 +58,6 @@ public class Kirby_movement : MonoBehaviour
     private void jump()
     {
         if(!_kirby.isFullOfEnemy
-            && !_kirby.isSucking
             && Input.GetKeyDown(KirbyConstants.KEY_JUMP))
         {
             if(_kirby.characterController.isGrounded)
