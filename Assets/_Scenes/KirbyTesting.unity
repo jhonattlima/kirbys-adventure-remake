@@ -263,6 +263,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 0
+--- !u!1 &80528578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4455788589664677811, guid: b0be21a042714744c8b1626b5bb427e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2183342580738075933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &104860777 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2013194438038809201, guid: 209174a2e0432944faa3cb074aaa56df,
@@ -479,7 +485,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534669902
 GameObject:
@@ -1068,6 +1074,11 @@ PrefabInstance:
       propertyPath: currentArea
       value: 
       objectReference: {fileID: 2026483033}
+    - target: {fileID: 2013194437534908895, guid: 209174a2e0432944faa3cb074aaa56df,
+        type: 3}
+      propertyPath: starPrefab
+      value: 
+      objectReference: {fileID: 80528578}
     - target: {fileID: 2013194438038809205, guid: 209174a2e0432944faa3cb074aaa56df,
         type: 3}
       propertyPath: m_Enabled
@@ -1145,25 +1156,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarPower
       objectReference: {fileID: 0}
-    - target: {fileID: 4455788589664677811, guid: b0be21a042714744c8b1626b5bb427e6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2795528581729196349, guid: b0be21a042714744c8b1626b5bb427e6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6948402
+      value: 1.78
       objectReference: {fileID: 0}
     - target: {fileID: 2795528581729196349, guid: b0be21a042714744c8b1626b5bb427e6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22135997
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 2795528581729196349, guid: b0be21a042714744c8b1626b5bb427e6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.887347
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2795528581729196349, guid: b0be21a042714744c8b1626b5bb427e6,
         type: 3}
@@ -1188,7 +1194,7 @@ PrefabInstance:
     - target: {fileID: 2795528581729196349, guid: b0be21a042714744c8b1626b5bb427e6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2795528581729196349, guid: b0be21a042714744c8b1626b5bb427e6,
         type: 3}
@@ -1204,6 +1210,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80528579, guid: b0be21a042714744c8b1626b5bb427e6, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0be21a042714744c8b1626b5bb427e6, type: 3}

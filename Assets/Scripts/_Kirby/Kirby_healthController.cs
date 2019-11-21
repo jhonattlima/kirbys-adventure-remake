@@ -6,30 +6,36 @@ public class Kirby_healthController : MonoBehaviour
 {
     private Kirby_actor _kirby;
     private int healthPoints = KirbyConstants.PLAYER_HEALTH_POINTS;
-    private bool isInvulnerable;
-    private float invulnerableCoolDown = 0;
 
     private void Start() {
         _kirby = GetComponent<Kirby_actor>();
     }
 
-    private void Update() 
+    public void retrievePower(int power)
     {
-
-        if(invulnerableCoolDown > 0)
+        if(_kirby.enemy_powerInMouth == (int)Powers.None) return;
+        switch (power)
         {
-            invulnerableCoolDown -= Time.deltaTime;
+            case (int) Powers.Fire:
+                _kirby.powerFire.enabled = true;
+                break;
+            case (int) Powers.Shock:
+                _kirby.powerShock.enabled = true;
+                break;
+            case (int) Powers.Beam:
+                _kirby.powerBeam.enabled = true;
+                break;
         }
-
-        if(invulnerableCoolDown <= 0 && isInvulnerable)
-        {
-            isInvulnerable = false;
-            // finish invulnerable animation
-        }
+        _kirby.enemy_powerInMouth = power;
+        _kirby.hasPower = true;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
-        
+        if(hit.gameObject.CompareTag(KirbyConstants.TAG_ENEMY)
+            && !_kirby.isInvulnerable)
+        {
+            takeDamage(hit.gameObject.GetComponent<Enemy_actor>().touchDamage);
+        }
     }
 
     public void takeDamage(int amountOfDamage)
@@ -41,18 +47,8 @@ public class Kirby_healthController : MonoBehaviour
         } 
         else 
         {
-            // Start invulnerable animation
             StartCoroutine(sufferDamage());
         }
-    }
-
-    // poops a star
-    // and player has no power anymore
-    private void expelStar()
-    {
-        
-        _kirby.hasPower = false;
-        _kirby.enemy_powerInMouth = (int)Powers.None;
     }
 
     private void die()
@@ -64,7 +60,7 @@ public class Kirby_healthController : MonoBehaviour
 
     IEnumerator sufferDamage()
     {
-        Debug.Log("Ouch! took Damage");
+        Debug.Log("Ouch! took Damage Kirby's life: " + healthPoints);
         _kirby.isParalyzed = true;
 
         // Play damaged animation
@@ -87,8 +83,28 @@ public class Kirby_healthController : MonoBehaviour
         
         yield return new WaitForSeconds(KirbyConstants.COOLDOWN_TO_RECOVER_FROM_DAMAGE);
         _kirby.isParalyzed = false;
+
         // Stop playing damaged animation
-        invulnerableCoolDown = KirbyConstants.COOLDOWN_INVULNERABLE;
         // Play invulnerable animation
+
+        StartCoroutine(stayInvulnerable());
+    }
+
+    // poops a star
+    // and player has no power anymore
+    private void expelStar()
+    {
+        Kirby_powerStar star  = Instantiate(_kirby.starPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerStar>();
+        star.power = _kirby.enemy_powerInMouth;
+        star.setPushDirection(_kirby.isLookingRight ? _kirby.directionLeft : _kirby.directionRight);
+        _kirby.hasPower = false;
+        _kirby.enemy_powerInMouth = (int)Powers.None;
+    }
+
+    IEnumerator stayInvulnerable()
+    {
+        _kirby.isInvulnerable = true;
+        yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
+        _kirby.isInvulnerable = false;
     }
 }

@@ -5,16 +5,16 @@ using UnityEngine;
 public class Kirby_SuckAreaController : MonoBehaviour
 {
     private Transform transformMouth;
-    private Kirby_actor kirby;
-    private float _suckSpeed = 1f;
+    private Kirby_actor _kirby;
+    private float _suckSpeed = KirbyConstants.KIRBY_SUCK_SPEED;
 
     private void Start() {
-        kirby = GetComponentInParent<Kirby_actor>();
-        transformMouth = kirby.mouth.gameObject.transform;
+        _kirby = GetComponentInParent<Kirby_actor>();
+        transformMouth = _kirby.mouth.gameObject.transform;
     }
 
     private void OnTriggerStay(Collider other) {
-        if(other.CompareTag(KirbyConstants.TAG_ENEMY))
+        if(other.CompareTag(KirbyConstants.TAG_ENEMY) || other.GetComponent<Kirby_powerStar>())
         {
             other.transform.position = Vector3.MoveTowards(other.transform.position, transformMouth.position, _suckSpeed * Time.deltaTime);
         }

@@ -23,11 +23,10 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
     private void checkSuckAction()
     {   if(Input.GetKey(KirbyConstants.KEY_SUCK))
         {
-             if (!_kirby.isFullOfAir
-                && !_kirby.hasPower 
+            if (!_kirby.isFullOfAir
                 && !_kirby.isFullOfEnemy 
+                && _kirby.enemy_powerInMouth == (int)Powers.None
                 && _kirby.characterController.isGrounded)
-                
             {
                 suckOn();
             }
@@ -49,20 +48,21 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
         }
     }
 
+    // If activate power key is pressed
+    // If kirby has an enemy in mouth and it has power
+    // then activate de power
+    // anyway, swallow enemy
     private void checkActivatePowerAction()
     {
         if (Input.GetKeyDown(KirbyConstants.KEY_ACTIVATE_POWER))
         {
-            if(_kirby.isFullOfEnemy
-                && _kirby.enemy_powerInMouth != (int)Powers.None)
+            if(_kirby.isFullOfEnemy 
+                && _kirby.enemy_powerInMouth != (int)Powers.None
+                && !_kirby.hasPower)
             {
                 activatePower();
             } 
-            else if (_kirby.isFullOfEnemy 
-                && _kirby.enemy_powerInMouth == (int)Powers.None)
-            {
-                _kirby.isFullOfEnemy = false;
-            }
+            _kirby.isFullOfEnemy = false;
         }
     }
 
@@ -76,8 +76,7 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
         _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, false);
     }
 
-    // If fullOfair
-    // then throw a low range cloud
+    // Throw a low range Air Ball
     // and is not fullOfair anymore
     public void expelAir()
     {
@@ -86,12 +85,12 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
         _kirby.isFullOfAir = false;
     }
 
-    // If full of enemy
-    // and enemy has power
-    // and player presses getPowerKey
-    // Then activates power
+    // If enemy in mouth has power
+    // then ativate power script
+    // and has power now
     public void activatePower()
     {
+        if(_kirby.enemy_powerInMouth == (int)Powers.None) return;
         switch (_kirby.enemy_powerInMouth)
         {
             case (int) Powers.Fire:
@@ -105,7 +104,6 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
                 break;
         }
         _kirby.hasPower = true;
-        _kirby.isFullOfEnemy = false;
     }
 
     // TO DO
@@ -115,6 +113,5 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
     // And is not fullOfenemy anymore
     private void expelEnemy()
     {
-        
     }
 }

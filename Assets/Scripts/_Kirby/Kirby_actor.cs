@@ -12,15 +12,18 @@ public class Kirby_actor : MonoBehaviour
     public Kirby_powerFire powerFire;
     public Kirby_powerBeam powerBeam;
     public Kirby_powerShock powerShock;
+    public GameObject airPrefab;
+    public GameObject starPrefab;
+    public Transform currentArea;
+    public int enemy_powerInMouth = (int)Powers.None;
     public bool hasPower = false;
     public bool isLookingRight = true;
     public bool isFullOfEnemy = false;
     public bool isFullOfAir = false;
     public bool isSucking = false;
     public bool isParalyzed = false;
-    public int enemy_powerInMouth = (int)Powers.None;
-    public GameObject airPrefab;
-    public Transform currentArea;
+    public bool isInvulnerable = false;
+    
     public Vector3 directionRight
     {
         get
@@ -57,11 +60,11 @@ public class Kirby_actor : MonoBehaviour
         serverKirbyController = GetComponent<Server_KirbyController>();
         mouth = GetComponentInChildren<Kirby_mouthController>().GetComponent<SphereCollider>();
         areaOfSucking = GetComponentInChildren<Kirby_SuckAreaController>().GetComponent<CapsuleCollider>();
-        mouth.gameObject.SetActive(false);
-        areaOfSucking.gameObject.SetActive(false);
-
         powerFire = GetComponent<Kirby_powerFire>();
         powerShock = GetComponent<Kirby_powerShock>();
         powerBeam = GetComponent<Kirby_powerBeam>();
+
+        mouth.gameObject.SetActive(false);
+        areaOfSucking.gameObject.SetActive(false);
     }
 }
