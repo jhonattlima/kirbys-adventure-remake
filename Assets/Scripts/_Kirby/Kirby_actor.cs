@@ -14,6 +14,7 @@ public class Kirby_actor : MonoBehaviour
     public Kirby_powerShock powerShock;
     public GameObject airPrefab;
     public GameObject starPrefab;
+    public GameObject starBulletPrefab;
     public Transform currentArea;
     public int enemy_powerInMouth = (int)Powers.None;
     public bool hasPower = false;

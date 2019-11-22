@@ -34,6 +34,7 @@ public class Kirby_healthController : MonoBehaviour
         if(hit.gameObject.CompareTag(KirbyConstants.TAG_ENEMY)
             && !_kirby.isInvulnerable)
         {
+            Debug.Log(" Kirby will take damage now");
             takeDamage(hit.gameObject.GetComponent<Enemy_actor>().touchDamage);
         }
     }
@@ -68,6 +69,11 @@ public class Kirby_healthController : MonoBehaviour
         if(_kirby.hasPower)
         {
             expelStar();
+            _kirby.powerBeam.enabled = false;
+            _kirby.powerFire.enabled = false;
+            _kirby.powerShock.enabled = false;
+            _kirby.hasPower = false;
+            _kirby.enemy_powerInMouth = (int)Powers.None;
         }
 
         Vector3 movement;
@@ -97,14 +103,14 @@ public class Kirby_healthController : MonoBehaviour
         Kirby_powerStar star  = Instantiate(_kirby.starPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerStar>();
         star.power = _kirby.enemy_powerInMouth;
         star.setPushDirection(_kirby.isLookingRight ? _kirby.directionLeft : _kirby.directionRight);
-        _kirby.hasPower = false;
-        _kirby.enemy_powerInMouth = (int)Powers.None;
     }
 
     IEnumerator stayInvulnerable()
     {
+        Debug.Log("Kirby is invulnerable");
         _kirby.isInvulnerable = true;
         yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
         _kirby.isInvulnerable = false;
+        Debug.Log("Kirby is not invulnerable anymore");
     }
 }

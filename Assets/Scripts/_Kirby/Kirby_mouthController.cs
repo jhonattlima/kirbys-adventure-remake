@@ -12,9 +12,11 @@ public class Kirby_mouthController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
+        Debug.Log("Kirby tried to swallow enemy");
         if(other.CompareTag(KirbyConstants.TAG_ENEMY) 
             && _kirby.isSucking)
         {
+            Debug.Log("Kirby swallowed enemy");
             _kirby.enemy_powerInMouth = (int)other.GetComponent<Enemy_actor>().type;
             _kirby.isFullOfEnemy = true;
             Destroy(other.gameObject);

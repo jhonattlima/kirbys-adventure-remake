@@ -15,7 +15,6 @@ public class Kirby_powerStar : MonoBehaviour
     IEnumerator waitToBecomeActive()
     {
         yield return new WaitForSeconds(KirbyConstants.KIRBY_STAR_COOLDOWN_TO_BE_ACTIVE);
-        GetComponent<Rigidbody>().isKinematic = false;
         isActivated = true;
     }
 

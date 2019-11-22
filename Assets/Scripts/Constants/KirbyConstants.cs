@@ -19,7 +19,8 @@ public class KirbyConstants
     public const float COOLDOWN_ACTION = 0.5f;
     public const float COOLDOWN_INVULNERABLE = 3f;
     public const float COOLDOWN_TO_RECOVER_FROM_DAMAGE = 2f;
-    public const float PUSH_SPEED_WHEN_DAMAGED = 5f;
+    public const float PUSH_SPEED_WHEN_DAMAGED = 15f;
     public const float KIRBY_SUCK_SPEED = 1f;
     public const float KIRBY_STAR_COOLDOWN_TO_BE_ACTIVE = 3f;
+    public const float KIRBY_STAR_BULLET_SPEED = 5f;
 }

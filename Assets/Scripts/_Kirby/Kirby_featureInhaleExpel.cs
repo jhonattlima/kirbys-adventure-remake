@@ -32,13 +32,16 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
             }
             else
             {
-                if(_kirby.isFullOfAir)
+                if(Input.GetKeyDown(KirbyConstants.KEY_SUCK))
                 {
-                    expelAir();
-                } 
-                else if (_kirby.isFullOfEnemy)
-                {
-                    expelEnemy();
+                    if(_kirby.isFullOfAir)
+                    {
+                        expelAir();
+                    } 
+                    else if (_kirby.isFullOfEnemy)
+                    {
+                        expelEnemy();
+                    }
                 }
             }
         }
@@ -85,6 +88,16 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
         _kirby.isFullOfAir = false;
     }
 
+    // Throws a horizontal move star
+    // And is not fullOfenemy anymore
+    private void expelEnemy()
+    {
+        Kirby_powerStarBullet starBullet = Instantiate(_kirby.starBulletPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerStarBullet>();
+        starBullet.setBulletDirection(_kirby.isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
+        _kirby.isFullOfEnemy = false;
+        _kirby.enemy_powerInMouth = (int)Powers.None;
+    }
+
     // If enemy in mouth has power
     // then ativate power script
     // and has power now
@@ -104,14 +117,5 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
                 break;
         }
         _kirby.hasPower = true;
-    }
-
-    // TO DO
-    // if kirby is fullOfenemy
-    // and player presses keySuck
-    // Then throws a horizontal move star
-    // And is not fullOfenemy anymore
-    private void expelEnemy()
-    {
     }
 }
