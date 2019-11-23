@@ -1,0 +1,447 @@
+fileFormatVersion: 2
+guid: 58f4e08f4dbc54cae80cac4284649919
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 1-1
+    100002: 1-2
+    100004: 1.3
+    100006: Block 01
+    100008: Block 02
+    100010: Block 03
+    100012: Block 04
+    100014: Block 05
+    100016: Block 06
+    100018: Block 07
+    100020: Block 08
+    100022: Block 09
+    100024: Block 10
+    100026: Detail 01
+    100028: Detail 02
+    100030: Detail 03
+    100032: Detail 04
+    100034: Detail 05
+    100036: Detail 06
+    100038: Detail 07
+    100040: Detail 08
+    100042: Detail 09
+    100044: Detail 10
+    100046: Detail 11
+    100048: Detail 12
+    100050: Detail 13
+    100052: Detail 14
+    100054: Detail 15
+    100056: Detail 16
+    100058: Detail 17
+    100060: Detail 18
+    100062: Detail 19
+    100064: Detail 20
+    100066: Detail 21
+    100068: Detail 22
+    100070: Detail 23
+    100072: Detail 24
+    100074: Mountain 02
+    100076: Mountain 03
+    100078: Mountain 04
+    100080: Mountain 05
+    100082: Mountain 06
+    100084: Mountain 07
+    100086: Mountain 08
+    100088: Mountain 09
+    100090: Mountain 1
+    100092: Mountain 10
+    100094: Mountain 11
+    100096: Mountain 12
+    100098: Mountain 13
+    100100: Mountain 14
+    100102: Mountain 15
+    100104: Mountain 16
+    100106: Mountain 17
+    100108: Mountain 18
+    100110: Mountain 19
+    100112: Mountain 20
+    100114: Platform 01
+    100116: Platform 02
+    100118: Platform 03
+    100120: Platform 04
+    100122: Platform 05
+    100124: Platform 06
+    100126: Platform 07
+    100128: Platform 08
+    100130: Platform 09
+    100132: Platform 10
+    100134: Platform 11
+    100136: //RootNode
+    100138: Tunnel 1-2
+    100140: Tunnel 2-3
+    400000: 1-1
+    400002: 1-2
+    400004: 1.3
+    400006: Block 01
+    400008: Block 02
+    400010: Block 03
+    400012: Block 04
+    400014: Block 05
+    400016: Block 06
+    400018: Block 07
+    400020: Block 08
+    400022: Block 09
+    400024: Block 10
+    400026: Detail 01
+    400028: Detail 02
+    400030: Detail 03
+    400032: Detail 04
+    400034: Detail 05
+    400036: Detail 06
+    400038: Detail 07
+    400040: Detail 08
+    400042: Detail 09
+    400044: Detail 10
+    400046: Detail 11
+    400048: Detail 12
+    400050: Detail 13
+    400052: Detail 14
+    400054: Detail 15
+    400056: Detail 16
+    400058: Detail 17
+    400060: Detail 18
+    400062: Detail 19
+    400064: Detail 20
+    400066: Detail 21
+    400068: Detail 22
+    400070: Detail 23
+    400072: Detail 24
+    400074: Mountain 02
+    400076: Mountain 03
+    400078: Mountain 04
+    400080: Mountain 05
+    400082: Mountain 06
+    400084: Mountain 07
+    400086: Mountain 08
+    400088: Mountain 09
+    400090: Mountain 1
+    400092: Mountain 10
+    400094: Mountain 11
+    400096: Mountain 12
+    400098: Mountain 13
+    400100: Mountain 14
+    400102: Mountain 15
+    400104: Mountain 16
+    400106: Mountain 17
+    400108: Mountain 18
+    400110: Mountain 19
+    400112: Mountain 20
+    400114: Platform 01
+    400116: Platform 02
+    400118: Platform 03
+    400120: Platform 04
+    400122: Platform 05
+    400124: Platform 06
+    400126: Platform 07
+    400128: Platform 08
+    400130: Platform 09
+    400132: Platform 10
+    400134: Platform 11
+    400136: //RootNode
+    400138: Tunnel 1-2
+    400140: Tunnel 2-3
+    2100000: Material.001
+    2100002: Material.002
+    2100004: Material
+    2100006: No Name
+    2300000: 1-1
+    2300002: 1-2
+    2300004: 1.3
+    2300006: Block 01
+    2300008: Block 02
+    2300010: Block 03
+    2300012: Block 04
+    2300014: Block 05
+    2300016: Block 06
+    2300018: Block 07
+    2300020: Block 08
+    2300022: Block 09
+    2300024: Block 10
+    2300026: Detail 01
+    2300028: Detail 02
+    2300030: Detail 03
+    2300032: Detail 04
+    2300034: Detail 05
+    2300036: Detail 06
+    2300038: Detail 07
+    2300040: Detail 08
+    2300042: Detail 09
+    2300044: Detail 10
+    2300046: Detail 11
+    2300048: Detail 12
+    2300050: Detail 13
+    2300052: Detail 14
+    2300054: Detail 15
+    2300056: Detail 16
+    2300058: Detail 17
+    2300060: Detail 18
+    2300062: Detail 19
+    2300064: Detail 20
+    2300066: Detail 21
+    2300068: Detail 22
+    2300070: Detail 23
+    2300072: Detail 24
+    2300074: Mountain 02
+    2300076: Mountain 03
+    2300078: Mountain 04
+    2300080: Mountain 05
+    2300082: Mountain 06
+    2300084: Mountain 07
+    2300086: Mountain 08
+    2300088: Mountain 09
+    2300090: Mountain 1
+    2300092: Mountain 10
+    2300094: Mountain 11
+    2300096: Mountain 12
+    2300098: Mountain 13
+    2300100: Mountain 14
+    2300102: Mountain 15
+    2300104: Mountain 16
+    2300106: Mountain 17
+    2300108: Mountain 18
+    2300110: Mountain 19
+    2300112: Mountain 20
+    2300114: Platform 01
+    2300116: Platform 02
+    2300118: Platform 03
+    2300120: Platform 04
+    2300122: Platform 05
+    2300124: Platform 06
+    2300126: Platform 07
+    2300128: Platform 08
+    2300130: Platform 09
+    2300132: Platform 10
+    2300134: Platform 11
+    2300136: Tunnel 1-2
+    2300138: Tunnel 2-3
+    3300000: 1-1
+    3300002: 1-2
+    3300004: 1.3
+    3300006: Block 01
+    3300008: Block 02
+    3300010: Block 03
+    3300012: Block 04
+    3300014: Block 05
+    3300016: Block 06
+    3300018: Block 07
+    3300020: Block 08
+    3300022: Block 09
+    3300024: Block 10
+    3300026: Detail 01
+    3300028: Detail 02
+    3300030: Detail 03
+    3300032: Detail 04
+    3300034: Detail 05
+    3300036: Detail 06
+    3300038: Detail 07
+    3300040: Detail 08
+    3300042: Detail 09
+    3300044: Detail 10
+    3300046: Detail 11
+    3300048: Detail 12
+    3300050: Detail 13
+    3300052: Detail 14
+    3300054: Detail 15
+    3300056: Detail 16
+    3300058: Detail 17
+    3300060: Detail 18
+    3300062: Detail 19
+    3300064: Detail 20
+    3300066: Detail 21
+    3300068: Detail 22
+    3300070: Detail 23
+    3300072: Detail 24
+    3300074: Mountain 02
+    3300076: Mountain 03
+    3300078: Mountain 04
+    3300080: Mountain 05
+    3300082: Mountain 06
+    3300084: Mountain 07
+    3300086: Mountain 08
+    3300088: Mountain 09
+    3300090: Mountain 1
+    3300092: Mountain 10
+    3300094: Mountain 11
+    3300096: Mountain 12
+    3300098: Mountain 13
+    3300100: Mountain 14
+    3300102: Mountain 15
+    3300104: Mountain 16
+    3300106: Mountain 17
+    3300108: Mountain 18
+    3300110: Mountain 19
+    3300112: Mountain 20
+    3300114: Platform 01
+    3300116: Platform 02
+    3300118: Platform 03
+    3300120: Platform 04
+    3300122: Platform 05
+    3300124: Platform 06
+    3300126: Platform 07
+    3300128: Platform 08
+    3300130: Platform 09
+    3300132: Platform 10
+    3300134: Platform 11
+    3300136: Tunnel 1-2
+    3300138: Tunnel 2-3
+    4300000: 1-1
+    4300002: 1-2
+    4300004: 1.3
+    4300006: Tunnel 1-2
+    4300008: Detail 23
+    4300010: Detail 24
+    4300012: Detail 22
+    4300014: Detail 19
+    4300016: Detail 15
+    4300018: Detail 16
+    4300020: Detail 03
+    4300022: Detail 09
+    4300024: Detail 13
+    4300026: Detail 11
+    4300028: Detail 07
+    4300030: Detail 01
+    4300032: Detail 12
+    4300034: Detail 14
+    4300036: Detail 04
+    4300038: Detail 02
+    4300040: Detail 17
+    4300042: Detail 18
+    4300044: Detail 20
+    4300046: Detail 21
+    4300048: Detail 05
+    4300050: Detail 08
+    4300052: Detail 10
+    4300054: Detail 06
+    4300056: Block 01
+    4300058: Block 02
+    4300060: Block 03
+    4300062: Block 04
+    4300064: Block 05
+    4300066: Block 06
+    4300068: Block 07
+    4300070: Block 08
+    4300072: Block 09
+    4300074: Block 10
+    4300076: Mountain 03
+    4300078: Mountain 05
+    4300080: Mountain 07
+    4300082: Mountain 09
+    4300084: Mountain 04
+    4300086: Mountain 06
+    4300088: Mountain 10
+    4300090: Mountain 08
+    4300092: Mountain 11
+    4300094: Mountain 12
+    4300096: Mountain 1
+    4300098: Mountain 02
+    4300100: Platform 01
+    4300102: Platform 03
+    4300104: Platform 02
+    4300106: Mountain 14
+    4300108: Platform 05
+    4300110: Mountain 19
+    4300112: Platform 10
+    4300114: Platform 04
+    4300116: Mountain 13
+    4300118: Mountain 17
+    4300120: Platform 08
+    4300122: Mountain 18
+    4300124: Platform 09
+    4300126: Mountain 20
+    4300128: Platform 11
+    4300130: Platform 07
+    4300132: Mountain 16
+    4300134: Mountain 15
+    4300136: Platform 06
+    4300138: Tunnel 2-3
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
