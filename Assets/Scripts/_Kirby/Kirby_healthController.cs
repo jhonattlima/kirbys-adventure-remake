@@ -100,7 +100,7 @@ public class Kirby_healthController : MonoBehaviour
     // and player has no power anymore
     private void expelStar()
     {
-        Kirby_powerStar star  = Instantiate(_kirby.starPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerStar>();
+        Kirby_powerStar star  = Instantiate(_kirby.starPrefab, transform.position + 0.1f * Vector3.up, transform.rotation).GetComponent<Kirby_powerStar>();
         star.power = _kirby.enemy_powerInMouth;
         star.setPushDirection(_kirby.isLookingRight ? _kirby.directionLeft : _kirby.directionRight);
     }
