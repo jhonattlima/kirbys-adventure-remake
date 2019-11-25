@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Kirby_actor : MonoBehaviour
+public class Kirby_actor : NetworkBehaviour
 {
     public SphereCollider mouth;
     public CapsuleCollider areaOfSucking;
@@ -56,6 +57,7 @@ public class Kirby_actor : MonoBehaviour
 
     private void Awake() 
     {
+        currentArea = PrefabsAndInstancesLibrary.instance.scenarioOnePart1.transform;
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         serverKirbyController = GetComponent<Server_KirbyController>();
@@ -67,5 +69,10 @@ public class Kirby_actor : MonoBehaviour
 
         mouth.gameObject.SetActive(false);
         areaOfSucking.gameObject.SetActive(false);
+
+        Debug.Log("1");
+        if (!isLocalPlayer) return;
+        Debug.Log("2");
+        Camera.main.transform.parent = transform;
     }
 }

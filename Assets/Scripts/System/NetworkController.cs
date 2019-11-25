@@ -11,15 +11,6 @@ public class NetworkController : NetworkManager
     public static event Action<NetworkConnection> onServerConnect;
     public static event Action<NetworkConnection> onClientConnect;
 
-
-    public static NetworkController instance;
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
-        //DontDestroyOnLoad(this);
-    }
-
     // Return Network Discovery component
     public static NetworkDiscovery Discovery{
         get{
@@ -42,11 +33,10 @@ public class NetworkController : NetworkManager
         //Debug.Log("Number of players: " + numPlayers);
     }
 
-    public override void OnClientConnect(NetworkConnection conn){
-        base.OnClientConnect(conn);
-        if(!conn.address.Equals(SystemConstants.NETWORK_NAME_LOCAL_SERVER)){
-            onClientConnect?.Invoke(conn);
-        }
+    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
+    {
+        GameObject player = (GameObject)Instantiate(playerPrefab, PrefabsAndInstancesLibrary.instance.spawnSpotPlayer1.transform.position , Quaternion.identity);
+        NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
     }
 
     public override void OnClientError(NetworkConnection conn, int errorCode){
