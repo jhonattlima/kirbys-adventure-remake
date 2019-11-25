@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Kirby_movement : MonoBehaviour
+public class Kirby_movement : NetworkBehaviour
 {
     public float moveSpeed = 1f;
     public float jumpHeight = 0.8f;
@@ -26,6 +27,7 @@ public class Kirby_movement : MonoBehaviour
 
     void Update()
     {
+        if (!isLocalPlayer) return;
         if(!_kirby.isParalyzed && !_kirby.isSucking)
         {
             jump();
