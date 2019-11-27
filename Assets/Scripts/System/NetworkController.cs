@@ -33,11 +33,13 @@ public class NetworkController : NetworkManager
         //Debug.Log("Number of players: " + numPlayers);
     }
 
-    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
-    {
-        GameObject player = (GameObject)Instantiate(playerPrefab, PrefabsAndInstancesLibrary.instance.spawnSpotPlayer1.transform.position , Quaternion.identity);
-        NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
-    }
+    // public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
+    // {
+    //     GameObject player = (GameObject)Instantiate(playerPrefab, 
+    //      ? PrefabsAndInstancesLibrary.instance.spawnSpotPlayer1.transform.position : PrefabsAndInstancesLibrary.instance.spawnSpotPlayer2.transform.position, 
+    //      Quaternion.identity);
+    //     NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+    // }
 
     public override void OnClientError(NetworkConnection conn, int errorCode){
         base.OnClientError(conn, errorCode);

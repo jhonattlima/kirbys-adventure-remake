@@ -15,14 +15,14 @@ public class Server_KirbyController : NetworkBehaviour
     [Command]
     public void CmdFireOn()
     {
-        _kirby.powerFire.fireOn();
+        _kirby.powerFire.fireOn(); // que só calcula dano
         RpcFireOn();
     }
 
     [ClientRpc]
     public void RpcFireOn()
     {
-        _kirby.powerFire.fireOn();
+        _kirby.powerFire.fireOn(); // que é só visual
     }
 
     [Command]

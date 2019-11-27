@@ -22,9 +22,6 @@ public class PrefabsAndInstancesLibrary : MonoBehaviour
     public GameObject panelListTextWarningMessage;
     public GameObject panelWaitingForAnotherPlayerToConnect;
 
-    public GameObject spawnSpotPlayer1;
-    public GameObject spawnSpotPlayer2;
-
     public static PrefabsAndInstancesLibrary instance;
     private void Awake()
     {

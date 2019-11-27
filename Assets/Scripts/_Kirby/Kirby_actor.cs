@@ -58,21 +58,21 @@ public class Kirby_actor : NetworkBehaviour
     private void Awake() 
     {
         currentArea = PrefabsAndInstancesLibrary.instance.scenarioOnePart1.transform;
+        transform.Rotate(0, 90f, 0);
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         serverKirbyController = GetComponent<Server_KirbyController>();
-        mouth = GetComponentInChildren<Kirby_mouthController>().GetComponent<SphereCollider>();
-        areaOfSucking = GetComponentInChildren<Kirby_SuckAreaController>().GetComponent<CapsuleCollider>();
+        mouth = GetComponentInChildren<Kirby_mouthController>(true).GetComponent<SphereCollider>();
+        areaOfSucking = GetComponentInChildren<Kirby_SuckAreaController>(true).GetComponent<CapsuleCollider>();
         powerFire = GetComponent<Kirby_powerFire>();
         powerShock = GetComponent<Kirby_powerShock>();
         powerBeam = GetComponent<Kirby_powerBeam>();
+    }
 
-        mouth.gameObject.SetActive(false);
-        areaOfSucking.gameObject.SetActive(false);
-
-        Debug.Log("1");
+    private void Start() {
+        
         if (!isLocalPlayer) return;
-        Debug.Log("2");
-        Camera.main.transform.parent = transform;
+        //Camera.main.transform.parent = transform;
+        //Camera.main.GetComponent<PositionConstraint>()
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Kirby_powerShock : MonoBehaviour
+public class Kirby_powerShock : NetworkBehaviour
 {
     private Kirby_actor _kirby;
 
@@ -12,6 +13,7 @@ public class Kirby_powerShock : MonoBehaviour
 
     void Update()
     {
+        if(!isLocalPlayer) return;
         if(Input.GetKey(KirbyConstants.KEY_SUCK) 
         && _kirby.characterController.isGrounded
         && !_kirby.isFullOfAir)

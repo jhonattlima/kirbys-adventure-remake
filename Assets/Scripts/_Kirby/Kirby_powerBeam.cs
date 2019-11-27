@@ -16,7 +16,7 @@ public class Kirby_powerBeam : NetworkBehaviour
 
     void Update()
     {
-        // if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
 
         if(Input.GetKeyDown(KirbyConstants.KEY_SUCK) 
         && _kirby.characterController.isGrounded

@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Kirby_featureInhaleExpel : MonoBehaviour
+public class Kirby_featureInhaleExpel : NetworkBehaviour 
 { 
     private Kirby_actor _kirby;
 
@@ -13,6 +14,7 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
 
     void Update()
     {
+        if(!isLocalPlayer) return;
         if(!_kirby.isParalyzed)
         {
             checkSuckAction();
@@ -21,7 +23,8 @@ public class Kirby_featureInhaleExpel : MonoBehaviour
     }
 
     private void checkSuckAction()
-    {   if(Input.GetKey(KirbyConstants.KEY_SUCK))
+    {   
+        if(Input.GetKey(KirbyConstants.KEY_SUCK))
         {
             if (!_kirby.isFullOfAir
                 && !_kirby.isFullOfEnemy 
