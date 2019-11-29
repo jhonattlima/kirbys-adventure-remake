@@ -62,10 +62,9 @@ public class Kirby_healthController : MonoBehaviour
     IEnumerator sufferDamage()
     {
         Debug.Log("Ouch! took Damage Kirby's life: " + healthPoints);
-        _kirby.isParalyzed = true;
 
         // Play damaged animation
-
+        _kirby.animator.SetTrigger(KirbyConstants.ANIM_NAME_TAKE_DAMAGE);
         if(_kirby.hasPower)
         {
             expelStar();
@@ -91,9 +90,20 @@ public class Kirby_healthController : MonoBehaviour
         _kirby.isParalyzed = false;
 
         // Stop playing damaged animation
-        // Play invulnerable animation
+        StartCoroutine(blink());
+        yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
+        _kirby.isInvulnerable = false;
+        GetComponent<MeshRenderer>().enabled = true;
+    }
 
-        StartCoroutine(stayInvulnerable());
+    IEnumerator blink()
+    {
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        while (_kirby.isInvulnerable)
+        {
+            meshRenderer.enabled = !meshRenderer.enabled;
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     // poops a star
@@ -103,14 +113,5 @@ public class Kirby_healthController : MonoBehaviour
         Kirby_powerStar star  = Instantiate(_kirby.starPrefab, transform.position + 0.1f * Vector3.up, transform.rotation).GetComponent<Kirby_powerStar>();
         star.power = _kirby.enemy_powerInMouth;
         star.setPushDirection(_kirby.isLookingRight ? _kirby.directionLeft : _kirby.directionRight);
-    }
-
-    IEnumerator stayInvulnerable()
-    {
-        Debug.Log("Kirby is invulnerable");
-        _kirby.isInvulnerable = true;
-        yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
-        _kirby.isInvulnerable = false;
-        Debug.Log("Kirby is not invulnerable anymore");
     }
 }

@@ -16,6 +16,10 @@ public class PrefabsAndInstancesLibrary : MonoBehaviour
     public GameObject canvasMainMenu;
     public GameObject panelMainMenu;
 
+    public GameObject enemyHotHead;
+    public GameObject enemySparky;
+    public GameObject enemyWaddleDoo;
+
     public GameObject panelListOfMatches;
     public GameObject[] panelListOfMatchesButtonsList;
     public GameObject panelListOfMatchesInputFieldMatchName;
