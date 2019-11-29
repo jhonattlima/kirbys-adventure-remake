@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Kirby_PowerDangerousArea : MonoBehaviour
 {
+    public int damage = KirbyConstants.PLAYER_NORMAL_DAMAGE;
+
     private Kirby_actor _kirby;
 
     private void Start() {
@@ -13,6 +15,6 @@ public class Kirby_PowerDangerousArea : MonoBehaviour
     private void OnTriggerStay(Collider other) 
     {
         if(!_kirby.isLocalPlayer) return;
-        other?.GetComponent<Enemy_healthController>()?.takeDamage();
+        other?.GetComponent<Enemy_serverController>()?.CmdTakeDamage(damage);
     }
 }

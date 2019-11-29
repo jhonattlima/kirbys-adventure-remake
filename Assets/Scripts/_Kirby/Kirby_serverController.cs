@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Server_KirbyController : NetworkBehaviour
+public class Kirby_serverController : NetworkBehaviour
 {
     private Kirby_actor _kirby;
 

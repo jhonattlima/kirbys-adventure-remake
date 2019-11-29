@@ -8,7 +8,7 @@ public class Kirby_actor : NetworkBehaviour
     public SphereCollider mouth;
     public CapsuleCollider areaOfSucking;
     public Animator animator;
-    public Server_KirbyController serverKirbyController;
+    public Kirby_serverController kirbyServerController;
     public CharacterController characterController;
     public Kirby_powerFire powerFire;
     public Kirby_powerBeam powerBeam;
@@ -61,7 +61,7 @@ public class Kirby_actor : NetworkBehaviour
         transform.Rotate(0, 90f, 0);
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        serverKirbyController = GetComponent<Server_KirbyController>();
+        kirbyServerController = GetComponent<Kirby_serverController>();
         mouth = GetComponentInChildren<Kirby_mouthController>(true).GetComponent<SphereCollider>();
         areaOfSucking = GetComponentInChildren<Kirby_SuckAreaController>(true).GetComponent<CapsuleCollider>();
         powerFire = GetComponent<Kirby_powerFire>();
