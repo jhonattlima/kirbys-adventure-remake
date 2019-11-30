@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 99}
   - component: {fileID: 97}
   - component: {fileID: 86}
-  - component: {fileID: 93}
   - component: {fileID: 94}
+  - component: {fileID: 2705886812099126053}
   - component: {fileID: 100}
   - component: {fileID: 101}
   - component: {fileID: 95}
@@ -224,18 +224,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &93
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ca8d1d631cd4ba418d326befb3cdd27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &94
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +239,7 @@ MonoBehaviour:
   mouth: {fileID: 0}
   areaOfSucking: {fileID: 0}
   animator: {fileID: 0}
-  serverKirbyController: {fileID: 0}
+  kirbyServerController: {fileID: 0}
   characterController: {fileID: 0}
   powerFire: {fileID: 0}
   powerBeam: {fileID: 0}
@@ -271,6 +259,18 @@ MonoBehaviour:
   isSucking: 0
   isParalyzed: 0
   isInvulnerable: 0
+--- !u!114 &2705886812099126053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d755348dd71304e906cef4fa2342ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22358e2a8a184df40853d6eb40ba4c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &46
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22358e2a8a184df40853d6eb40ba4c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &47
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22358e2a8a184df40853d6eb40ba4c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &48
 GameObject:
   m_ObjectHideFlags: 0

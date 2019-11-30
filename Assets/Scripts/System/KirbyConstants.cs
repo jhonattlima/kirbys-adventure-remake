@@ -8,6 +8,7 @@ public class KirbyConstants
     public const KeyCode KEY_SUCK = KeyCode.Z;
     public const KeyCode KEY_POOP = KeyCode.LeftShift;
     public const KeyCode KEY_ACTIVATE_POWER = KeyCode.DownArrow;
+    public const KeyCode KEY_ENTER_DOOR = KeyCode.UpArrow;
     public const string TAG_ENEMY = "Enemy";
     public const string TAG_PLAYER = "Player";
     public const string ANIM_NAME_TAKE_DAMAGE = "TakeDamage";

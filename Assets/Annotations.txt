@@ -1,0 +1,2 @@
+SpawnSpot1 - 2 2 -1
+SpawnSpot2 - 6,5 2 -1

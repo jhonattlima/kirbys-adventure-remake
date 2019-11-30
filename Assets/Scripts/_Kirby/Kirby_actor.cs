@@ -69,9 +69,10 @@ public class Kirby_actor : NetworkBehaviour
         powerBeam = GetComponent<Kirby_powerBeam>();
     }
 
-    private void Start() {
-        
+    private void Start() 
+    {
         if (!isLocalPlayer) return;
+        Camera.main.GetComponent<CameraController>().localKirby = this;
         //Camera.main.transform.parent = transform;
         //Camera.main.GetComponent<PositionConstraint>()
     }
