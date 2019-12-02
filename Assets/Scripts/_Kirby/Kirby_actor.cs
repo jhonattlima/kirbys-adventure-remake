@@ -8,11 +8,13 @@ public class Kirby_actor : NetworkBehaviour
     public SphereCollider mouth;
     public CapsuleCollider areaOfSucking;
     public Animator animator;
-    public Server_KirbyController serverKirbyController;
+    public Kirby_serverController kirbyServerController;
     public CharacterController characterController;
     public Kirby_powerFire powerFire;
+    public GameObject fireArea;
     public Kirby_powerBeam powerBeam;
     public Kirby_powerShock powerShock;
+    public GameObject shockArea;
     public GameObject airPrefab;
     public GameObject starPrefab;
     public GameObject starBulletPrefab;
@@ -25,6 +27,7 @@ public class Kirby_actor : NetworkBehaviour
     public bool isSucking = false;
     public bool isParalyzed = false;
     public bool isInvulnerable = false;
+    public int playerNumber;
     
     public Vector3 directionRight
     {
@@ -58,21 +61,26 @@ public class Kirby_actor : NetworkBehaviour
     private void Awake() 
     {
         currentArea = PrefabsAndInstancesLibrary.instance.scenarioOnePart1.transform;
-        characterController = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
-        serverKirbyController = GetComponent<Server_KirbyController>();
-        mouth = GetComponentInChildren<Kirby_mouthController>().GetComponent<SphereCollider>();
-        areaOfSucking = GetComponentInChildren<Kirby_SuckAreaController>().GetComponent<CapsuleCollider>();
+        transform.Rotate(0, 90f, 0);
+        //characterController = GetComponent<CharacterController>();
+        //animator = GetComponent<Animator>();
+        //kirbyServerController = GetComponent<Kirby_serverController>();
+        //shockArea = GetComponentInChildren<Kirby_powerShock>(true).gameObject;
         powerFire = GetComponent<Kirby_powerFire>();
         powerShock = GetComponent<Kirby_powerShock>();
         powerBeam = GetComponent<Kirby_powerBeam>();
+    }
 
-        mouth.gameObject.SetActive(false);
-        areaOfSucking.gameObject.SetActive(false);
-
-        Debug.Log("1");
+    private void Start() 
+    {
         if (!isLocalPlayer) return;
-        Debug.Log("2");
-        Camera.main.transform.parent = transform;
+        CameraController.instance.localKirby = this;
+        playerNumber = 1;
+        GameManager.instance.localPlayer = this;
+        if (isLocalPlayer && !isServer) // If it is player 2
+        {
+            playerNumber = 2;
+            kirbyServerController.CmdStartGame();
+        }
     }
 }

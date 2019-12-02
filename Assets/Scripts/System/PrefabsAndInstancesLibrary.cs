@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PrefabsAndInstancesLibrary : MonoBehaviour
 {
-    public GameObject canvasKirbyStatus;
-    public GameObject canvasGameOver;
     public GameObject airBall;
     public GameObject starPower;
     public GameObject starBullet;
@@ -13,17 +11,19 @@ public class PrefabsAndInstancesLibrary : MonoBehaviour
     public GameObject scenarioOnePart2;
     public GameObject scenarioOnePart3;
 
-    public GameObject canvasMainMenu;
-    public GameObject panelMainMenu;
+    public GameObject enemyHotHead;
+    public GameObject enemySparky;
+    public GameObject enemyWaddleDoo;
 
+    public GameObject panelMainMenu;
     public GameObject panelListOfMatches;
     public GameObject[] panelListOfMatchesButtonsList;
     public GameObject panelListOfMatchesInputFieldMatchName;
     public GameObject panelListTextWarningMessage;
     public GameObject panelWaitingForAnotherPlayerToConnect;
-
-    public GameObject spawnSpotPlayer1;
-    public GameObject spawnSpotPlayer2;
+    public GameObject panelNetworkErrorMessage;
+    public GameObject panelKirbyStatus;
+    public GameObject panelGameOver;
 
     public static PrefabsAndInstancesLibrary instance;
     private void Awake()

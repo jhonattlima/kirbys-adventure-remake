@@ -4,17 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIMainMenuController : MonoBehaviour
+public class UIPanelMainMenuController : MonoBehaviour
 {
     private bool lanMode;
     private GameObject[] buttonsMatch;
 
-    public static UIMainMenuController instance;
+    public static UIPanelMainMenuController instance;
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
+    }
 
+    void Start()
+    {
         buttonsMatch = PrefabsAndInstancesLibrary.instance.panelListOfMatchesButtonsList;
     }
 
@@ -26,13 +29,11 @@ public class UIMainMenuController : MonoBehaviour
                 lanMode = true;
                 // TODO
                 //startGame();
-                PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
                 LanController.instance.listenMatches();
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
                 break;
             case SystemConstants.BUTTON_NAME_ONLINE_MODE:
                 lanMode = false;
-                PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
                 // TODO
                 break;
@@ -50,8 +51,7 @@ public class UIMainMenuController : MonoBehaviour
                 {
                     if (lanMode) LanController.instance.createMatch(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text);
                     else Debug.Log("Created remote match");
-                    PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(false);
-                    PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(true);
+                    GameManager.instance.waitForMatch();
                 }
                 break;
             case SystemConstants.BUTTON_NAME_BACK:
@@ -69,9 +69,6 @@ public class UIMainMenuController : MonoBehaviour
 
     private void joinGame(ButtonMatchController button)
     {
-        PrefabsAndInstancesLibrary.instance.canvasKirbyStatus.SetActive(true);
-        PrefabsAndInstancesLibrary.instance.scenarioOnePart1.SetActive(true);
-        gameObject.SetActive(false);
         if (lanMode) LanController.instance.enterOnMatch(button);
         else RemoteController.instance.enterOnMatch(button);
     }

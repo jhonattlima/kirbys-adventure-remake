@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Kirby_powerStarBullet : MonoBehaviour
 {
+    public bool isLocalClient;
+    public int damage = KirbyConstants.PLAYER_NORMAL_DAMAGE;
+
     private float _starSpeed = KirbyConstants.KIRBY_STAR_BULLET_SPEED;
     private Vector3 direction;
 
@@ -22,7 +25,8 @@ public class Kirby_powerStarBullet : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        other?.GetComponent<Enemy_healthController>()?.takeDamage();
+        if (!isLocalClient) return;
+        other?.GetComponent<Enemy_serverController>()?.CmdTakeDamage(damage);
         Destroy(gameObject);
     }
 }
