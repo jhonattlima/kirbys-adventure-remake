@@ -21,11 +21,8 @@ public class DoorController : MonoBehaviour
 
     private void enterDoor()
     {
-        kirby.isParalyzed = true;
-        //kirby.transform.Rotate(0, 90, 0);
-        //Camera.main.transform.Rotate(0, -90,0);
         kirby.characterController.Move(exitSpot.localPosition);
         kirby.currentArea = newArea;
-        kirby.isParalyzed = false;
+        CameraController.instance.changeCameraRotation();
     }
 }

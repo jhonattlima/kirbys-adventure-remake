@@ -26,11 +26,15 @@ public class Kirby_powerFire : NetworkBehaviour
 
     public void fireOn()
     {
+        _kirby.isParalyzed = true;
+        //_kirby.fireArea.SetActive(true);
         _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, true);
     }
 
     public void fireOff()
     {
+        _kirby.isParalyzed = false;
+        //_kirby.fireArea.SetActive(false);
         _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, false);
     }
 }

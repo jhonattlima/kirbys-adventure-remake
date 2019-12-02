@@ -10,6 +10,7 @@ public class NetworkController : NetworkManager
     // Variables
     public static event Action<NetworkConnection> onServerConnect;
     public static event Action<NetworkConnection> onClientConnect;
+    private int numOfPlayers;
 
     // Return Network Discovery component
     public static NetworkDiscovery Discovery{
@@ -30,53 +31,37 @@ public class NetworkController : NetworkManager
         if(!conn.address.Equals(SystemConstants.NETWORK_NAME_LOCAL_CLIENT)){
             onServerConnect?.Invoke(conn);
         }
-        //Debug.Log("Number of players: " + numPlayers);
     }
 
     // public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     // {
-    //     GameObject player = (GameObject)Instantiate(playerPrefab, 
-    //      ? PrefabsAndInstancesLibrary.instance.spawnSpotPlayer1.transform.position : PrefabsAndInstancesLibrary.instance.spawnSpotPlayer2.transform.position, 
-    //      Quaternion.identity);
+    //     base.OnServerAddPlayer(conn, playerControllerId)
+    //     Transform spawnLocation =  
+    //     GameObject player = (GameObject)Instantiate(playerPrefab, , Quaternion.identity);
     //     NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
     // }
 
     public override void OnClientError(NetworkConnection conn, int errorCode){
         base.OnClientError(conn, errorCode);
+        //NetworkServer.Reset();
+        if(GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
     }
 
     public override void OnClientDisconnect(NetworkConnection conn)
     {
-        cancelOnlineMatch();
+        Debug.Log("Entered on Client Disconnect");
+        NetworkManager.singleton.StopClient();
+        NetworkManager.singleton.StopHost();
+        NetworkManager.singleton.StopMatchMaker();
+        if(GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
     }
-
+    
     public override void OnServerDisconnect(NetworkConnection conn)
     {
-        cancelOnlineMatch();
-    }
-
-    public void startNewOnlineMatch()
-    {
-        Debug.Log("Entered here");
-    }
-
-    public static void cancelOnlineMatch()
-    {   try
-        {
-            if(NetworkController.singleton.matchInfo != null) NetworkController.Match.DestroyMatch(NetworkController.singleton.matchInfo.networkId, 
-            NetworkController.singleton.matchInfo.domain, OnMatchDestroy);
-            NetworkController.singleton.StopMatchMaker();
-            NetworkController.Shutdown();
-            // Reload scene;
-        } 
-        catch (Exception e)
-        {
-            Debug.Log("Handled Error: " + e.Message);
-        }
-    }
-
-    public static void OnMatchDestroy(bool success, string extendedInfo)
-    {
-        // Destroy match dependency
+        Debug.Log("Entered on Server Disconnect");
+        NetworkManager.singleton.StopClient();
+        NetworkManager.singleton.StopMatchMaker();
+        //NetworkServer.DestroyPlayersForConnection(conn);
+        if(GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
     }
 }

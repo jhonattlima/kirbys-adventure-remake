@@ -13,7 +13,6 @@ public class Kirby_mouthController : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         if(!_kirby.isLocalPlayer) return;
-        Debug.Log("Kirby tried to swallow enemy");
         if(other.CompareTag(KirbyConstants.TAG_ENEMY) 
             && _kirby.isSucking)
         {

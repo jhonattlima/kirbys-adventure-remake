@@ -107,7 +107,7 @@ public class LanController : NetworkDiscovery
                 }
             }
             Debug.Log("Lan Discovery: Received valid broadcast: " + data);
-            if(changed) UIMainMenuController.instance.updateMatchButtons(storedDatas);
+            if(changed) UIPanelMainMenuController.instance.updateMatchButtons(storedDatas);
         }
     }
 
@@ -124,7 +124,7 @@ public class LanController : NetworkDiscovery
                     changed = true;
                 }
             }
-            if (changed) UIMainMenuController.instance.updateMatchButtons(storedDatas);
+            if (changed) UIPanelMainMenuController.instance.updateMatchButtons(storedDatas);
             yield return new WaitForSeconds(SystemConstants.NETWORK_TIME_TO_REFRESH_ONLINE_MATCHES);
         }
     }

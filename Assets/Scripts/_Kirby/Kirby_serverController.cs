@@ -13,67 +13,35 @@ public class Kirby_serverController : NetworkBehaviour
     }
 
     [Command]
-    public void CmdFireOn()
+    public void CmdStartGame()
     {
-        _kirby.powerFire.fireOn(); // que só calcula dano
-        RpcFireOn();
+        RpcStartGame();
     }
 
     [ClientRpc]
-    public void RpcFireOn()
+    public void RpcStartGame()
     {
-        _kirby.powerFire.fireOn(); // que é só visual
+        GameManager.instance.startMatch();
     }
 
     [Command]
-    public void CmdFireOff()
+    public void CmdGameOverByDeath(int kirbyThatHasDiedNumber)
     {
-        _kirby.powerFire.fireOff();
-        RpcFireOff();
+        RpcGameOverByDeath(kirbyThatHasDiedNumber);
     }
 
     [ClientRpc]
-    public void RpcFireOff()
+    public void RpcGameOverByDeath(int kirbyThatHasDiedNumber)
     {
-        _kirby.powerFire.fireOff();
-    }
-
-    [Command]
-    public void CmdShockOn()
-    {
-        _kirby.powerShock.shockOn();
-        RpcShockOn();
-    }
-
-    [ClientRpc]
-    public void RpcShockOn()
-    {
-        _kirby.powerShock.shockOn();
-    }
-
-    [Command]
-    public void CmdShockOff()
-    {
-        _kirby.powerShock.shockOff();
-        RpcShockOff();
-    }
-
-    [ClientRpc]
-    public void RpcShockOff()
-    {
-        _kirby.powerShock.shockOff();
-    }
-
-    [Command]
-    public void CmdActivateBeam()
-    {
-        _kirby.powerBeam.activateBeam();
-        RpcActivateBeam();
-    }
-
-    [ClientRpc]
-    public void RpcActivateBeam()
-    {
-        _kirby.powerBeam.activateBeam();
+        Debug.Log("Entered on RPC");
+        if(kirbyThatHasDiedNumber.Equals(GameManager.instance.localPlayer.playerNumber))
+        {
+            Debug.Log("Entered on Id is equals");
+            GameManager.instance.wonTheGame = false;
+        } else {
+            Debug.Log("Entered on Id is not equals");
+            GameManager.instance.wonTheGame = true;
+        }
+        GameManager.instance.gameOver();
     }
 }

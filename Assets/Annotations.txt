@@ -1,2 +1,8 @@
 SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
+
+TODO
+Check why Beam is bugged and not appearing in all screens
+
+Check how to close all connections and everything when restarting the game
+

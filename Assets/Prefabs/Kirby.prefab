@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 53}
   - component: {fileID: 72}
   - component: {fileID: 63}
-  - component: {fileID: 82}
+  - component: {fileID: 2284659466627464418}
   - component: {fileID: 92}
   - component: {fileID: 98}
   - component: {fileID: 99}
@@ -25,9 +25,6 @@ GameObject:
   - component: {fileID: 102}
   - component: {fileID: 103}
   - component: {fileID: 96}
-  - component: {fileID: 116}
-  - component: {fileID: 111}
-  - component: {fileID: 117}
   m_Layer: 0
   m_Name: Kirby
   m_TagString: Player
@@ -61,7 +58,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &63
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -99,8 +96,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &82
-BoxCollider:
+--- !u!135 &2284659466627464418
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,7 +107,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.50000006
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &92
 CharacterController:
@@ -236,14 +233,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74753b7c1342dbe409262102745f2a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouth: {fileID: 0}
-  areaOfSucking: {fileID: 0}
-  animator: {fileID: 0}
-  kirbyServerController: {fileID: 0}
-  characterController: {fileID: 0}
-  powerFire: {fileID: 0}
-  powerBeam: {fileID: 0}
-  powerShock: {fileID: 0}
+  mouth: {fileID: 88}
+  areaOfSucking: {fileID: 91}
+  animator: {fileID: 86}
+  kirbyServerController: {fileID: 2705886812099126053}
+  characterController: {fileID: 92}
+  powerFire: {fileID: 102}
+  fireArea: {fileID: 46}
+  powerBeam: {fileID: 96}
+  powerShock: {fileID: 103}
+  shockArea: {fileID: 45}
   airPrefab: {fileID: 3874217358728632113, guid: 7d08741a44270ed4898ad2279acba941,
     type: 3}
   starPrefab: {fileID: 4455788589664677811, guid: b0be21a042714744c8b1626b5bb427e6,
@@ -347,66 +346,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _kirby: {fileID: 0}
---- !u!114 &116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 56}
-  m_ChildIndex: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
-  m_InterpolateMovement: 0.5
---- !u!114 &111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 55}
-  m_ChildIndex: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
-  m_InterpolateMovement: 0.5
---- !u!114 &117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 57}
-  m_ChildIndex: 2
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
-  m_InterpolateMovement: 0.5
 --- !u!1 &44
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &58
 Transform:
   m_ObjectHideFlags: 0
@@ -877,7 +816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &59
 Transform:
   m_ObjectHideFlags: 0

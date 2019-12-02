@@ -54,10 +54,6 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
         }
     }
 
-    // If activate power key is pressed
-    // If kirby has an enemy in mouth and it has power
-    // then activate de power
-    // anyway, swallow enemy
     private void checkActivatePowerAction()
     {
         if (Input.GetKeyDown(KirbyConstants.KEY_ACTIVATE_POWER))
@@ -72,41 +68,10 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
         }
     }
 
-    public void suckOn()
-    {
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, true);
-    }
-
-    public void suckOff()
-    {
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, false);
-    }
-
-    // Throw a low range Air Ball
-    // and is not fullOfair anymore
-    public void expelAir()
-    {
-        Kirby_powerAirBall airBall = Instantiate(_kirby.airPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerAirBall>();
-        airBall.setBulletDirection(_kirby.isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
-        _kirby.isFullOfAir = false;
-    }
-
-    // Throws a horizontal move star
-    // And is not fullOfenemy anymore
-    private void expelEnemy()
-    {
-        Kirby_powerStarBullet starBullet = Instantiate(_kirby.starBulletPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerStarBullet>();
-        starBullet.setBulletDirection(_kirby.isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
-        _kirby.isFullOfEnemy = false;
-        _kirby.enemy_powerInMouth = (int)Powers.None;
-    }
-
-    // If enemy in mouth has power
-    // then ativate power script
-    // and has power now
     public void activatePower()
     {
         if(_kirby.enemy_powerInMouth == (int)Powers.None) return;
+        Debug.Log("Activated power");
         switch (_kirby.enemy_powerInMouth)
         {
             case (int) Powers.Fire:
@@ -119,6 +84,38 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
                 _kirby.powerBeam.enabled = true;
                 break;
         }
+        //UIPanelLifePowercontroller.instance.setPower(_kirby.enemy_powerInMouth);
         _kirby.hasPower = true;
+    }
+
+    public void suckOn()
+    {
+        _kirby.mouth.gameObject.SetActive(true);
+        _kirby.areaOfSucking.gameObject.SetActive(true);
+        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, true);
+        _kirby.isSucking = true;
+    }
+
+    public void suckOff()
+    {
+        _kirby.mouth.gameObject.SetActive(false);
+        _kirby.areaOfSucking.gameObject.SetActive(false);
+        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, false);
+        _kirby.isSucking = false;
+    }
+
+    public void expelAir()
+    {
+        Kirby_powerAirBall airBall = Instantiate(_kirby.airPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerAirBall>();
+        airBall.setBulletDirection(_kirby.isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
+        _kirby.isFullOfAir = false;
+    }
+
+    private void expelEnemy()
+    {
+        Kirby_powerStarBullet starBullet = Instantiate(_kirby.starBulletPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerStarBullet>();
+        starBullet.setBulletDirection(_kirby.isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
+        _kirby.isFullOfEnemy = false;
+        _kirby.enemy_powerInMouth = (int)Powers.None;
     }
 }
