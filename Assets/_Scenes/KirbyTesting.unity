@@ -236,7 +236,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7086937
 MonoBehaviour:
@@ -357,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &78448929
 Transform:
   m_ObjectHideFlags: 0
@@ -373,7 +373,7 @@ Transform:
   - {fileID: 394989002}
   - {fileID: 440190312}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &96540243
 GameObject:
@@ -6601,6 +6601,67 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1001 &393874331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_Name
+      value: mdlSparky
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2590613
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5000044
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.4082229
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 18a07a2bf0a594291a78a3849b20a1fe, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
 --- !u!1 &394988998
 GameObject:
   m_ObjectHideFlags: 0
@@ -6873,7 +6934,7 @@ Transform:
   - {fileID: 1031808901}
   - {fileID: 2011872848}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &481434328
 GameObject:
@@ -7301,7 +7362,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &557097138
 MonoBehaviour:
@@ -11263,7 +11324,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2066574136
 Rigidbody:
