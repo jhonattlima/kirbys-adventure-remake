@@ -23,13 +23,14 @@ public class GameManager : MonoBehaviour
 
     public void waitForMatch()
     {
-        PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(false);
+        PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
         PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(true);
+        Debug.Log("yupi");
     }
 
     public void startMatch()
     {
-        PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(false);
+        PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
         PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(false);
         PrefabsAndInstancesLibrary.instance.panelKirbyStatus.SetActive(true);
         listOfPlayers = GameObject.FindGameObjectsWithTag(KirbyConstants.TAG_PLAYER);

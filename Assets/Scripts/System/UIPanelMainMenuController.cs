@@ -14,7 +14,10 @@ public class UIPanelMainMenuController : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
+    }
 
+    void Start()
+    {
         buttonsMatch = PrefabsAndInstancesLibrary.instance.panelListOfMatchesButtonsList;
     }
 
@@ -26,13 +29,11 @@ public class UIPanelMainMenuController : MonoBehaviour
                 lanMode = true;
                 // TODO
                 //startGame();
-                PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
                 LanController.instance.listenMatches();
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
                 break;
             case SystemConstants.BUTTON_NAME_ONLINE_MODE:
                 lanMode = false;
-                PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
                 // TODO
                 break;
