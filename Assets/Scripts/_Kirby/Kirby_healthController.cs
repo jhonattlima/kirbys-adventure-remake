@@ -30,11 +30,12 @@ public class Kirby_healthController : MonoBehaviour
         _kirby.hasPower = true;
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit) {
+    private void OnControllerColliderHit(ControllerColliderHit hit) 
+    {
+        if(!_kirby.isLocalPlayer) return;
         if(hit.gameObject.CompareTag(KirbyConstants.TAG_ENEMY)
             && !_kirby.isInvulnerable)
         {
-            Debug.Log(" Kirby will take damage now");
             takeDamage(hit.gameObject.GetComponent<Enemy_actor>().touchDamage);
         }
     }
@@ -42,6 +43,7 @@ public class Kirby_healthController : MonoBehaviour
     public void takeDamage(int amountOfDamage)
     {
         healthPoints -= amountOfDamage;
+        UIPanelKirbyStatusController.instance.setLife(healthPoints);
         if(healthPoints <= 0)
         {
             die();
@@ -57,15 +59,14 @@ public class Kirby_healthController : MonoBehaviour
         // runs death animation;
         // Destroys object;
         // Return to main lobby;
+        _kirby.kirbyServerController.CmdGameOverByDeath(_kirby.playerNumber);
     }
 
     IEnumerator sufferDamage()
     {
-        Debug.Log("Ouch! took Damage Kirby's life: " + healthPoints);
-        _kirby.isParalyzed = true;
-
         // Play damaged animation
-
+        _kirby.animator.SetTrigger(KirbyConstants.ANIM_NAME_TAKE_DAMAGE);
+        _kirby.isParalyzed = true;
         if(_kirby.hasPower)
         {
             expelStar();
@@ -79,38 +80,39 @@ public class Kirby_healthController : MonoBehaviour
         Vector3 movement;
         if(_kirby.isLookingRight)
         {
-            movement = _kirby.directionLeft * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
+            movement = (_kirby.directionLeft * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
         }
         else 
         {
-            movement = _kirby.directionRight * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
+            movement = (_kirby.directionRight * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
         }
         _kirby.characterController.Move(movement);
         
         yield return new WaitForSeconds(KirbyConstants.COOLDOWN_TO_RECOVER_FROM_DAMAGE);
+        // Stop playing damaged animation
         _kirby.isParalyzed = false;
 
-        // Stop playing damaged animation
-        // Play invulnerable animation
-
-        StartCoroutine(stayInvulnerable());
+        _kirby.isInvulnerable = true;
+        StartCoroutine(blink());
+        yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
+        _kirby.isInvulnerable = false; 
     }
 
-    // poops a star
-    // and player has no power anymore
+    IEnumerator blink()
+    {
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        while (_kirby.isInvulnerable)
+        {
+            meshRenderer.enabled = !meshRenderer.enabled;
+            yield return new WaitForSeconds(0.2f);
+        }
+        meshRenderer.enabled = true;
+    }
+
     private void expelStar()
     {
         Kirby_powerStar star  = Instantiate(_kirby.starPrefab, transform.position + 0.1f * Vector3.up, transform.rotation).GetComponent<Kirby_powerStar>();
         star.power = _kirby.enemy_powerInMouth;
         star.setPushDirection(_kirby.isLookingRight ? _kirby.directionLeft : _kirby.directionRight);
-    }
-
-    IEnumerator stayInvulnerable()
-    {
-        Debug.Log("Kirby is invulnerable");
-        _kirby.isInvulnerable = true;
-        yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
-        _kirby.isInvulnerable = false;
-        Debug.Log("Kirby is not invulnerable anymore");
     }
 }
