@@ -22,6 +22,5 @@ public class Enemy_serverController : NetworkBehaviour
     public void RpcTakeDamage(int damage)
     {
         _enemy.healthController.takeDamage(damage);
-        Debug.Log("Enemy took damage on Rpc");
     }
 }

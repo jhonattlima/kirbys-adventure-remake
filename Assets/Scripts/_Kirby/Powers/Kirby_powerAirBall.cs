@@ -6,6 +6,7 @@ public class Kirby_powerAirBall : MonoBehaviour
 {
     private float _airSpeed = 5f;
     private Vector3 direction;
+    public Kirby_actor _kirby;
 
     void Start()
     {
@@ -20,5 +21,15 @@ public class Kirby_powerAirBall : MonoBehaviour
     public void setBulletDirection(Vector3 direction)
     {
         this.direction = direction;
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if(!_kirby.isLocalPlayer) return;
+        Debug.Log("Airball hit enemy");
+        if(other.GetComponent<Enemy_actor>())
+        {
+            other?.GetComponent<Enemy_serverController>()?.CmdTakeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
+            Destroy(gameObject);
+        }
     }
 }

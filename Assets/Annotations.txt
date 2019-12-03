@@ -6,3 +6,4 @@ TODO
 - Check how to close all connections and everything when restarting the game
 - Get ideas about become visible or not
 - Check regarding rotation between doors
+- Why enemies are only being hit on server side.

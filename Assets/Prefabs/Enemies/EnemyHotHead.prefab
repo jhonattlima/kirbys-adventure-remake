@@ -200,9 +200,9 @@ GameObject:
   - component: {fileID: 4553420081734476396}
   - component: {fileID: 6441590337700630742}
   - component: {fileID: 2333680476846632672}
-  - component: {fileID: 1766663575046828919}
   - component: {fileID: 4850284160403557177}
   - component: {fileID: 619758421024495717}
+  - component: {fileID: 443673887922407854}
   - component: {fileID: 3248383920899445359}
   - component: {fileID: 7280777800924267489}
   - component: {fileID: 4118178101013337672}
@@ -325,18 +325,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1766663575046828919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2333680476837141804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08d755348dd71304e906cef4fa2342ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &4850284160403557177
 CharacterController:
   m_ObjectHideFlags: 0
@@ -372,6 +360,18 @@ MonoBehaviour:
   type: 0
   touchDamage: 0
   isKirbyClose: 0
+--- !u!114 &443673887922407854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2333680476837141804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbf71f1b31a3314eb204eb67c0a05f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3248383920899445359
 MonoBehaviour:
   m_ObjectHideFlags: 0

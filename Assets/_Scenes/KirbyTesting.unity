@@ -488,7 +488,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpawnPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 2653709199998753034, guid: 6defe59ac0c273941befb726eb6b433d,
+      objectReference: {fileID: 2333680476837141804, guid: b1cbf0315c561a54e8ebaac144d3d6a9,
         type: 3}
     - target: {fileID: 2638753653708268801, guid: 83bd620345aa9b24887e7b5afa3ffa9c,
         type: 3}
@@ -986,7 +986,7 @@ MonoBehaviour:
   scenarioOnePart1: {fileID: 955452543}
   scenarioOnePart2: {fileID: 2005610331}
   scenarioOnePart3: {fileID: 988823355}
-  enemyHotHead: {fileID: 2653709199998753034, guid: 6defe59ac0c273941befb726eb6b433d,
+  enemyHotHead: {fileID: 2333680476837141804, guid: b1cbf0315c561a54e8ebaac144d3d6a9,
     type: 3}
   enemySparky: {fileID: 5877970354012294285, guid: 2999d4a4f2b532e4ea3feeea65e6aa6c,
     type: 3}

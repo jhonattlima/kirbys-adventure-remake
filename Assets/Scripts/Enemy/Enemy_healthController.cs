@@ -25,7 +25,7 @@ public class Enemy_healthController : MonoBehaviour
     IEnumerator triggerDeathAnimation()
     {
         _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
-        yield return new WaitForSeconds(_enemy.animator.GetCurrentAnimatorStateInfo(0).length - 1.7f);
+        yield return new WaitForSeconds(_enemy.animator.GetCurrentAnimatorStateInfo(0).length - 0.5f);
         Destroy(gameObject);
     }
 }

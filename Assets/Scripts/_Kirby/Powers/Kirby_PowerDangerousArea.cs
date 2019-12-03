@@ -22,10 +22,7 @@ public class Kirby_PowerDangerousArea : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(!_kirby.isLocalPlayer) return;
-        //other?.GetComponent<Enemy_serverController>()?.CmdTakeDamage(damage);
-        if(other.GetComponent<Enemy_serverController>()){
-            other.GetComponent<Enemy_serverController>().CmdTakeDamage(damage);
-            Debug.Log("Hit an enemy");
-        }
+        Debug.Log(other.name);
+        other?.GetComponent<Enemy_serverController>()?.CmdTakeDamage(damage);
     }
 }
