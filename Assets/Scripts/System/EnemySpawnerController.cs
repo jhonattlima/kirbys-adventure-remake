@@ -9,8 +9,6 @@ public class EnemySpawnerController : NetworkBehaviour
 
     private void OnBecameVisible() 
     {
-
-        Debug.Log("EnteredHere");
         if(!enemyInstantiated && isServer)
         {
             enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemySparky, transform.position, Quaternion.identity);

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Enemy_actor : MonoBehaviour
 {
-    public int type;
     public Enemy_healthController healthController;
-
-    public int touchDamage = 0;
+    public Animator animator;
+    public int type;
+    public int touchDamage;
+    public bool isKirbyClose = false;
 
     private void Awake() {
         healthController = GetComponent<Enemy_healthController>();
+        animator = GetComponent<Animator>();
     }
     
     private void OnCollisionEnter(Collision other) 

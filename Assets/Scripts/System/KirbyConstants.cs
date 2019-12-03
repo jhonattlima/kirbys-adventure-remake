@@ -26,4 +26,8 @@ public class KirbyConstants
     public const float KIRBY_SUCK_SLOWLINESS = 20f;
     public const float KIRBY_STAR_COOLDOWN_TO_BE_ACTIVE = 3f;
     public const float KIRBY_STAR_BULLET_SPEED = 5f;
+
+    public const string ANIM_ENEMY_ATTACK = "Attack";
+    public const string ANIM_ENEMY_JUMP = "Jump";
+    public const string ANIM_ENEMY_TAKE_DAMAGE = "GetDamaged";
 }

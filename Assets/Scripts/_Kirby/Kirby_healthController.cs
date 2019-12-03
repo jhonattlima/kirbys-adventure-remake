@@ -43,7 +43,7 @@ public class Kirby_healthController : MonoBehaviour
     public void takeDamage(int amountOfDamage)
     {
         healthPoints -= amountOfDamage;
-        UIPanelKirbyStatusController.instance.setLife(healthPoints);
+        //UIPanelKirbyStatusController.instance.setLife(healthPoints);
         if(healthPoints <= 0)
         {
             die();

@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class Kirby_movement : NetworkBehaviour
 {
-    public float moveSpeed = 1f;
+    public float moveSpeed = 2f;
     public float jumpHeight = 0.8f;
     private float _turnSpeed;
     private float _verticalSpeed;
@@ -49,7 +49,6 @@ public class Kirby_movement : NetworkBehaviour
         {
             turn();
         }  
-
         _kirby.characterController.Move(movement);
     }
 

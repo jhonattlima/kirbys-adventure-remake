@@ -91,6 +91,63 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5465658398291456157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3755063802992671551}
+  - component: {fileID: 8906282254708484376}
+  - component: {fileID: 8679082361311027184}
+  m_Layer: 0
+  m_Name: KirbyDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3755063802992671551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465658398291456157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_Children: []
+  m_Father: {fileID: 5877970354012000429}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8906282254708484376
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465658398291456157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8679082361311027184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465658398291456157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b317f80c5b25d6345ac444a71c7eb010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5877970354012294273
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +312,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5877970354012000429}
   - component: {fileID: 5877970354021826373}
-  - component: {fileID: 5877970354012294284}
   - component: {fileID: 4308234900049643821}
   - component: {fileID: 2682012726886566170}
   - component: {fileID: 1960870760642829742}
@@ -267,7 +323,7 @@ GameObject:
   - component: {fileID: 8181505389429042459}
   m_Layer: 0
   m_Name: EnemySparky
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,6 +342,7 @@ Transform:
   - {fileID: 5877970354012000431}
   - {fileID: 5877970354012000425}
   - {fileID: 3000289053898432336}
+  - {fileID: 3755063802992671551}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -308,19 +365,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!135 &5877970354012294284
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5877970354012294285}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4308234900049643821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +451,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 1.2
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -426,9 +470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6aed09c2ddc0f4f90488eb77043ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   healthController: {fileID: 0}
+  animator: {fileID: 0}
+  type: 0
   touchDamage: 0
+  isKirbyClose: 0
 --- !u!114 &7431748566021860271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89f300a898cc9143ab599d4a1caa774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kirbyDetector: {fileID: 0}
 --- !u!1 &5877970354012294287
 GameObject:
   m_ObjectHideFlags: 0
