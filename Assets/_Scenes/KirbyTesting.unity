@@ -600,7 +600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299858290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.22, y: 3.13, z: -1}
+  m_LocalPosition: {x: 52.22, y: 3, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1887391166}
@@ -3662,7 +3662,7 @@ PrefabInstance:
     - target: {fileID: 4358244429754280796, guid: 1d95c64205f53fc49a39b840bba8c47b,
         type: 3}
       propertyPath: m_Name
-      value: StageT90WithDoors
+      value: Stage
       objectReference: {fileID: 0}
     - target: {fileID: 6373589170206593203, guid: 1d95c64205f53fc49a39b840bba8c47b,
         type: 3}
