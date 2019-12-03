@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Kirby_actor : MonoBehaviour
+public class Kirby_actor : NetworkBehaviour
 {
     public SphereCollider mouth;
     public CapsuleCollider areaOfSucking;
     public Animator animator;
-    public Server_KirbyController serverKirbyController;
+    public Kirby_serverController kirbyServerController;
     public CharacterController characterController;
     public Kirby_powerFire powerFire;
+    public GameObject fireArea;
     public Kirby_powerBeam powerBeam;
     public Kirby_powerShock powerShock;
+    public GameObject shockArea;
     public GameObject airPrefab;
     public GameObject starPrefab;
     public GameObject starBulletPrefab;
@@ -24,6 +27,7 @@ public class Kirby_actor : MonoBehaviour
     public bool isSucking = false;
     public bool isParalyzed = false;
     public bool isInvulnerable = false;
+    public int playerNumber;
     
     public Vector3 directionRight
     {
@@ -56,16 +60,27 @@ public class Kirby_actor : MonoBehaviour
 
     private void Awake() 
     {
-        characterController = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
-        serverKirbyController = GetComponent<Server_KirbyController>();
-        mouth = GetComponentInChildren<Kirby_mouthController>().GetComponent<SphereCollider>();
-        areaOfSucking = GetComponentInChildren<Kirby_SuckAreaController>().GetComponent<CapsuleCollider>();
+        currentArea = PrefabsAndInstancesLibrary.instance.scenarioOnePart1.transform;
+        transform.Rotate(0, 90f, 0);
+        //characterController = GetComponent<CharacterController>();
+        //animator = GetComponent<Animator>();
+        //kirbyServerController = GetComponent<Kirby_serverController>();
+        //shockArea = GetComponentInChildren<Kirby_powerShock>(true).gameObject;
         powerFire = GetComponent<Kirby_powerFire>();
         powerShock = GetComponent<Kirby_powerShock>();
         powerBeam = GetComponent<Kirby_powerBeam>();
+    }
 
-        mouth.gameObject.SetActive(false);
-        areaOfSucking.gameObject.SetActive(false);
+    private void Start() 
+    {
+        if (!isLocalPlayer) return;
+        CameraController.instance.localKirby = this;
+        playerNumber = 1;
+        GameManager.instance.localPlayer = this;
+        if (isLocalPlayer && !isServer) // If it is player 2
+        {
+            playerNumber = 2;
+            kirbyServerController.CmdStartGame();
+        }
     }
 }
