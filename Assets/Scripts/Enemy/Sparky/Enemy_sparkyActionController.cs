@@ -12,16 +12,11 @@ public class Enemy_sparkyActionController : NetworkBehaviour
     private bool _isKirbyClose = false;
     private bool _FSMIsRunning = false;
 
-
     private Enemy_actor _enemy;
-
     public SphereCollider kirbyDetector;
-
     private CharacterController characterController;
 
     // This character jumps in closest kirby position and turns shock on if kirby is in range
-
-    // Start is called before the first frame update
     void Start()
     {
         _enemy = GetComponent<Enemy_actor>();
@@ -60,10 +55,7 @@ public class Enemy_sparkyActionController : NetworkBehaviour
 
     private void applyGravity()
     {
-        if(!characterController.isGrounded)
-        {
-            _verticalSpeed += Physics.gravity.y * Time.deltaTime;
-        }
+        if(!characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
         Vector3 movement = Vector3.zero;
         movement.y = _verticalSpeed * Time.deltaTime;
         characterController.Move(movement);
@@ -75,20 +67,17 @@ public class Enemy_sparkyActionController : NetworkBehaviour
         yield return new WaitUntil(()=> characterController.isGrounded);
         switch (Random.Range(0, 2))
         {
-        case (int)Actions.jump:
-            jump();
-            break;
-        case (int)Actions.shock:
-            if(_enemy.isKirbyClose)
-            {
-                transform.LookAt(Camera.main.transform);
-                _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
-            }
-            else
-            {
+            case (int)Actions.jump:
                 jump();
-            }
-            break;
+                break;
+            case (int)Actions.shock:
+                if(_enemy.isKirbyClose)
+                {
+                    transform.LookAt(Camera.main.transform);
+                    _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
+                }
+                else jump();
+                break;
         }
         yield return new WaitForSeconds(3);
         _FSMIsRunning = false;
