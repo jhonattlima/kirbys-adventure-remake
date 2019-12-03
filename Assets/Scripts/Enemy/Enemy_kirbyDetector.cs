@@ -20,5 +20,4 @@ public class Enemy_kirbyDetector : MonoBehaviour
     {
         if(other.CompareTag(KirbyConstants.TAG_PLAYER)) _enemy.isKirbyClose = false;
     }
-    
 }

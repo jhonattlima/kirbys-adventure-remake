@@ -30,4 +30,6 @@ public class KirbyConstants
     public const string ANIM_ENEMY_ATTACK = "Attack";
     public const string ANIM_ENEMY_JUMP = "Jump";
     public const string ANIM_ENEMY_TAKE_DAMAGE = "GetDamaged";
+    public const string ANIM_ENEMY_WALK = "Walk";
+
 }

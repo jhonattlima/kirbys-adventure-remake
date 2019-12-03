@@ -67,10 +67,10 @@ public class Enemy_sparkyActionController : NetworkBehaviour
         yield return new WaitUntil(()=> characterController.isGrounded);
         switch (Random.Range(0, 2))
         {
-            case (int)Actions.jump:
+            case (int)ActionsSparky.jump:
                 jump();
                 break;
-            case (int)Actions.shock:
+            case (int)ActionsSparky.shock:
                 if(_enemy.isKirbyClose)
                 {
                     transform.LookAt(Camera.main.transform);
@@ -84,7 +84,7 @@ public class Enemy_sparkyActionController : NetworkBehaviour
     }
 }
 
-enum Actions
+enum ActionsSparky
 {
     jump,
     shock

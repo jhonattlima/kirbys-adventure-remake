@@ -33,7 +33,6 @@ public class CameraController : MonoBehaviour
 
     IEnumerator waitWhileChangeCameraRotation()
     {
-        Debug.Log("Kirb is waiting");
         localKirby.isParalyzed = true;
         //Debug.Log("Kirb is waiting" + localKirby.isParalyzed);
         yield return new WaitForSeconds(10);
@@ -42,6 +41,5 @@ public class CameraController : MonoBehaviour
         Debug.Log("Kirb is waiting2" + localKirby.isParalyzed);
         localKirby.isParalyzed = false;
         Debug.Log("Kirb is waiting" + localKirby.isParalyzed);
-
     }
 }
