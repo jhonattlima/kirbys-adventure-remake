@@ -34,7 +34,8 @@ ModelImporter:
     2100000: mat3
     4300000: Model
     7400000: Poppy|Damage
-    7400002: Poppy|Walk
+    7400002: Poppy|Idle
+    7400004: Poppy|Walk
     9500000: //RootNode
     13700000: Model
   externalObjects: {}

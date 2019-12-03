@@ -1,38 +1,39 @@
 fileFormatVersion: 2
-guid: ad71c8ab3e7a743faae4a0a0086b2d6d
+guid: 4460c9e06dd384ae39527c505b4e8b1f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Arm.L
     100002: Arm.R
-    100004: Armature
-    100006: Body
-    100008: Foot.L
-    100010: Foot.R
-    100012: Leg.L
-    100014: Leg.R
-    100016: //RootNode
-    100018: Model
-    100020: Toe.L.001
-    100022: Toe.R
+    100004: Body
+    100006: Foot.L
+    100008: Foot.R
+    100010: Leg.L
+    100012: Leg.R
+    100014: //RootNode
+    100016: Model
+    100018: Toe.L.001
+    100020: Toe.R
+    100022: WaddleDoo
     400000: Arm.L
     400002: Arm.R
-    400004: Armature
-    400006: Body
-    400008: Foot.L
-    400010: Foot.R
-    400012: Leg.L
-    400014: Leg.R
-    400016: //RootNode
-    400018: Model
-    400020: Toe.L.001
-    400022: Toe.R
+    400004: Body
+    400006: Foot.L
+    400008: Foot.R
+    400010: Leg.L
+    400012: Leg.R
+    400014: //RootNode
+    400016: Model
+    400018: Toe.L.001
+    400020: Toe.R
+    400022: WaddleDoo
     2100000: mat1
     2100002: mat2
     4300000: Model
-    7400000: Armature|Attack
-    7400002: Armature|Damage
-    7400004: Armature|Walk
+    7400000: WaddleDoo|Attack
+    7400002: WaddleDoo|Damage
+    7400004: WaddleDoo|Idle
+    7400006: WaddleDoo|Walk
     9500000: //RootNode
     13700000: Model
   externalObjects: {}
