@@ -8,7 +8,6 @@ public class Enemy_hotHead : MonoBehaviour
 
     private void Start() {
         _enemy = GetComponent<Enemy_actor>();
-    
         _enemy.healthController.healthPoints = 1;
         _enemy.touchDamage = 1;
         _enemy.type = (int)Powers.Fire;

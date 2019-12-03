@@ -45,10 +45,10 @@ public class GameManager : MonoBehaviour
     {
         gameOverDisconnection = true;
         localPlayer.GetComponent<Kirby_actor>().isParalyzed = true;
-        // NetworkManager.singleton.StopClient();
-        // if(localPlayer.isServer) NetworkManager.singleton.StopHost();
-        // NetworkManager.singleton.StopMatchMaker();
-        NetworkManager.Shutdown();
+        NetworkManager.singleton.StopClient();
+        if(localPlayer.isServer) NetworkManager.singleton.StopHost();
+        NetworkManager.singleton.StopMatchMaker();
+        // NetworkManager.Shutdown();
         localPlayer = null;
         StartCoroutine(setGameOverPanel());
     }
