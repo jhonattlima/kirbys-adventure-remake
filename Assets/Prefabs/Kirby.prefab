@@ -258,6 +258,7 @@ MonoBehaviour:
   isSucking: 0
   isParalyzed: 0
   isInvulnerable: 0
+  playerNumber: 0
 --- !u!114 &2705886812099126053
 MonoBehaviour:
   m_ObjectHideFlags: 0
