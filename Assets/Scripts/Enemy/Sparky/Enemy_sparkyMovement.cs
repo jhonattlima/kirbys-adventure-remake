@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class Enemy_sparkyMovement : NetworkBehaviour 
 {
     private float _jumpHeight = 0.8f;
-    private float _moveSpeed = 30f;
+    private float _moveSpeed = 3f;
     private float _jumpSpeed;
     private float _verticalSpeed;
     private float _turnSpeed = 10;
@@ -30,22 +30,23 @@ public class Enemy_sparkyMovement : NetworkBehaviour
     void Update()
     {
         if(!isServer) return;
-        if(!_FSMIsRunning) StartCoroutine(chooseRandomAction());
-        applyGravity();
-        transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _turnSpeed);
+        Transform closestPlayer = GameManager.instance.figureOutClosestPlayer(this.transform);
+        transform.LookAt(closestPlayer);
+        // if(!_FSMIsRunning) StartCoroutine(chooseRandomAction());
+        // applyGravity();
     }
 
     // Jump in direction of the closest kirby
     private void jump()
     {
-        Vector3 closestPlayerPosition = GameManager.instance.figureOutClosestPlayer(this.transform).position;
-        _endRotation = Quaternion.LookRotation(closestPlayerPosition);
-        Vector3 movement = GameManager.instance.figureOutClosestPlayer(this.transform).position * Time.deltaTime / _moveSpeed;
+        Transform closestPlayer = GameManager.instance.figureOutClosestPlayer(this.transform);
+        Vector3 movement = closestPlayer.position;
+        transform.LookAt(closestPlayer);
         if(characterController.isGrounded)
         {
             _verticalSpeed = _jumpSpeed;
         }
-        characterController.Move(movement);
+        characterController.SimpleMove(movement * _moveSpeed);
     }
 
     // if Kirby is inside shockTriggerCollider, turn shockOn
