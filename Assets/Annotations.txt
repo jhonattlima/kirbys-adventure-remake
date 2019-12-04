@@ -3,4 +3,4 @@ SpawnSpot2 - 6,5 2 -1
 
 TODO
 - Get ideas about become visible or not - with colliders
-- Why enemies are only being hit on server side. -- BECAUSE THIS ONLY SEND COMMAND THROUGH PLAYER PREFAB  - somente o player pode mandar cmds
+- Why enemies are only being hit on server side. -- BECAUSE THIS ONLY SEND COMMAND THROUGH PLAYER PREFAB  - somente o player pode mandar cmds.
