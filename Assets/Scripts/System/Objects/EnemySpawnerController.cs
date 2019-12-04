@@ -9,7 +9,6 @@ public class EnemySpawnerController : NetworkBehaviour
 
     private void OnBecameVisible() 
     {
-        if(isServer) return;
         if(!enemyInstantiated)
         {
             enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemyHotHead, transform.position, Quaternion.identity);

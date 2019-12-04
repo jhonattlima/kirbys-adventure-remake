@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Enemy_PoppyBrosJr : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Enemy_actor _enemy;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Start() {
+        _enemy = GetComponent<Enemy_actor>();
+    
+        _enemy.healthController.healthPoints = 1;
+        _enemy.touchDamage = 1;
+        _enemy.type = (int)Powers.None;
     }
 }
