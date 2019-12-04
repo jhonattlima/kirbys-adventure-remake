@@ -36,7 +36,17 @@ ModelImporter:
     7400006: WaddleDoo|Walk
     9500000: //RootNode
     13700000: Model
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat1
+    second: {fileID: 2100000, guid: be0c71e27cdf2464b86d17e9e637c8ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat2
+    second: {fileID: 2100000, guid: b51fc2dc85f234af5aa021bc211cea0e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
