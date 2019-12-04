@@ -22,13 +22,13 @@ public class Kirby_powerAirBall : MonoBehaviour
     {
         this.direction = direction;
     }
+
     void OnTriggerEnter(Collider other)
     {
         if(!_kirby.isLocalPlayer) return;
-        Debug.Log("Airball hit enemy");
         if(other.GetComponent<Enemy_actor>())
         {
-            other?.GetComponent<Enemy_serverController>()?.TakeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
+            GameManager.instance.localPlayer.kirbyServerController.CmdDealDamageToMob( other.gameObject ,KirbyConstants.PLAYER_NORMAL_DAMAGE);
             Destroy(gameObject);
         }
     }

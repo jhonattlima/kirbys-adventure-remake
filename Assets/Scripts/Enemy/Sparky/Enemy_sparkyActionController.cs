@@ -47,8 +47,7 @@ public class Enemy_sparkyActionController : NetworkBehaviour
     private void move()
     {
         if(characterController.isGrounded) return;
-        Transform closestPlayer = GameManager.instance.figureOutClosestPlayer(this.transform);
-        transform.LookAt(closestPlayer);
+        lookAtPlayer();
         Vector3 movement = transform.TransformDirection(Vector3.forward);
         characterController.Move(movement * _moveSpeed * Time.deltaTime);
     }
@@ -61,16 +60,25 @@ public class Enemy_sparkyActionController : NetworkBehaviour
         characterController.Move(movement);
     }
 
+    private void lookAtPlayer()
+    {
+        Vector3 closestPlayer = GameManager.instance.figureOutClosestPlayer(this.transform).position;
+        closestPlayer.y = transform.position.y;
+        transform.LookAt(closestPlayer);
+    }
+
     IEnumerator chooseRandomAction()
     {
         _FSMIsRunning = true;
         yield return new WaitUntil(()=> characterController.isGrounded);
-        switch (Random.Range(0, 2))
+
+        ActionsSparky nextAction = (ActionsSparky)Random.Range(0, 2);
+        switch (nextAction)
         {
-            case (int)ActionsSparky.jump:
+            case ActionsSparky.jump:
                 jump();
                 break;
-            case (int)ActionsSparky.shock:
+            case ActionsSparky.shock:
                 if(_enemy.isKirbyClose)
                 {
                     transform.LookAt(Camera.main.transform);

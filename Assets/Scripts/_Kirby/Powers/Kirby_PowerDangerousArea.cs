@@ -13,16 +13,12 @@ public class Kirby_PowerDangerousArea : MonoBehaviour
         if(!_kirby) _kirby = GetComponentInParent<Kirby_actor>();
     }
 
-    private void OnTriggerStay(Collider other) 
-    {
-        if(!_kirby.isLocalPlayer) return;
-        other?.GetComponent<Enemy_serverController>()?.CmdTakeDamage(damage);
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if(!_kirby.isLocalPlayer) return;
-        Debug.Log(other.name);
-        other?.GetComponent<Enemy_serverController>()?.CmdTakeDamage(damage);
+        if(other.GetComponent<Enemy_actor>())
+        {
+            GameManager.instance.localPlayer.kirbyServerController.CmdDealDamageToMob( other.gameObject ,KirbyConstants.PLAYER_NORMAL_DAMAGE);
+        }
     }
 }

@@ -18,15 +18,13 @@ public class Enemy_healthController : MonoBehaviour
         if(healthPoints <= 0 && !died)
         {
             died = true;
-            StartCoroutine(triggerDeathAnimation());
+            _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
         }
     }
 
-    IEnumerator triggerDeathAnimation()
+    // Method called by death animation
+    public void die()
     {
-        _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
-        yield return null;
-        yield return new WaitForSeconds(_enemy.animator.GetCurrentAnimatorStateInfo(0).length);
         Destroy(gameObject);
     }
 }

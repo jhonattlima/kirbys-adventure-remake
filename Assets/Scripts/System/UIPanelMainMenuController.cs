@@ -27,8 +27,6 @@ public class UIPanelMainMenuController : MonoBehaviour
         {
             case SystemConstants.BUTTON_NAME_LAN_MODE:
                 lanMode = true;
-                // TODO
-                //startGame();
                 LanController.instance.listenMatches();
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
                 break;
