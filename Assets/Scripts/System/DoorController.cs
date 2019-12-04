@@ -21,7 +21,7 @@ public class DoorController : MonoBehaviour
 
     private void enterDoor()
     {
-        kirby.characterController.Move(exitSpot.localPosition);
+        kirby.characterController.Move(exitSpot.position - kirby.transform.position);
         kirby.currentArea = newArea;
         CameraController.instance.changeCameraRotation();
     }

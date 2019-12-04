@@ -318,7 +318,6 @@ GameObject:
   - component: {fileID: 138813148266963263}
   - component: {fileID: 2293675007098756464}
   - component: {fileID: 7431748566021860271}
-  - component: {fileID: 185182698458364888}
   - component: {fileID: 6322736471958725492}
   - component: {fileID: 8181505389429042459}
   m_Layer: 0
@@ -451,7 +450,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.2
+  m_Height: 1
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -488,18 +487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 0
---- !u!114 &185182698458364888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5877970354012294285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dbf71f1b31a3314eb204eb67c0a05f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _enemy: {fileID: 0}
+  died: 0
 --- !u!114 &6322736471958725492
 MonoBehaviour:
   m_ObjectHideFlags: 0

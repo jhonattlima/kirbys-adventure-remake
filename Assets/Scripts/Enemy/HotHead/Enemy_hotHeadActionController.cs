@@ -37,7 +37,9 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
 
     private void setMove()
     {
-        transform.LookAt(GameManager.instance.figureOutClosestPlayer(this.transform));
+        Vector3 mewLookPosition = GameManager.instance.figureOutClosestPlayer(this.transform).position;
+        mewLookPosition.y = transform.position.y;
+        transform.LookAt(mewLookPosition);
         movement = transform.TransformDirection(Vector3.forward);
         _isMoving = true;
     }
@@ -54,15 +56,19 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
     {
         _FSMIsRunning = true;
         yield return new WaitUntil(()=> characterController.isGrounded);
-        switch (Random.Range(0, 2))
+
+        ActionsFireHead nextAction = (ActionsFireHead)Random.Range(0, 2);
+        switch (nextAction)
         {
-            case (int)ActionsFireHead.walk:
+            case ActionsFireHead.walk:
                 setMove();
                 break;
-            case (int)ActionsFireHead.fire:
+            case ActionsFireHead.fire:
                 if(_enemy.isKirbyClose)
                 {
-                    transform.LookAt(GameManager.instance.figureOutClosestPlayer(this.transform));
+                    Vector3 mewLookPosition = GameManager.instance.figureOutClosestPlayer(this.transform).position;
+                    mewLookPosition.y = transform.position.y;
+                    transform.LookAt(mewLookPosition);
                     _isMoving = false;
                     _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
                 }

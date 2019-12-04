@@ -44,11 +44,7 @@ public class Kirby_movement : NetworkBehaviour
         _inputHorizontal = Input.GetAxis("Horizontal");
         Vector3 movement = _kirby.directionRight * _inputHorizontal * moveSpeed * Time.deltaTime;
         
-        if(movement.x < 0 && _kirby.isLookingRight
-            || movement.x > 0 && !_kirby.isLookingRight)
-        {
-            turn();
-        }  
+        turn(_inputHorizontal);
         _kirby.characterController.Move(movement);
     }
 
@@ -73,17 +69,16 @@ public class Kirby_movement : NetworkBehaviour
         }
     }
 
-    private void turn()
+    private void turn(float movement)
     {
-        if(_kirby.isLookingRight)
+        if(movement < -0.01f)
         {
-            _endRotation = Quaternion.LookRotation(_kirby.directionLeft +_kirby. directionBack * 0.0001f);
+            _endRotation = Quaternion.LookRotation(_kirby.directionLeft +_kirby.directionBack * 0.0001f);
         }
-        else 
+        else if(movement > 0.01f)
         {
             _endRotation = Quaternion.LookRotation(_kirby.directionRight);
         }
-        _kirby.isLookingRight = !_kirby.isLookingRight;
     }
 
     private void applyGravity()

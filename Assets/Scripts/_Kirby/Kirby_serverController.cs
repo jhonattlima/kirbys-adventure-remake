@@ -44,4 +44,16 @@ public class Kirby_serverController : NetworkBehaviour
         }
         GameManager.instance.gameOver();
     }
+
+    [Command]
+    public void CmdDealDamageToMob(GameObject mob, int damage)
+    {
+        RpcDealDamageToMob(mob, damage);
+    }
+
+    [ClientRpc]
+    public void RpcDealDamageToMob(GameObject mob, int damage)
+    {
+        mob.GetComponent<Enemy_healthController>().takeDamage(damage);
+    }
 }

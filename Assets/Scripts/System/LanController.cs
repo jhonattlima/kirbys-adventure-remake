@@ -31,10 +31,18 @@ public class LanController : NetworkDiscovery
         //DontDestroyOnLoad(this);
     }
 
-    public void testEnteringOnMatch()
+    public bool ConfirmDiscoveryStopped()
     {
-        StartAsServer();
-
+        bool stopConfirmed = false;
+        try 
+        {
+            stopConfirmed = !NetworkTransport.IsBroadcastDiscoveryRunning();
+        } 
+        catch 
+        {
+            stopConfirmed = true;
+        }
+        return stopConfirmed;
     }
 
     public void listenMatches()
@@ -50,6 +58,12 @@ public class LanController : NetworkDiscovery
     public void createMatch(string name)
     {
         turnOffBroadcast();
+        StartCoroutine(waitForBroadcastToBeturnedOff(name));
+    }
+
+    IEnumerator waitForBroadcastToBeturnedOff(string name)
+    {
+        yield return new WaitUntil(() => ConfirmDiscoveryStopped());
         base.broadcastData = SystemConstants.NETWORK_BROADCAST_IDENTIFIER + "/" + name + "/" + Random.Range(1, 1000);
         StartAsServer();
         isBroadcasting = true;
@@ -73,13 +87,13 @@ public class LanController : NetworkDiscovery
         Debug.Log("Cancelled Lan Mode.");
     }
 
-    private void turnOffBroadcast()
+    public void turnOffBroadcast()
     {
-        if(isBroadcasting)
-        {
+        try{
             StopBroadcast();
             isBroadcasting = false;
-        }
+        } 
+        catch {}
     }
 
     public override void OnReceivedBroadcast(string fromAddress, string data)

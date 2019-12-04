@@ -107,7 +107,7 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
     public void expelAir()
     {
         Kirby_powerAirBall airBall = Instantiate(_kirby.airPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerAirBall>();
-        airBall.GetComponent<Kirby_PowerDangerousArea>()._kirby = _kirby;
+        airBall.GetComponent<Kirby_powerAirBall>()._kirby = _kirby;
         airBall.setBulletDirection(_kirby.isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
         _kirby.isFullOfAir = false;
     }
