@@ -11,8 +11,8 @@ public class EnemySpawnerController : NetworkBehaviour
     {
         if(!enemyInstantiated && isServer)
         {
-            //enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemyHotHead, transform.position, Quaternion.identity);
-            //NetworkServer.Spawn(enemyInstantiated);
+            enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemySparky, transform.position, Quaternion.identity);
+            NetworkServer.Spawn(enemyInstantiated);
         }
     }
 }
