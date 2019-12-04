@@ -470,6 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthController: {fileID: 0}
+  characterController: {fileID: 0}
   animator: {fileID: 0}
   type: 0
   touchDamage: 0
@@ -562,9 +563,9 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
-  - {fileID: 2100002, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
-  - {fileID: 2100004, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+  - {fileID: 2100000, guid: fa7015aa89d0a41f3b8b2522aa730eef, type: 2}
+  - {fileID: 2100000, guid: a9131d253cd0f4592b16ea7a4ed7676b, type: 2}
+  - {fileID: 2100000, guid: c3dcf572dc72044d39478712692d9c49, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

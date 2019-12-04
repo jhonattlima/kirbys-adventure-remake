@@ -26,7 +26,17 @@ ModelImporter:
     7400002: Bronto|Fly
     9500000: //RootNode
     13700000: Bronto.Model
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat1.001
+    second: {fileID: 2100000, guid: a587850c063d94f879f6c4ddc0d184fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat2.001
+    second: {fileID: 2100000, guid: 24767ce11a356491cb55b134f3116cbf, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
