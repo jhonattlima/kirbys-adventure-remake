@@ -5,21 +5,18 @@ using UnityEngine.Networking;
 
 public class Enemy_hotHeadActionController : NetworkBehaviour 
 {
-    private float _moveSpeed = 0.5f;
-    private float _verticalSpeed;
-    private bool _isKirbyClose = false;
-    private bool _FSMIsRunning = false;
-    private bool _isMoving = false;
-    private CharacterController characterController;
-    private Enemy_actor _enemy;
+    float _moveSpeed = 0.5f;
+    float _verticalSpeed;
+    bool _isKirbyClose = false;
+    bool _FSMIsRunning = false;
+    bool _isMoving = false;
+    Enemy_actor _enemy;
     Vector3 movement;
-
 
     void Start()
     {
         _enemy = GetComponent<Enemy_actor>();
-        characterController = GetComponent<CharacterController>();
-        characterController.Move(Vector3.zero);
+        _enemy.characterController.Move(Vector3.zero);
     }
 
     void Update()
@@ -28,7 +25,7 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
         if(!_FSMIsRunning) StartCoroutine(chooseRandomAction());
         if(_isMoving)
         {
-            characterController.Move(movement * _moveSpeed * Time.deltaTime);
+            _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
             _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
         } 
         else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
@@ -46,16 +43,16 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
 
     private void applyGravity()
     {
-        if(!characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+        if(!_enemy.characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
         Vector3 movement = Vector3.zero;
         movement.y = _verticalSpeed * Time.deltaTime;
-        characterController.Move(movement);
+        _enemy.characterController.Move(movement);
     }
 
     IEnumerator chooseRandomAction()
     {
         _FSMIsRunning = true;
-        yield return new WaitUntil(()=> characterController.isGrounded);
+        yield return new WaitUntil(()=> _enemy.characterController.isGrounded);
 
         ActionsFireHead nextAction = (ActionsFireHead)Random.Range(0, 2);
         switch (nextAction)
