@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_waddleDee : MonoBehaviour
+public class Enemy_brontoBurt : MonoBehaviour
 {
     private Enemy_actor _enemy;
 
