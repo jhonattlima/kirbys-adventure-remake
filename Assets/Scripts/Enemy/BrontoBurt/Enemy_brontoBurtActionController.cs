@@ -5,9 +5,12 @@ using UnityEngine;
 public class Enemy_brontoBurtActionController : MonoBehaviour
 {
 
-    float _flySpeed = 2f;
+    float _moveSpeed = 2f;
+    float _jumpHeight = 0.5f;
     bool _FSMIsRunning = false;
     bool _isMoving = false;
+    float _jumpSpeed;
+    float _verticalSpeed;
     Enemy_actor _enemy;
     Vector3 movement;
 
@@ -15,6 +18,7 @@ public class Enemy_brontoBurtActionController : MonoBehaviour
     {
         _enemy = GetComponent<Enemy_actor>();
         _enemy.characterController.Move(Vector3.zero);
+        _jumpSpeed = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y) * _jumpHeight);
     }
 
     void Update()
@@ -23,8 +27,7 @@ public class Enemy_brontoBurtActionController : MonoBehaviour
         if(!_FSMIsRunning) StartCoroutine(chooseRandomAction());
         if(_isMoving)
         {
-            _enemy.characterController.Move(movement * _flySpeed * Time.deltaTime);
-            if(_enemy.characterController.isGrounded) _isMoving = false;
+            _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
         } 
         lookAtPlayer();
     }
@@ -33,35 +36,42 @@ public class Enemy_brontoBurtActionController : MonoBehaviour
     {
         lookAtPlayer();
         movement = transform.TransformDirection(Vector3.forward);
-        _isMoving = true;
+    }
+
+    private void jump()
+    {
+        if(_enemy.characterController.isGrounded){
+            _verticalSpeed  = _jumpSpeed;   
+            _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_JUMP);
+        }
     }
  
     private void lookAtPlayer()
     {
         Vector3 closestPlayer = GameManager.instance.figureOutClosestPlayer(this.transform).position;
-        //closestPlayer.y = transform.position.y;
+        closestPlayer.y = transform.position.y;
         transform.LookAt(closestPlayer);
     }
 
     IEnumerator chooseRandomAction()
     {
         _FSMIsRunning = true;
-        ActionsBrontoBurt nextAction = (ActionsBrontoBurt)Random.Range(0, 2);
+        ActionsPoppyBrosJr nextAction = (ActionsPoppyBrosJr)Random.Range(0, 2);
         switch (nextAction)
         {
-            case ActionsBrontoBurt.push:
+            case ActionsPoppyBrosJr.walk:
                 setMove();
                 break;
-            case ActionsBrontoBurt.stop:
-                _isMoving = false;
+            case ActionsPoppyBrosJr.jump:
+                jump();
                 break;
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         _FSMIsRunning = false;
     }
 }
-enum ActionsBrontoBurt
+enum ActionsPoppyBrosJr
 {
-    push,
-    stop
+    walk,
+    jump
 }
