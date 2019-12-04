@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 637b9e1a9b5a04b6aae829412d2f4b16
+guid: b856f6b934ac54d51a84c74e00963cbe
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -39,12 +39,7 @@ ModelImporter:
     7400006: Poppy|Walk
     9500000: //RootNode
     13700000: Model
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat3
-    second: {fileID: 2100000, guid: 24e5ec5f734904063b3be7ff70d09a7e, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
