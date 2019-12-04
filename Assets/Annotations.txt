@@ -4,6 +4,6 @@ SpawnSpot2 - 6,5 2 -1
 TODO
 - Check why Beam is bugged and not appearing in all screens
 - Check how to close all connections and everything when restarting the game
-- Get ideas about become visible or not
-- Check regarding rotation between doors
-- Why enemies are only being hit on server side.
+- Get ideas about become visible or not - with colliders
+- Check regarding rotation between doors - solved
+- Why enemies are only being hit on server side. -- BECAUSE THIS ONLY SEND COMMAND THROUGH PLAYER PREFAB  - somente o player pode mandar cmds

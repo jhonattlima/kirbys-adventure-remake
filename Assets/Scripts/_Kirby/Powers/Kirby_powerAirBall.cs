@@ -28,7 +28,7 @@ public class Kirby_powerAirBall : MonoBehaviour
         Debug.Log("Airball hit enemy");
         if(other.GetComponent<Enemy_actor>())
         {
-            other?.GetComponent<Enemy_serverController>()?.CmdTakeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
+            other?.GetComponent<Enemy_serverController>()?.TakeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
             Destroy(gameObject);
         }
     }

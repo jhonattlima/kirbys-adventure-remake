@@ -13,9 +13,9 @@ public class NetworkController : NetworkManager
     private int numOfPlayers;
 
     // Return Network Discovery component
-    public static NetworkDiscovery Discovery{
+    public static LanController Discovery{
         get{
-            return singleton.GetComponent<NetworkDiscovery>();
+            return singleton.GetComponent<LanController>();
         }
     }
 
@@ -23,13 +23,6 @@ public class NetworkController : NetworkManager
     public static NetworkMatch Match{
         get{
             return singleton.GetComponent<NetworkMatch>() ?? singleton.gameObject.AddComponent<NetworkMatch>();
-        }
-    }
-
-    public override void OnServerConnect(NetworkConnection conn){
-        base.OnServerConnect(conn);
-        if(!conn.address.Equals(SystemConstants.NETWORK_NAME_LOCAL_CLIENT)){
-            onServerConnect?.Invoke(conn);
         }
     }
 
@@ -41,27 +34,29 @@ public class NetworkController : NetworkManager
     //     NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
     // }
 
-    public override void OnClientError(NetworkConnection conn, int errorCode){
-        base.OnClientError(conn, errorCode);
-        //NetworkServer.Reset();
-        if(GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
+    public override void OnServerConnect(NetworkConnection conn){
+        base.OnServerConnect(conn);
+        if(!conn.address.Equals(SystemConstants.NETWORK_NAME_LOCAL_CLIENT)){
+            onServerConnect?.Invoke(conn);
+
+            Debug.Log("testing");
+            Discovery.turnOffBroadcast();
+        }
+    }
+
+    public override void OnServerDisconnect(NetworkConnection conn)
+    {
+        base.OnServerDisconnect(conn);
+        NetworkManager.singleton.StopHost();
+        NetworkManager.singleton.StopMatchMaker();
+        if(!GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
     }
 
     public override void OnClientDisconnect(NetworkConnection conn)
     {
-        Debug.Log("Entered on Client Disconnect");
-        NetworkManager.singleton.StopClient();
+        base.OnClientDisconnect(conn);
         NetworkManager.singleton.StopHost();
         NetworkManager.singleton.StopMatchMaker();
-        if(GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
-    }
-    
-    public override void OnServerDisconnect(NetworkConnection conn)
-    {
-        Debug.Log("Entered on Server Disconnect");
-        NetworkManager.singleton.StopClient();
-        NetworkManager.singleton.StopMatchMaker();
-        //NetworkServer.DestroyPlayersForConnection(conn);
-        if(GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
+        if(!GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
     }
 }
