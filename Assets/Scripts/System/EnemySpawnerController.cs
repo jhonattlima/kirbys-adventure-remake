@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+
 public class EnemySpawnerController : NetworkBehaviour
 {
     public GameObject enemyInstantiated;
@@ -11,7 +12,7 @@ public class EnemySpawnerController : NetworkBehaviour
     {
         if(!enemyInstantiated && isServer)
         {
-            enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemyWaddleDoo, transform.position, Quaternion.identity);
+            enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemyWaddleDee, transform.position, Quaternion.identity);
             NetworkServer.Spawn(enemyInstantiated);
         }
     }

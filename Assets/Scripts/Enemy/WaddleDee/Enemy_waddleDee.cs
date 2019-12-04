@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_sparky : MonoBehaviour
+public class Enemy_waddleDee : MonoBehaviour
 {
-    private Enemy_actor _enemy;
+        private Enemy_actor _enemy;
 
     private void Start() {
         _enemy = GetComponent<Enemy_actor>();
     
         _enemy.healthController.healthPoints = 1;
         _enemy.touchDamage = 1;
-        _enemy.type = (int)Powers.Shock;
+        _enemy.type = (int)Powers.None;
     }
 }

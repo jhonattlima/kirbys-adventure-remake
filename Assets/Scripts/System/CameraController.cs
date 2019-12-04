@@ -34,12 +34,7 @@ public class CameraController : MonoBehaviour
     IEnumerator waitWhileChangeCameraRotation()
     {
         localKirby.isParalyzed = true;
-        //Debug.Log("Kirb is waiting" + localKirby.isParalyzed);
-        yield return new WaitForSeconds(10);
-        //while (transform.rotation != Quaternion.LookRotation(localKirby.directionForward)) yield return null;
-        //yield return new WaitUntil(()=> transform.rotation != Quaternion.LookRotation(localKirby.directionForward));
-        Debug.Log("Kirb is waiting2" + localKirby.isParalyzed);
+        yield return new WaitForSeconds(3.5f);
         localKirby.isParalyzed = false;
-        Debug.Log("Kirb is waiting" + localKirby.isParalyzed);
     }
 }

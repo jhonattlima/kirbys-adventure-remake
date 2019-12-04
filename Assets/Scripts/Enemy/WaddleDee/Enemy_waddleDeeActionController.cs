@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class Enemy_hotHeadActionController : NetworkBehaviour 
+public class Enemy_waddleDeeActionController : MonoBehaviour
 {
-    float _moveSpeed = 0.5f;
+    float _moveSpeed = 2f;
     float _verticalSpeed;
-    bool _isKirbyClose = false;
     bool _FSMIsRunning = false;
     bool _isMoving = false;
     Enemy_actor _enemy;
@@ -46,7 +44,7 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
         movement.y = _verticalSpeed * Time.deltaTime;
         _enemy.characterController.Move(movement);
     }
-
+ 
     private void lookAtPlayer()
     {
         Vector3 closestPlayer = GameManager.instance.figureOutClosestPlayer(this.transform).position;
@@ -59,33 +57,24 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
         _FSMIsRunning = true;
         yield return new WaitUntil(()=> _enemy.characterController.isGrounded);
 
-        ActionsFireHead nextAction = (ActionsFireHead)Random.Range(0, 2);
+        ActionsWaddleDee nextAction = (ActionsWaddleDee)Random.Range(0, 2);
         switch (nextAction)
         {
-            case ActionsFireHead.walk:
+            case ActionsWaddleDee.run:
                 setMove();
                 break;
-            case ActionsFireHead.fire:
-                if(_enemy.isKirbyClose)
-                {
-                    lookAtPlayer();
-                    _isMoving = false;
-                    _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
-                }
-                else
-                {
-                    setMove();
-                }
+            case ActionsWaddleDee.stop:
+                lookAtPlayer();
+                _isMoving = false;
                 break;
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         _FSMIsRunning = false;
     }
 }
 
-enum ActionsFireHead
+enum ActionsWaddleDee
 {
-    walk,
-    fire
+    run,
+    stop
 }
-

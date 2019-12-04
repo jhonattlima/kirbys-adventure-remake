@@ -462,7 +462,7 @@ PrefabInstance:
     - target: {fileID: 2638753653708268801, guid: 83bd620345aa9b24887e7b5afa3ffa9c,
         type: 3}
       propertyPath: m_SpawnPrefabs.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2638753653708268801, guid: 83bd620345aa9b24887e7b5afa3ffa9c,
         type: 3}
@@ -501,6 +501,12 @@ PrefabInstance:
       propertyPath: m_SpawnPrefabs.Array.data[2]
       value: 
       objectReference: {fileID: 2382858130463533436, guid: 3f39e0d0158d03142b55b65a31fa9c72,
+        type: 3}
+    - target: {fileID: 2638753653708268801, guid: 83bd620345aa9b24887e7b5afa3ffa9c,
+        type: 3}
+      propertyPath: m_SpawnPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7976732380070056834, guid: 5d4486a10e0333f4eab098d77d91d7ee,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83bd620345aa9b24887e7b5afa3ffa9c, type: 3}
@@ -992,6 +998,10 @@ MonoBehaviour:
     type: 3}
   enemyWaddleDoo: {fileID: 2382858130463533436, guid: 3f39e0d0158d03142b55b65a31fa9c72,
     type: 3}
+  enemyWaddleDee: {fileID: 7976732380070056834, guid: 5d4486a10e0333f4eab098d77d91d7ee,
+    type: 3}
+  enemyBrontoBurt: {fileID: 0}
+  enemyPoppyBrosJr: {fileID: 0}
   panelMainMenu: {fileID: 53379389}
   panelListOfMatches: {fileID: 1086245006}
   panelListOfMatchesButtonsList:
@@ -2201,6 +2211,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179501118811001052, guid: da799d8856ba9a44d9f8e3ca4ca9158f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da799d8856ba9a44d9f8e3ca4ca9158f, type: 3}
@@ -4183,6 +4198,11 @@ PrefabInstance:
       propertyPath: newArea
       value: 
       objectReference: {fileID: 1135690431}
+    - target: {fileID: 1179501118811001052, guid: da799d8856ba9a44d9f8e3ca4ca9158f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da799d8856ba9a44d9f8e3ca4ca9158f, type: 3}
 --- !u!1001 &4358244430317840250

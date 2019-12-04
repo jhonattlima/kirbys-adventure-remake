@@ -14,6 +14,9 @@ public class PrefabsAndInstancesLibrary : MonoBehaviour
     public GameObject enemyHotHead;
     public GameObject enemySparky;
     public GameObject enemyWaddleDoo;
+    public GameObject enemyWaddleDee;
+    public GameObject enemyBrontoBurt;
+    public GameObject enemyPoppyBrosJr;
 
     public GameObject panelMainMenu;
     public GameObject panelListOfMatches;
