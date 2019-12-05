@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Kirby_BeamSweep
+  m_Name: OldKirby_BeamSweep
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
