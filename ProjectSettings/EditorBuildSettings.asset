@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/KirbyTesting.unity
+    path: Assets/_Scenes/Vegetable Valley.unity
     guid: 5720e5fa69856674ca3ba5ca25db1957
   m_configObjects: {}
