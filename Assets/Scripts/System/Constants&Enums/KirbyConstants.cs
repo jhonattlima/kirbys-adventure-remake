@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class KirbyConstants
 {
-    public const KeyCode KEY_JUMP = KeyCode.UpArrow;
+    public const KeyCode KEY_FLY = KeyCode.UpArrow;
+    public const KeyCode KEY_JUMP = KeyCode.X;
     public const KeyCode KEY_SUCK = KeyCode.Z;
     public const KeyCode KEY_POOP = KeyCode.LeftShift;
     public const KeyCode KEY_ACTIVATE_POWER = KeyCode.DownArrow;
@@ -17,6 +18,11 @@ public class KirbyConstants
     public const string ANIM_CHECK_POWER_FIRE = "Power_Fire";
     public const string ANIM_CHECK_POWER_SHOCK = "Power_Shock";
     public const string ANIM_CHECK_POWER_SUCK = "Power_Suck";
+    public const string ANIM_CHECK_MOV_IS_WALKING = "IsWalking";
+    public const string ANIM_CHECK_MOV_IS_FALLING = "IsFalling";
+    public const string ANIM_CHECK_MOV_IS_JUMPING = "IsJumping";
+    public const string ANIM_CHECK_MOV_IS_FLYING = "IsFlying";
+    public const string ANIM_CHECK_MOV_IS_FULL = "IsFull";
     public const int PLAYER_HEALTH_POINTS = 4;
     public const int PLAYER_NORMAL_DAMAGE = 1;
     public const float COOLDOWN_ACTION = 0.5f;

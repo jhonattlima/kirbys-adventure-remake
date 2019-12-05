@@ -11,7 +11,7 @@ public class EnemySpawnerController : NetworkBehaviour
     {
         if(!enemyInstantiated)
         {
-            enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemyPoppyBrosJr, transform.position, Quaternion.identity);
+            enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemyWaddleDoo, transform.position, Quaternion.identity);
             NetworkServer.Spawn(enemyInstantiated);
         }
     }

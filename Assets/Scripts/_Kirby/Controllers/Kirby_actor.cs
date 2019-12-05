@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class Kirby_actor : NetworkBehaviour
 {
     public SphereCollider mouth;
-    public CapsuleCollider areaOfSucking;
+    public BoxCollider areaOfSucking;
     public Animator animator;
     public Kirby_serverController kirbyServerController;
     public CharacterController characterController;
