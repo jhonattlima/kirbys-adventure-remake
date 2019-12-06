@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
+using UnityEngine.Networking.Match;
 
 public class UIPanelMainMenuController : MonoBehaviour
 {
@@ -33,7 +35,7 @@ public class UIPanelMainMenuController : MonoBehaviour
             case SystemConstants.BUTTON_NAME_ONLINE_MODE:
                 lanMode = false;
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
-                // TODO
+                RemoteController.instance.listenMatches();
                 break;
             case SystemConstants.BUTTON_NAME_QUIT_MODE:
                 Application.Quit();
@@ -54,13 +56,14 @@ public class UIPanelMainMenuController : MonoBehaviour
                 break;
             case SystemConstants.BUTTON_NAME_BACK:
                 if (lanMode) LanController.instance.cancelLanDiscovery();
+                else RemoteController.instance.cancelRemoteDiscovery();
                 clearMatchButtons();
                 PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(true);
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(false);
                 break;
             case SystemConstants.BUTTON_NAME_MATCH:
                 joinGame(button.GetComponent<ButtonMatchController>());
-                Debug.Log("Pressed button match.");
+                Debug.Log("UI Panel Main Menu Controller: Pressed button match.");
                 break;
         }
     }
@@ -80,6 +83,7 @@ public class UIPanelMainMenuController : MonoBehaviour
         }
     }
 
+    // Receive matches from Lan Controller
     public void updateMatchButtons(StoredData[] storedDatas)
     {
         for (int i = 0; i < SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
@@ -88,6 +92,24 @@ public class UIPanelMainMenuController : MonoBehaviour
             {
                 buttonsMatch[i].gameObject.GetComponentInChildren<Text>().text = storedDatas[i].data;
                 buttonsMatch[i].GetComponent<ButtonMatchController>().lanMatch = storedDatas[i];
+                buttonsMatch[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                buttonsMatch[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    // Receive matches from Remote Controller
+    public void updateMatchButtons(MatchInfoSnapshot[] storedDatas)
+    {
+        for (int i = 0; i < SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
+        {
+            if (storedDatas[i] != null)
+            {
+                buttonsMatch[i].gameObject.GetComponentInChildren<Text>().text = storedDatas[i].name;
+                buttonsMatch[i].GetComponent<ButtonMatchController>().remoteMatch = storedDatas[i];
                 buttonsMatch[i].gameObject.SetActive(true);
             }
             else

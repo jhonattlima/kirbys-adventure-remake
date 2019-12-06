@@ -2,15 +2,14 @@ SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
-- programar controller de conexão online
+- Programar controller de music;
+- Programar controller de SFX;
+- Fazer lógica dos spawners;
 - Programar controller de painel de vida
-- Programar controller de SFX
-- Programar controller de music
-- Fazer lógica dos spawners
 
 TO DO DESIGN
 - Colocar o painel de vida
-- Criar menu de seleção de personagem
+- Criar menu de seleção de personagem com textBox para o player colocar o nome;
 - Fazer balão de ar do kirby
 - Fazer estrela que o kirby dropa ao ser atingido
 - Fazer outro material para o kirby azul
@@ -22,8 +21,9 @@ TO DO DESIGN
 - BUG: a ultima plataforma tem um tile a menos
 
 BUGS
-- Checar com o professor pq o jump nao funciona
-- Checar com o professor como fazer o suck funcionar em todas as areas
+- Checar com o professor pq o jump nao funciona;
+- Checar com o professor como fazer o suck funcionar em todas as areas;
+- Checar com o professor porque o matchmaling online não está escutando as matches;
 - Verificar pq o kirby nao consegue subir nas plataformas e entra em atrito
 
 DONE
@@ -35,6 +35,7 @@ DONE
 - Ajustar bug de nome nos botões - Done
 - Get ideas about become visible or not - with colliders - Done
 - Why enemies are only being hit on server side. -- BECAUSE THIS ONLY SEND COMMAND THROUGH PLAYER PREFAB - somente o player pode mandar cmds. - Done
+- Programar controller de conexão online - Done.
 
 Requisitos do trabalho
 

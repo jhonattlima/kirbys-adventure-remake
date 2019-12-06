@@ -52,7 +52,7 @@ public class LanController : NetworkDiscovery
         base.StartAsClient();
         isBroadcasting = true;
         StartCoroutine(recycleMatches());
-        Debug.Log("LanController: Started to listen matches.");
+        Debug.Log("Lan Controller: Started to listen matches.");
     }
 
     public void createMatch(string name)
@@ -68,7 +68,7 @@ public class LanController : NetworkDiscovery
         StartAsServer();
         isBroadcasting = true;
         NetworkController.singleton.StartHost();
-        Debug.Log("LanController: Created match with name " + name);
+        Debug.Log("Lan Controller: Created match with name " + name);
     }
 
     public void enterOnMatch(ButtonMatchController button)
@@ -77,14 +77,14 @@ public class LanController : NetworkDiscovery
         StopCoroutine(recycleMatches());
         NetworkController.singleton.networkAddress = button.lanMatch.fromAddress;
         NetworkController.singleton.StartClient();
-        Debug.Log("New player entered on match.");
+        Debug.Log("Lan Controller: New player entered on match.");
     }
 
     public void cancelLanDiscovery()
     {
         turnOffBroadcast();
-        StopCoroutine(recycleMatches());
-        Debug.Log("Cancelled Lan Mode.");
+        StopCoroutine(this.recycleMatches());
+        Debug.Log("Lan Controller: Cancelled Lan Mode.");
     }
 
     public void turnOffBroadcast()
@@ -122,7 +122,7 @@ public class LanController : NetworkDiscovery
                     break;
                 }
             }
-            Debug.Log("Lan Discovery: Received valid broadcast: " + data);
+            Debug.Log("Lan Controller: Received valid broadcast: " + data);
             if (changed) UIPanelMainMenuController.instance.updateMatchButtons(storedDatas);
         }
     }
