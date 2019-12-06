@@ -576,7 +576,7 @@ PrefabInstance:
     - target: {fileID: 2638753653708268801, guid: 83bd620345aa9b24887e7b5afa3ffa9c,
         type: 3}
       propertyPath: m_SpawnPrefabs.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2638753653708268801, guid: 83bd620345aa9b24887e7b5afa3ffa9c,
         type: 3}
@@ -634,6 +634,12 @@ PrefabInstance:
       propertyPath: m_SpawnPrefabs.Array.data[5]
       value: 
       objectReference: {fileID: 3085826359258681092, guid: 95d5a053ea8d3f04bb2157570c421ab6,
+        type: 3}
+    - target: {fileID: 2638753653708268801, guid: 83bd620345aa9b24887e7b5afa3ffa9c,
+        type: 3}
+      propertyPath: m_SpawnPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 4455788589664677811, guid: b0be21a042714744c8b1626b5bb427e6,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83bd620345aa9b24887e7b5afa3ffa9c, type: 3}
@@ -907,7 +913,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90172fcbee1db814dabec5c9af182640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyInstantiated: {fileID: 0}
+  enemyToBeInstantiated: {fileID: 2333680476837141804, guid: b1cbf0315c561a54e8ebaac144d3d6a9,
+    type: 3}
+  enemyAlreadyInstantiated: {fileID: 0}
+  isBecomingInstantiated: 0
 --- !u!23 &299858294
 MeshRenderer:
   m_ObjectHideFlags: 0
