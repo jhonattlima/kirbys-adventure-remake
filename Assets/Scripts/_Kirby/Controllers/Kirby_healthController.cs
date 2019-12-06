@@ -72,6 +72,7 @@ public class Kirby_healthController : MonoBehaviour
     {
         _kirby.animator.SetTrigger(KirbyConstants.ANIM_NAME_TAKE_DAMAGE);
         _kirby.isParalyzed = true;
+        _kirby.isInvulnerable = true;
         if (_kirby.hasPower)
         {
             expelStar();
@@ -82,35 +83,38 @@ public class Kirby_healthController : MonoBehaviour
             _kirby.enemy_powerInMouth = (int)Powers.None;
         }
 
-        Vector3 movement;
-        if (_kirby.isLookingRight)
-        {
-            movement = (_kirby.directionLeft * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
-        }
-        else
-        {
-            movement = (_kirby.directionRight * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
-        }
-        _kirby.characterController.Move(movement);
+        // Vector3 movement;
+        // if (_kirby.isLookingRight)
+        // {
+        //     movement = (_kirby.directionLeft * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
+        // }
+        // else
+        // {
+        //     movement = (_kirby.directionRight * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
+        // }
+        // _kirby.characterController.Move(movement);
 
         yield return new WaitForSeconds(KirbyConstants.COOLDOWN_TO_RECOVER_FROM_DAMAGE);
-        // Stop playing damaged animation
         _kirby.isParalyzed = false;
 
-        _kirby.isInvulnerable = true;
         isTakingDamage = false;
-        StartCoroutine(blink());
         yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
         _kirby.isInvulnerable = false;
     }
 
-    IEnumerator blink()
+    // Method called by animation
+    public void blink()
+    {
+        StartCoroutine(keepBlinking());
+    }
+
+    IEnumerator keepBlinking()
     {
         SkinnedMeshRenderer meshRenderer = _kirby.body.GetComponent<SkinnedMeshRenderer>();
         while (_kirby.isInvulnerable)
         {
             meshRenderer.enabled = !meshRenderer.enabled;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
         meshRenderer.enabled = true;
     }

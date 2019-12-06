@@ -2,14 +2,20 @@ SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
+- Finish expel star logic;
 - Programar controller de music;
 - Programar controller de SFX;
-- Fazer lógica dos spawners;
+- Create enemy spawn logic;
 - Programar controller de painel de vida
 
 TO DO DESIGN
 - Colocar o painel de vida
-- Criar menu de seleção de personagem com textBox para o player colocar o nome;
+- Criar menu de seleção de personagem com textBox para o player colocar o nome E 
+    já colocar os comandos usados no jogo em um canto para instruir o jogador:
+    Z: Sucking, Expel enemy or Air;
+    X: Jump;
+    W,A,S,D or <-, ^, v , ->: directions;
+    Objective: Reach the prize in the end of the stage or survive over your oponent to win.
 - Fazer balão de ar do kirby
 - Fazer estrela que o kirby dropa ao ser atingido
 - Fazer outro material para o kirby azul
