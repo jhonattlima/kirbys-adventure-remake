@@ -10,7 +10,7 @@ public class Kirby_powerStarBullet : MonoBehaviour
     private float _starSpeed = KirbyConstants.KIRBY_STAR_BULLET_SPEED;
     private Vector3 direction;
 
-    void Update() 
+    void Update()
     {
         transform.position += direction * _starSpeed * Time.deltaTime;
     }
@@ -20,16 +20,17 @@ public class Kirby_powerStarBullet : MonoBehaviour
         this.direction = direction;
     }
 
-    private void OnBecameInvisible() {
+    private void OnBecameInvisible()
+    {
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider other)
     {
-        if(!_kirby.isLocalPlayer) return;
-        if(other.GetComponent<Enemy_actor>())
+        if (!_kirby.isLocalPlayer) return;
+        if (other.GetComponent<Enemy_actor>())
         {
-            GameManager.instance.localPlayer.kirbyServerController.CmdDealDamageToMob( other.gameObject ,KirbyConstants.PLAYER_NORMAL_DAMAGE);
+            GameManager.instance.localPlayer.kirbyServerController.CmdDealDamageToMob(other.gameObject, KirbyConstants.PLAYER_NORMAL_DAMAGE);
             Destroy(gameObject);
         }
     }

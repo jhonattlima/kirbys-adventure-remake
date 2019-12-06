@@ -18,6 +18,7 @@ public class Kirby_actor : NetworkBehaviour
     public GameObject airPrefab;
     public GameObject starPrefab;
     public GameObject starBulletPrefab;
+    public GameObject body;
     public Transform currentArea;
     public int enemy_powerInMouth = (int)Powers.None;
     public bool hasPower = false;
@@ -28,7 +29,7 @@ public class Kirby_actor : NetworkBehaviour
     public bool isParalyzed = false;
     public bool isInvulnerable = false;
     public int playerNumber;
-    
+
     public Vector3 directionRight
     {
         get
@@ -58,7 +59,7 @@ public class Kirby_actor : NetworkBehaviour
         }
     }
 
-    private void Awake() 
+    private void Awake()
     {
         currentArea = PrefabsAndInstancesLibrary.instance.scenarioOnePart1.transform;
         transform.Rotate(0, 90f, 0);
@@ -71,7 +72,7 @@ public class Kirby_actor : NetworkBehaviour
         powerBeam = GetComponent<Kirby_powerBeam>();
     }
 
-    private void Start() 
+    private void Start()
     {
         if (!isLocalPlayer) return;
         CameraController.instance.localKirby = this;

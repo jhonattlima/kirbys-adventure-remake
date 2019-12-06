@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Kirby_featureInhaleExpel : NetworkBehaviour 
-{ 
+public class Kirby_featureInhaleExpel : NetworkBehaviour
+{
     private Kirby_actor _kirby;
 
-    private void Start() {
+    private void Start()
+    {
         _kirby = GetComponent<Kirby_actor>();
     }
 
     void Update()
     {
-        if(!isLocalPlayer) return;
-        if(!_kirby.isParalyzed)
+        if (!isLocalPlayer) return;
+        if (!_kirby.isParalyzed)
         {
             checkSuckAction();
             checkActivatePowerAction();
@@ -23,11 +24,11 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
     }
 
     private void checkSuckAction()
-    {   
-        if(Input.GetKey(KirbyConstants.KEY_SUCK))
+    {
+        if (Input.GetKey(KirbyConstants.KEY_SUCK))
         {
             if (!_kirby.isFullOfAir
-                && !_kirby.isFullOfEnemy 
+                && !_kirby.isFullOfEnemy
                 && _kirby.enemy_powerInMouth == (int)Powers.None
                 && _kirby.characterController.isGrounded)
             {
@@ -35,12 +36,12 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
             }
             else
             {
-                if(Input.GetKeyDown(KirbyConstants.KEY_SUCK))
+                if (Input.GetKeyDown(KirbyConstants.KEY_SUCK))
                 {
-                    if(_kirby.isFullOfAir)
+                    if (_kirby.isFullOfAir)
                     {
                         expelAir();
-                    } 
+                    }
                     else if (_kirby.isFullOfEnemy)
                     {
                         expelEnemy();
@@ -48,7 +49,7 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
                 }
             }
         }
-        else 
+        else
         {
             suckOff();
         }
@@ -58,29 +59,29 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
     {
         if (Input.GetKeyDown(KirbyConstants.KEY_ACTIVATE_POWER))
         {
-            if(_kirby.isFullOfEnemy 
+            if (_kirby.isFullOfEnemy
                 && _kirby.enemy_powerInMouth != (int)Powers.None
                 && !_kirby.hasPower)
             {
                 activatePower();
-            } 
+            }
             _kirby.isFullOfEnemy = false;
         }
     }
 
     public void activatePower()
     {
-        if(_kirby.enemy_powerInMouth == (int)Powers.None) return;
+        if (_kirby.enemy_powerInMouth == (int)Powers.None) return;
         Debug.Log("Activated power");
         switch (_kirby.enemy_powerInMouth)
         {
-            case (int) Powers.Fire:
+            case (int)Powers.Fire:
                 _kirby.powerFire.enabled = true;
                 break;
-            case (int) Powers.Shock:
+            case (int)Powers.Shock:
                 _kirby.powerShock.enabled = true;
                 break;
-            case (int) Powers.Beam:
+            case (int)Powers.Beam:
                 _kirby.powerBeam.enabled = true;
                 break;
         }
@@ -90,16 +91,16 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
 
     public void suckOn()
     {
-        _kirby.mouth.gameObject.SetActive(true);
-        _kirby.areaOfSucking.gameObject.SetActive(true);
+        //_kirby.mouth.gameObject.SetActive(true);
+        //_kirby.areaOfSucking.gameObject.SetActive(true);
         _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, true);
         _kirby.isSucking = true;
     }
 
     public void suckOff()
     {
-        _kirby.mouth.gameObject.SetActive(false);
-        _kirby.areaOfSucking.gameObject.SetActive(false);
+        //_kirby.mouth.gameObject.SetActive(false);
+        //_kirby.areaOfSucking.gameObject.SetActive(false);
         _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, false);
         _kirby.isSucking = false;
     }

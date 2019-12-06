@@ -23,7 +23,7 @@ public class UIPanelMainMenuController : MonoBehaviour
 
     public void eventButtonClick(Button button)
     {
-        switch(button.name)
+        switch (button.name)
         {
             case SystemConstants.BUTTON_NAME_LAN_MODE:
                 lanMode = true;
@@ -39,7 +39,7 @@ public class UIPanelMainMenuController : MonoBehaviour
                 Application.Quit();
                 break;
             case SystemConstants.BUTTON_NAME_CREATE:
-                if(string.IsNullOrEmpty(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text)
+                if (string.IsNullOrEmpty(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text)
                     || PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text.Contains("/"))
                 {
                     PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().text = "Please insert a valid name";
@@ -73,7 +73,7 @@ public class UIPanelMainMenuController : MonoBehaviour
 
     private void clearMatchButtons()
     {
-        for (int i = 0; i<SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
+        for (int i = 0; i < SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
         {
             buttonsMatch[i].gameObject.GetComponentInChildren<Text>().text = string.Empty;
             buttonsMatch[i].gameObject.SetActive(false);
@@ -82,14 +82,14 @@ public class UIPanelMainMenuController : MonoBehaviour
 
     public void updateMatchButtons(StoredData[] storedDatas)
     {
-        for(int i = 0; i<SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i ++)
+        for (int i = 0; i < SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
         {
-            if(storedDatas[i]  != null)
+            if (storedDatas[i] != null)
             {
                 buttonsMatch[i].gameObject.GetComponentInChildren<Text>().text = storedDatas[i].data;
                 buttonsMatch[i].GetComponent<ButtonMatchController>().lanMatch = storedDatas[i];
                 buttonsMatch[i].gameObject.SetActive(true);
-            } 
+            }
             else
             {
                 buttonsMatch[i].gameObject.SetActive(false);

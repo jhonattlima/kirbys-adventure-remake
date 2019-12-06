@@ -13,15 +13,19 @@ public class NetworkController : NetworkManager
     private int numOfPlayers;
 
     // Return Network Discovery component
-    public static LanController Discovery{
-        get{
+    public static LanController Discovery
+    {
+        get
+        {
             return singleton.GetComponent<LanController>();
         }
     }
 
     // Return Match component or create one if it does not exists
-    public static NetworkMatch Match{
-        get{
+    public static NetworkMatch Match
+    {
+        get
+        {
             return singleton.GetComponent<NetworkMatch>() ?? singleton.gameObject.AddComponent<NetworkMatch>();
         }
     }
@@ -34,9 +38,11 @@ public class NetworkController : NetworkManager
     //     NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
     // }
 
-    public override void OnServerConnect(NetworkConnection conn){
+    public override void OnServerConnect(NetworkConnection conn)
+    {
         base.OnServerConnect(conn);
-        if(!conn.address.Equals(SystemConstants.NETWORK_NAME_LOCAL_CLIENT)){
+        if (!conn.address.Equals(SystemConstants.NETWORK_NAME_LOCAL_CLIENT))
+        {
             onServerConnect?.Invoke(conn);
 
             Debug.Log("testing");
@@ -49,7 +55,7 @@ public class NetworkController : NetworkManager
         base.OnServerDisconnect(conn);
         NetworkManager.singleton.StopHost();
         NetworkManager.singleton.StopMatchMaker();
-        if(!GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
+        if (!GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
     }
 
     public override void OnClientDisconnect(NetworkConnection conn)
@@ -57,6 +63,6 @@ public class NetworkController : NetworkManager
         base.OnClientDisconnect(conn);
         NetworkManager.singleton.StopHost();
         NetworkManager.singleton.StopMatchMaker();
-        if(!GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
+        if (!GameManager.instance.gameOverDisconnection) GameManager.instance.restartWithNetworkError();
     }
 }

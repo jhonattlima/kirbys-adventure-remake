@@ -9,11 +9,11 @@ public class DoorController : MonoBehaviour
 
     private Kirby_actor kirby;
 
-    private void OnTriggerStay(Collider other) 
+    private void OnTriggerStay(Collider other)
     {
         kirby = other?.GetComponent<Kirby_actor>();
-        if(!kirby || !kirby.isLocalPlayer) return;
-        if(Input.GetKeyDown(KirbyConstants.KEY_ENTER_DOOR))
+        if (!kirby || !kirby.isLocalPlayer) return;
+        if (Input.GetKeyDown(KirbyConstants.KEY_ENTER_DOOR))
         {
             enterDoor();
         }

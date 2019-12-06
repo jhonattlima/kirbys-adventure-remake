@@ -7,9 +7,9 @@ public class EnemySpawnerController : NetworkBehaviour
 {
     public GameObject enemyInstantiated;
 
-    private void OnBecameVisible() 
+    private void OnBecameVisible()
     {
-        if(!enemyInstantiated)
+        if (!enemyInstantiated)
         {
             enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemyWaddleDoo, transform.position, Quaternion.identity);
             NetworkServer.Spawn(enemyInstantiated);

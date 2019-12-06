@@ -7,19 +7,22 @@ public class Kirby_powerFire : NetworkBehaviour
 {
     public Kirby_actor _kirby;
 
-    private void Start() {
+    private void Start()
+    {
         _kirby = GetComponent<Kirby_actor>();
     }
 
     void Update()
     {
-        if(!isLocalPlayer) return;
-        if(Input.GetKey(KirbyConstants.KEY_SUCK) 
+        if (!isLocalPlayer) return;
+        if (Input.GetKey(KirbyConstants.KEY_SUCK)
         && _kirby.characterController.isGrounded
         && !_kirby.isFullOfAir)
         {
             fireOn();
-        } else {
+        }
+        else
+        {
             fireOff();
         }
     }

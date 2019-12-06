@@ -23,10 +23,10 @@ public class Enemy_PoppyBrosJrController : MonoBehaviour
 
     void Update()
     {
-        if(!_enemy.isServer || _enemy.healthController.died) return;
-        if(!_FSMIsRunning) StartCoroutine(chooseRandomAction());
+        if (!_enemy.isServer || _enemy.healthController.died) return;
+        if (!_FSMIsRunning) StartCoroutine(chooseRandomAction());
         _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
-        if(_enemy.characterController.isGrounded) _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
+        if (_enemy.characterController.isGrounded) _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
         else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
         applyGravity();
     }
@@ -39,14 +39,14 @@ public class Enemy_PoppyBrosJrController : MonoBehaviour
 
     private void jump()
     {
-        if(_enemy.characterController.isGrounded)
+        if (_enemy.characterController.isGrounded)
         {
             lookAtPlayer();
-            _verticalSpeed  = _jumpSpeed;   
+            _verticalSpeed = _jumpSpeed;
             _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_JUMP);
         }
     }
- 
+
     private void lookAtPlayer()
     {
         Vector3 closestPlayer = GameManager.instance.figureOutClosestPlayer(this.transform).position;
@@ -56,7 +56,7 @@ public class Enemy_PoppyBrosJrController : MonoBehaviour
 
     private void applyGravity()
     {
-        if(!_enemy.characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+        if (!_enemy.characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
         Vector3 movement = Vector3.zero;
         movement.y = _verticalSpeed * Time.deltaTime;
         _enemy.characterController.Move(movement);

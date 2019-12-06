@@ -21,7 +21,7 @@ public class UIPanelKirbyStatusController : MonoBehaviour
     public void setLife(int amount)
     {
         LifeText.text = "Lifes: X " + amount;
-        if(amount == 1)
+        if (amount == 1)
         {
             LifeText.color = Color.red;
         }

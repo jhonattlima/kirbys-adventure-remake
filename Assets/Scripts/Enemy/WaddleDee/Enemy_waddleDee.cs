@@ -6,9 +6,10 @@ public class Enemy_waddleDee : MonoBehaviour
 {
     private Enemy_actor _enemy;
 
-    private void Start() {
+    private void Start()
+    {
         _enemy = GetComponent<Enemy_actor>();
-    
+
         _enemy.healthController.healthPoints = 1;
         _enemy.touchDamage = 1;
         _enemy.type = (int)Powers.None;

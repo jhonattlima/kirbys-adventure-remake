@@ -34,11 +34,13 @@ public class Kirby_serverController : NetworkBehaviour
     public void RpcGameOverByDeath(int kirbyThatHasDiedNumber)
     {
         Debug.Log("Entered on RPC");
-        if(kirbyThatHasDiedNumber.Equals(GameManager.instance.localPlayer.playerNumber))
+        if (kirbyThatHasDiedNumber.Equals(GameManager.instance.localPlayer.playerNumber))
         {
             Debug.Log("Entered on Id is equals");
             GameManager.instance.wonTheGame = false;
-        } else {
+        }
+        else
+        {
             Debug.Log("Entered on Id is not equals");
             GameManager.instance.wonTheGame = true;
         }

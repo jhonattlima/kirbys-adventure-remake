@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SystemConstants 
+public class SystemConstants
 {
     public const string NETWORK_NAME_LOCAL_CLIENT = "localClient";
     public const string NETWORK_NAME_LOCAL_SERVER = "localServer";

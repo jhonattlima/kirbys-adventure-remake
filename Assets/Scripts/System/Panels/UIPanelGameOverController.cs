@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 public class UIPanelGameOverController : MonoBehaviour
 {
+    public Image gameOverYouWin;
+    public Image gameOverYouLose;
     public Text gameoverMessage;
 
-    private void OnEnable() 
+    private void OnEnable()
     {
-        if(GameManager.instance.wonTheGame)
+        if (GameManager.instance.wonTheGame)
         {
             gameoverMessage.text = "Congrats! You win!!!";
         }
-        else 
+        else
         {
             gameoverMessage.text = "Game over! You lose!!!";
         }
     }
-
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Kirby_powerBeam : NetworkBehaviour 
+public class Kirby_powerBeam : NetworkBehaviour
 {
     public Kirby_actor _kirby;
 
@@ -15,12 +15,12 @@ public class Kirby_powerBeam : NetworkBehaviour
 
     void Update()
     {
-        if(!isLocalPlayer) return;
+        if (!isLocalPlayer) return;
 
-        if(Input.GetKeyDown(KirbyConstants.KEY_SUCK) 
+        if (Input.GetKeyDown(KirbyConstants.KEY_SUCK)
         && _kirby.characterController.isGrounded
         && !_kirby.isFullOfAir)
-        {    
+        {
             activateBeam();
         }
     }

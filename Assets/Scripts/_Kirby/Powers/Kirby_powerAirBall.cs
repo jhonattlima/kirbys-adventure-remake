@@ -13,7 +13,7 @@ public class Kirby_powerAirBall : MonoBehaviour
         Destroy(gameObject, 0.5f);
     }
 
-    void Update() 
+    void Update()
     {
         transform.position += direction * _airSpeed * Time.deltaTime;
     }
@@ -25,10 +25,10 @@ public class Kirby_powerAirBall : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(!_kirby.isLocalPlayer) return;
-        if(other.GetComponent<Enemy_actor>())
+        if (!_kirby.isLocalPlayer) return;
+        if (other.GetComponent<Enemy_actor>())
         {
-            GameManager.instance.localPlayer.kirbyServerController.CmdDealDamageToMob( other.gameObject ,KirbyConstants.PLAYER_NORMAL_DAMAGE);
+            GameManager.instance.localPlayer.kirbyServerController.CmdDealDamageToMob(other.gameObject, KirbyConstants.PLAYER_NORMAL_DAMAGE);
             Destroy(gameObject);
         }
     }

@@ -34,11 +34,11 @@ public class LanController : NetworkDiscovery
     public bool ConfirmDiscoveryStopped()
     {
         bool stopConfirmed = false;
-        try 
+        try
         {
             stopConfirmed = !NetworkTransport.IsBroadcastDiscoveryRunning();
-        } 
-        catch 
+        }
+        catch
         {
             stopConfirmed = true;
         }
@@ -89,11 +89,12 @@ public class LanController : NetworkDiscovery
 
     public void turnOffBroadcast()
     {
-        try{
+        try
+        {
             StopBroadcast();
             isBroadcasting = false;
-        } 
-        catch {}
+        }
+        catch { }
     }
 
     public override void OnReceivedBroadcast(string fromAddress, string data)
@@ -103,16 +104,17 @@ public class LanController : NetworkDiscovery
         string[] splitData = data.Split('/');
         //if(!fromAddress.Contains("10.")) return; // Turn on on PUCRS
         Debug.Log(data);
-        if(splitData[0].Equals(SystemConstants.NETWORK_BROADCAST_IDENTIFIER))
+        if (splitData[0].Equals(SystemConstants.NETWORK_BROADCAST_IDENTIFIER))
         {
             StoredData newReceivedBroadcast = new StoredData(fromAddress, splitData[splitData.Length - 1], splitData[1]);
-            for(int i = 0; i<SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
+            for (int i = 0; i < SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
             {
-                if(storedDatas[i] != null && storedDatas[i].id.Equals(newReceivedBroadcast.id))
+                if (storedDatas[i] != null && storedDatas[i].id.Equals(newReceivedBroadcast.id))
                 {
                     storedDatas[i].expiration = Time.time + SystemConstants.NETWORK_TIME_TO_REFRESH_ONLINE_MATCHES;
                     break;
-                } else if (storedDatas[i] == null)
+                }
+                else if (storedDatas[i] == null)
                 {
                     newReceivedBroadcast.expiration = Time.time + SystemConstants.NETWORK_TIME_TO_REFRESH_ONLINE_MATCHES;
                     storedDatas[i] = newReceivedBroadcast;
@@ -121,18 +123,18 @@ public class LanController : NetworkDiscovery
                 }
             }
             Debug.Log("Lan Discovery: Received valid broadcast: " + data);
-            if(changed) UIPanelMainMenuController.instance.updateMatchButtons(storedDatas);
+            if (changed) UIPanelMainMenuController.instance.updateMatchButtons(storedDatas);
         }
     }
 
     IEnumerator recycleMatches()
     {
-        while(true)
+        while (true)
         {
             bool changed = false;
-            for(int i = 0; i < SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
+            for (int i = 0; i < SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
             {
-                if(storedDatas[i] != null && storedDatas[i].expiration <= Time.time)
+                if (storedDatas[i] != null && storedDatas[i].expiration <= Time.time)
                 {
                     storedDatas[i] = null;
                     changed = true;

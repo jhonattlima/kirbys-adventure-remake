@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Enemy_hotHeadActionController : NetworkBehaviour 
+public class Enemy_hotHeadActionController : NetworkBehaviour
 {
     float _moveSpeed = 0.5f;
     float _verticalSpeed;
@@ -21,13 +21,13 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
 
     void Update()
     {
-        if(!_enemy.isServer || _enemy.healthController.died) return;
-        if(!_FSMIsRunning) StartCoroutine(chooseRandomAction());
-        if(_isMoving)
+        if (!_enemy.isServer || _enemy.healthController.died) return;
+        if (!_FSMIsRunning) StartCoroutine(chooseRandomAction());
+        if (_isMoving)
         {
             _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
             _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
-        } 
+        }
         else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
         applyGravity();
     }
@@ -41,7 +41,7 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
 
     private void applyGravity()
     {
-        if(!_enemy.characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+        if (!_enemy.characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
         Vector3 movement = Vector3.zero;
         movement.y = _verticalSpeed * Time.deltaTime;
         _enemy.characterController.Move(movement);
@@ -57,7 +57,7 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
     IEnumerator chooseRandomAction()
     {
         _FSMIsRunning = true;
-        yield return new WaitUntil(()=> _enemy.characterController.isGrounded);
+        yield return new WaitUntil(() => _enemy.characterController.isGrounded);
 
         ActionsFireHead nextAction = (ActionsFireHead)Random.Range(0, 2);
         switch (nextAction)
@@ -66,7 +66,7 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
                 setMove();
                 break;
             case ActionsFireHead.fire:
-                if(_enemy.isKirbyClose)
+                if (_enemy.isKirbyClose)
                 {
                     lookAtPlayer();
                     _isMoving = false;

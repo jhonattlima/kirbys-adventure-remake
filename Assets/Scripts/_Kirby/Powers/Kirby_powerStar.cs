@@ -7,7 +7,7 @@ public class Kirby_powerStar : MonoBehaviour
     public int power;
     private bool isActivated = false;
 
-    private void Awake() 
+    private void Awake()
     {
         StartCoroutine(waitToBecomeActive());
     }
@@ -23,9 +23,9 @@ public class Kirby_powerStar : MonoBehaviour
         GetComponent<Rigidbody>().AddForce((direction + Vector3.up) * 5);
     }
 
-    private void OnCollisionEnter(Collision other) 
+    private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag(KirbyConstants.TAG_PLAYER) && isActivated)
+        if (other.gameObject.CompareTag(KirbyConstants.TAG_PLAYER) && isActivated)
         {
             Debug.Log("Star: Kirby got power: " + power);
             other?.gameObject?.GetComponent<Kirby_healthController>()?.retrievePower(power);
@@ -33,7 +33,8 @@ public class Kirby_powerStar : MonoBehaviour
         }
     }
 
-    private void OnBecameInvisible() {
+    private void OnBecameInvisible()
+    {
         Destroy(gameObject);
     }
 }

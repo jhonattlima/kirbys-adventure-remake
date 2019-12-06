@@ -1,6 +1,71 @@
 SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
-TODO
-- Get ideas about become visible or not - with colliders
-- Why enemies are only being hit on server side. -- BECAUSE THIS ONLY SEND COMMAND THROUGH PLAYER PREFAB  - somente o player pode mandar cmds.
+TO DO PROGRAMMING
+- programar controller de conexão online
+- Programar controller de painel de vida
+- Programar controller de SFX
+- Programar controller de music
+- Fazer lógica dos spawners
+
+TO DO DESIGN
+- Colocar o painel de vida
+- Criar menu de seleção de personagem
+- Fazer balão de ar do kirby
+- Fazer estrela que o kirby dropa ao ser atingido
+- Fazer outro material para o kirby azul
+- Fazer item que o kirby que alcançar ganha no final
+- Fazer tela de game over you lose e tela de game over you win
+- Fazer chao invisível para queda e morte do kirby na área 3
+- Fazer particulas do fire, spark e beam
+- Fazer flecha animada pra pôr na porta
+- BUG: a ultima plataforma tem um tile a menos
+
+BUGS
+- Checar com o professor pq o jump nao funciona
+- Checar com o professor como fazer o suck funcionar em todas as areas
+- Verificar pq o kirby nao consegue subir nas plataformas e entra em atrito
+
+DONE
+- Colocar teto invisível - Done
+- Corrigir bola de ar - Done
+- Corrigir ele estar empurrando do lado esquerdo - Done 
+- Kirby está caindo muito rapido - Done 
+- Colocar corpo físico nas paredes laterais - Done
+- Ajustar bug de nome nos botões - Done
+- Get ideas about become visible or not - with colliders - Done
+- Why enemies are only being hit on server side. -- BECAUSE THIS ONLY SEND COMMAND THROUGH PLAYER PREFAB - somente o player pode mandar cmds. - Done
+
+Requisitos do trabalho
+
+Requisitos para a disciplina de Redes:
+● Arquitetura servidor e clientes, utilizando as bibliotecas de rede da Unity;
+● Criar um sistema de pontos para determinar quem foi o vencedor (no caso do jogo ser
+competitivo) ou se os jogadores venceram ou não o desafio (cooperativo);
+● Cada partida deve durar no máximo 5 minutos e mostrar os resultados no final;
+● Depois de exibir os resultados, a partida deve se encerrar e o jogo deve voltar para o
+menu;
+● Se o servidor desconectar, o jogo encerra para todos clientes;
+● Apresentar o estado do jogo para todos os jogadores conectados de forma íntegra e
+eficiente, inclusive em situações de latência média (> 80ms)
+● Exibir mensagens de desconexão e problemas de rede, quando ocorrerem.
+
+Funcionalidades desejáveis, mas não obrigatórias:
+● Suporte a matchmaking local (LAN) ou via Internet;
+● Sistema de lobby/chat;
+
+Requisitos para a disciplina de Programação II:
+● Menu principal;
+○ Preencher o nome do jogador;
+○ Selecionar o modelo do jogador (customizar cores ou forma);
+○ Opção “host”;
+○ Opção “join”;
+○ Opção “quit game”;
+● Colisão funcional com todos os objetos do jogo;
+● Ter um mapa feito exclusivamente para o jogo;
+○ Texturizado e iluminado apropriadamente;
+○ Preferencialmente com alguma interação em mais de um plano de ação, se o
+Game Design permitir.
+● Utilização de sons e efeitos nas ações dos jogadores;
+● Implementar signs & feedbacks apropriados.
+● Performance de execução aceitável.

@@ -22,13 +22,13 @@ public class Enemy_waddleDooActionController : MonoBehaviour
 
     void Update()
     {
-        if(!_enemy.isServer || _enemy.healthController.died) return;
-        if(!_FSMIsRunning) StartCoroutine(chooseRandomAction());
-        if(_isMoving)
+        if (!_enemy.isServer || _enemy.healthController.died) return;
+        if (!_FSMIsRunning) StartCoroutine(chooseRandomAction());
+        if (_isMoving)
         {
             _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
             _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
-        } 
+        }
         else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
         applyGravity();
     }
@@ -36,7 +36,7 @@ public class Enemy_waddleDooActionController : MonoBehaviour
     IEnumerator chooseRandomAction()
     {
         _FSMIsRunning = true;
-        yield return new WaitUntil(()=> _enemy.characterController.isGrounded);
+        yield return new WaitUntil(() => _enemy.characterController.isGrounded);
 
         ActionWaddleDoo nextAction = (ActionWaddleDoo)Random.Range(0, 2);
         switch (nextAction)
@@ -45,7 +45,7 @@ public class Enemy_waddleDooActionController : MonoBehaviour
                 setMove();
                 break;
             case ActionWaddleDoo.beam:
-                if(_enemy.isKirbyClose)
+                if (_enemy.isKirbyClose)
                 {
                     _isMoving = false;
                     lookAtPlayer();
@@ -69,7 +69,7 @@ public class Enemy_waddleDooActionController : MonoBehaviour
 
     private void applyGravity()
     {
-        if(!_enemy.characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+        if (!_enemy.characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
         Vector3 movement = Vector3.zero;
         movement.y = _verticalSpeed * Time.deltaTime;
         _enemy.characterController.Move(movement);

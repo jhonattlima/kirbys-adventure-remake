@@ -120,8 +120,8 @@ GameObject:
   - component: {fileID: 1586495608022112634}
   - component: {fileID: 7875582851636958526}
   - component: {fileID: 6356111907700193545}
+  - component: {fileID: 3967680146182043614}
   - component: {fileID: 2735540011640246211}
-  - component: {fileID: 473390233919716414}
   - component: {fileID: 7965744599328766610}
   - component: {fileID: 7362479543584145692}
   - component: {fileID: 9034334020176826425}
@@ -265,7 +265,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.1
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -298,6 +298,7 @@ MonoBehaviour:
     type: 3}
   starBulletPrefab: {fileID: 6279613008664123690, guid: 6efb1011f9e8cec4aaf100e0ded670b1,
     type: 3}
+  body: {fileID: 899774280200289238}
   currentArea: {fileID: 0}
   enemy_powerInMouth: 0
   hasPower: 0
@@ -324,6 +325,18 @@ MonoBehaviour:
   isWalking: 0
   isJumping: 0
   isFalling: 0
+--- !u!114 &3967680146182043614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899774280200289208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b54216252d3b145834482ba0723a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2735540011640246211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,18 +347,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aa4b6af34ab4ce4d8cb5f06f5b3b1da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &473390233919716414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899774280200289208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b54216252d3b145834482ba0723a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7965744599328766610

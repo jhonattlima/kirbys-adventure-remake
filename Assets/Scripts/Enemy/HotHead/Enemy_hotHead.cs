@@ -6,7 +6,8 @@ public class Enemy_hotHead : MonoBehaviour
 {
     private Enemy_actor _enemy;
 
-    private void Start() {
+    private void Start()
+    {
         _enemy = GetComponent<Enemy_actor>();
         _enemy.healthController.healthPoints = 1;
         _enemy.touchDamage = 1;

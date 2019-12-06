@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public Kirby_actor localKirby;
     public static CameraController instance;
-    
+
     private void Awake()
     {
         if (instance == null) instance = this;

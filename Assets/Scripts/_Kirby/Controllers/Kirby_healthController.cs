@@ -6,23 +6,25 @@ public class Kirby_healthController : MonoBehaviour
 {
     private Kirby_actor _kirby;
     private int healthPoints = KirbyConstants.PLAYER_HEALTH_POINTS;
+    bool isTakingDamage = false;
 
-    private void Start() {
+    private void Start()
+    {
         _kirby = GetComponent<Kirby_actor>();
     }
 
     public void retrievePower(int power)
     {
-        if(_kirby.enemy_powerInMouth == (int)Powers.None) return;
+        if (_kirby.enemy_powerInMouth == (int)Powers.None) return;
         switch (power)
         {
-            case (int) Powers.Fire:
+            case (int)Powers.Fire:
                 _kirby.powerFire.enabled = true;
                 break;
-            case (int) Powers.Shock:
+            case (int)Powers.Shock:
                 _kirby.powerShock.enabled = true;
                 break;
-            case (int) Powers.Beam:
+            case (int)Powers.Beam:
                 _kirby.powerBeam.enabled = true;
                 break;
         }
@@ -30,25 +32,29 @@ public class Kirby_healthController : MonoBehaviour
         _kirby.hasPower = true;
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit) 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(!_kirby.isLocalPlayer) return;
-        if(hit.gameObject.CompareTag(KirbyConstants.TAG_ENEMY)
+        if (!_kirby.isLocalPlayer) return;
+        if (hit.gameObject.CompareTag(KirbyConstants.TAG_ENEMY)
             && !_kirby.isInvulnerable)
         {
             takeDamage(hit.gameObject.GetComponent<Enemy_actor>().touchDamage);
+            hit.gameObject.GetComponent<Enemy_healthController>().takeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
         }
     }
 
     public void takeDamage(int amountOfDamage)
     {
+        if (isTakingDamage) return;
+        isTakingDamage = true;
         healthPoints -= amountOfDamage;
+        Debug.Log("Ouch, took damage! Life points now: " + healthPoints);
         //UIPanelKirbyStatusController.instance.setLife(healthPoints);
-        if(healthPoints <= 0)
+        if (healthPoints <= 0)
         {
             die();
-        } 
-        else 
+        }
+        else
         {
             StartCoroutine(sufferDamage());
         }
@@ -64,10 +70,9 @@ public class Kirby_healthController : MonoBehaviour
 
     IEnumerator sufferDamage()
     {
-        // Play damaged animation
         _kirby.animator.SetTrigger(KirbyConstants.ANIM_NAME_TAKE_DAMAGE);
         _kirby.isParalyzed = true;
-        if(_kirby.hasPower)
+        if (_kirby.hasPower)
         {
             expelStar();
             _kirby.powerBeam.enabled = false;
@@ -78,29 +83,30 @@ public class Kirby_healthController : MonoBehaviour
         }
 
         Vector3 movement;
-        if(_kirby.isLookingRight)
+        if (_kirby.isLookingRight)
         {
             movement = (_kirby.directionLeft * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
         }
-        else 
+        else
         {
             movement = (_kirby.directionRight * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
         }
         _kirby.characterController.Move(movement);
-        
+
         yield return new WaitForSeconds(KirbyConstants.COOLDOWN_TO_RECOVER_FROM_DAMAGE);
         // Stop playing damaged animation
         _kirby.isParalyzed = false;
 
         _kirby.isInvulnerable = true;
+        isTakingDamage = false;
         StartCoroutine(blink());
         yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
-        _kirby.isInvulnerable = false; 
+        _kirby.isInvulnerable = false;
     }
 
     IEnumerator blink()
     {
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        SkinnedMeshRenderer meshRenderer = _kirby.body.GetComponent<SkinnedMeshRenderer>();
         while (_kirby.isInvulnerable)
         {
             meshRenderer.enabled = !meshRenderer.enabled;
@@ -111,7 +117,7 @@ public class Kirby_healthController : MonoBehaviour
 
     private void expelStar()
     {
-        Kirby_powerStar star  = Instantiate(_kirby.starPrefab, transform.position + 0.1f * Vector3.up, transform.rotation).GetComponent<Kirby_powerStar>();
+        Kirby_powerStar star = Instantiate(_kirby.starPrefab, transform.position + 0.1f * Vector3.up, transform.rotation).GetComponent<Kirby_powerStar>();
         star.power = _kirby.enemy_powerInMouth;
         star.setPushDirection(_kirby.isLookingRight ? _kirby.directionLeft : _kirby.directionRight);
     }

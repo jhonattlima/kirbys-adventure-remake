@@ -13,11 +13,11 @@ public class Enemy_kirbyDetector : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(KirbyConstants.TAG_PLAYER)) _enemy.isKirbyClose = true;
+        if (other.CompareTag(KirbyConstants.TAG_PLAYER)) _enemy.isKirbyClose = true;
     }
 
     void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag(KirbyConstants.TAG_PLAYER)) _enemy.isKirbyClose = false;
+        if (other.CompareTag(KirbyConstants.TAG_PLAYER)) _enemy.isKirbyClose = false;
     }
 }

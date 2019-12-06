@@ -18,13 +18,13 @@ public class Enemy_brontoBurtActionController : MonoBehaviour
 
     void Update()
     {
-        if(!_enemy.isServer || _enemy.healthController.died) return;
-        if(!_FSMIsRunning) StartCoroutine(chooseRandomAction());
-        if(_isMoving)
+        if (!_enemy.isServer || _enemy.healthController.died) return;
+        if (!_FSMIsRunning) StartCoroutine(chooseRandomAction());
+        if (_isMoving)
         {
             _enemy.characterController.Move(movement * _flySpeed * Time.deltaTime);
-            if(_enemy.characterController.isGrounded) _isMoving = false;
-        } 
+            if (_enemy.characterController.isGrounded) _isMoving = false;
+        }
         lookAtPlayer();
     }
 

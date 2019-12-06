@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour
     public Transform figureOutClosestPlayer(Transform enemy)
     {
         listOfPlayers = GameObject.FindGameObjectsWithTag(KirbyConstants.TAG_PLAYER);
-        if(listOfPlayers.Length < 2) return listOfPlayers[0].transform;
-        return Vector3.Distance(listOfPlayers[0].transform.position,  enemy.position) < 
+        if (listOfPlayers.Length < 2) return listOfPlayers[0].transform;
+        return Vector3.Distance(listOfPlayers[0].transform.position, enemy.position) <
             Vector3.Distance(listOfPlayers[1].transform.position, enemy.position) ? listOfPlayers[0].transform : listOfPlayers[1].transform;
     }
 
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Error: One of the players disconnected.");
         yield return new WaitForSeconds(1);
-        
+
         PrefabsAndInstancesLibrary.instance.panelNetworkErrorMessage.SetActive(true);
         yield return new WaitForSeconds(SystemConstants.TIME_TO_SHOW_ERROR_PANEL);
         PrefabsAndInstancesLibrary.instance.panelNetworkErrorMessage.SetActive(false);
