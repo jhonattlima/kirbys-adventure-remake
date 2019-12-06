@@ -26,7 +26,7 @@ public class KirbyConstants
     public const int PLAYER_HEALTH_POINTS = 4;
     public const int PLAYER_NORMAL_DAMAGE = 1;
     public const float COOLDOWN_ACTION = 0.5f;
-    public const float COOLDOWN_INVULNERABLE = 3f;
+    public const float COOLDOWN_INVULNERABLE = 2f;
     public const float COOLDOWN_TO_RECOVER_FROM_DAMAGE = 3f;
     public const float PUSH_SPEED_WHEN_DAMAGED = 15f;
     public const float KIRBY_SUCK_SPEED = 5f;

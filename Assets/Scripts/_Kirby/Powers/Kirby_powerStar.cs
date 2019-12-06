@@ -20,7 +20,7 @@ public class Kirby_powerStar : MonoBehaviour
 
     public void setPushDirection(Vector3 direction)
     {
-        GetComponent<Rigidbody>().AddForce((direction + Vector3.up) * 5);
+        GetComponent<Rigidbody>().AddForce((direction + Vector3.up) * 400);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -28,7 +28,7 @@ public class Kirby_powerStar : MonoBehaviour
         if (other.gameObject.CompareTag(KirbyConstants.TAG_PLAYER) && isActivated)
         {
             Debug.Log("Star: Kirby got power: " + power);
-            other?.gameObject?.GetComponent<Kirby_healthController>()?.retrievePower(power);
+            other.gameObject.GetComponent<Kirby_healthController>().retrievePower(power);
             Destroy(gameObject);
         }
     }

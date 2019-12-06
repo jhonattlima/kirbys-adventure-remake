@@ -30,6 +30,7 @@ BUGS
 - Checar com o professor pq o jump nao funciona;
 - Checar com o professor como fazer o suck funcionar em todas as areas;
 - Checar com o professor porque o matchmaling online não está escutando as matches;
+- Checar com o professor porque o poder do waddledoo não está sincronizando o transformer;
 - Verificar pq o kirby nao consegue subir nas plataformas e entra em atrito
 
 DONE

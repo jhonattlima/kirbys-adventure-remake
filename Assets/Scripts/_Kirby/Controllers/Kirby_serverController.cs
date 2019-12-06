@@ -24,6 +24,62 @@ public class Kirby_serverController : NetworkBehaviour
         GameManager.instance.startMatch();
     }
 
+    public void changeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
+    {
+        if (!_kirby.isServer) CmdChangeBoolAnimationStatus(parameterName, newStatus, prefab);
+    }
+
+    [Command]
+    public void CmdChangeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
+    {
+        if (prefab.GetComponent<Kirby_actor>())
+        {
+            prefab.GetComponent<Kirby_actor>().animator.SetBool(parameterName, newStatus);
+        }
+        else
+        {
+            prefab.GetComponent<Enemy_actor>().animator.SetBool(parameterName, newStatus);
+        }
+    }
+
+    public void changeTriggerAnimation(string parameterName, GameObject prefab)
+    {
+        if (!_kirby.isServer) CmdChangeTriggerAnimation(parameterName, prefab);
+    }
+
+    [Command]
+    public void CmdChangeTriggerAnimation(string parameterName, GameObject prefab)
+    {
+        if (prefab.GetComponent<Kirby_actor>())
+        {
+            prefab.GetComponent<Kirby_actor>().animator.SetTrigger(parameterName);
+        }
+        else
+        {
+            prefab.GetComponent<Enemy_actor>().animator.SetTrigger(parameterName);
+        }
+    }
+
+    [Command]
+    public void CmdSpawnStarPowerPrefab(GameObject kirby)
+    {
+        Kirby_actor _kirby = kirby.GetComponent<Kirby_actor>();
+        Kirby_powerStar star = Instantiate(PrefabsAndInstancesLibrary.instance.starPower, _kirby.spotToDropStar.position, _kirby.spotToDropStar.rotation).GetComponent<Kirby_powerStar>();
+        NetworkServer.Spawn(star.gameObject);
+        star.power = _kirby.enemy_powerInMouth;
+        star.setPushDirection(-_kirby.spotToDropStar.transform.forward);
+    }
+
+    [Command]
+    public void CmdSpawnEnemyPrefab(GameObject enemy, GameObject spawnSpot)
+    {
+        spawnSpot.GetComponent<EnemySpawnerController>().isBecomingInstantiated = true;
+        GameObject enemyInstantiated = Instantiate(enemy, spawnSpot.transform.position, Quaternion.identity);
+        NetworkServer.Spawn(enemyInstantiated);
+        spawnSpot.GetComponent<EnemySpawnerController>().enemyAlreadyInstantiated = enemyInstantiated;
+        spawnSpot.GetComponent<EnemySpawnerController>().isBecomingInstantiated = false;
+    }
+
     [Command]
     public void CmdGameOverByDeath(int kirbyThatHasDiedNumber)
     {

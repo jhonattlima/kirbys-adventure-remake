@@ -18,7 +18,8 @@ public class Kirby_actor : NetworkBehaviour
     public GameObject airPrefab;
     public GameObject starPrefab;
     public GameObject starBulletPrefab;
-    public GameObject body;
+    public Transform spotToDropStar;
+    public List<SkinnedMeshRenderer> body;
     public Transform currentArea;
     public int enemy_powerInMouth = (int)Powers.None;
     public bool hasPower = false;

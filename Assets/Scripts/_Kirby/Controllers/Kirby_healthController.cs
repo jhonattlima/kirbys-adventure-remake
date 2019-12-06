@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Kirby_healthController : MonoBehaviour
+using UnityEngine.Networking;
+public class Kirby_healthController : NetworkBehaviour
 {
     private Kirby_actor _kirby;
     private int healthPoints = KirbyConstants.PLAYER_HEALTH_POINTS;
@@ -15,20 +15,23 @@ public class Kirby_healthController : MonoBehaviour
 
     public void retrievePower(int power)
     {
-        if (_kirby.enemy_powerInMouth == (int)Powers.None) return;
-        switch (power)
+        if (_kirby.enemy_powerInMouth != (int)Powers.None) return;
+        switch ((Powers)power)
         {
-            case (int)Powers.Fire:
+            case Powers.Fire:
                 _kirby.powerFire.enabled = true;
                 break;
-            case (int)Powers.Shock:
+            case Powers.Shock:
                 _kirby.powerShock.enabled = true;
                 break;
-            case (int)Powers.Beam:
+            case Powers.Beam:
                 _kirby.powerBeam.enabled = true;
                 break;
         }
+        Debug.Log("Entered on retrieve power");
         _kirby.enemy_powerInMouth = power;
+        _kirby.isFullOfAir = false;
+        _kirby.isFullOfEnemy = false;
         _kirby.hasPower = true;
     }
 
@@ -70,7 +73,8 @@ public class Kirby_healthController : MonoBehaviour
 
     IEnumerator sufferDamage()
     {
-        _kirby.animator.SetTrigger(KirbyConstants.ANIM_NAME_TAKE_DAMAGE);
+        if (_kirby.isServer) _kirby.animator.SetTrigger(KirbyConstants.ANIM_NAME_TAKE_DAMAGE);
+        else _kirby.kirbyServerController.CmdChangeTriggerAnimation(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, this.gameObject);
         _kirby.isParalyzed = true;
         _kirby.isInvulnerable = true;
         if (_kirby.hasPower)
@@ -110,19 +114,32 @@ public class Kirby_healthController : MonoBehaviour
 
     IEnumerator keepBlinking()
     {
-        SkinnedMeshRenderer meshRenderer = _kirby.body.GetComponent<SkinnedMeshRenderer>();
         while (_kirby.isInvulnerable)
         {
-            meshRenderer.enabled = !meshRenderer.enabled;
+            foreach (SkinnedMeshRenderer mesh in _kirby.body)
+            {
+                mesh.enabled = !mesh.enabled;
+            }
             yield return new WaitForSeconds(0.1f);
         }
-        meshRenderer.enabled = true;
+        foreach (SkinnedMeshRenderer mesh in _kirby.body)
+        {
+            mesh.enabled = true;
+        }
     }
 
     private void expelStar()
     {
-        Kirby_powerStar star = Instantiate(_kirby.starPrefab, transform.position + 0.1f * Vector3.up, transform.rotation).GetComponent<Kirby_powerStar>();
-        star.power = _kirby.enemy_powerInMouth;
-        star.setPushDirection(_kirby.isLookingRight ? _kirby.directionLeft : _kirby.directionRight);
+        if (_kirby.isServer)
+        {
+            Kirby_powerStar star = Instantiate(PrefabsAndInstancesLibrary.instance.starPower, _kirby.spotToDropStar.position, _kirby.spotToDropStar.rotation).GetComponent<Kirby_powerStar>();
+            NetworkServer.Spawn(star.gameObject);
+            star.power = _kirby.enemy_powerInMouth;
+            star.setPushDirection(-_kirby.spotToDropStar.transform.forward);
+        } 
+        else _kirby.kirbyServerController.CmdSpawnStarPowerPrefab(this.gameObject);
+        
+        // star.setPushDirection(_kirby.isLookingRight ? _kirby.directionLeft : _kirby.directionRight);
+        
     }
 }

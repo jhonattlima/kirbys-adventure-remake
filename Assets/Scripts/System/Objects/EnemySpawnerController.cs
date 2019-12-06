@@ -5,14 +5,20 @@ using UnityEngine.Networking;
 
 public class EnemySpawnerController : NetworkBehaviour
 {
-    public GameObject enemyInstantiated;
+    public GameObject enemyToBeInstantiated; 
+    [SyncVar]
+    public GameObject enemyAlreadyInstantiated = null;
+    [SyncVar]
+    public bool isBecomingInstantiated = false;
 
     private void OnBecameVisible()
     {
-        if (!enemyInstantiated)
+        if (!enemyAlreadyInstantiated)
         {
-            enemyInstantiated = Instantiate(PrefabsAndInstancesLibrary.instance.enemyWaddleDoo, transform.position, Quaternion.identity);
-            NetworkServer.Spawn(enemyInstantiated);
+            Debug.Log("EnemySpawnerController: No enemy instantiated. Will do now...");
+            if(isBecomingInstantiated) return;
+            isBecomingInstantiated = true;
+            GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(enemyToBeInstantiated, this.gameObject);
         }
     }
 }
