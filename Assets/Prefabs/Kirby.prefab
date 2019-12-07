@@ -307,8 +307,8 @@ MonoBehaviour:
   - {fileID: 899774280203400926}
   - {fileID: 899774280203400912}
   currentArea: {fileID: 0}
-  enemy_powerInMouth: 2
-  hasPower: 1
+  enemy_powerInMouth: 1
+  hasPower: 0
   isLookingRight: 1
   isFullOfEnemy: 0
   isFullOfAir: 0
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899774280200289208}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b031cf6d5cdd9b74584137f4f056e09d, type: 3}
   m_Name: 

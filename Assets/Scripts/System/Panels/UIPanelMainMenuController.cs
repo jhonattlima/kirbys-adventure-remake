@@ -50,7 +50,7 @@ public class UIPanelMainMenuController : MonoBehaviour
                 else
                 {
                     if (lanMode) LanController.instance.createMatch(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text);
-                    else Debug.Log("Created remote match");
+                    else RemoteController.instance.createMatch(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text);
                     GameManager.instance.waitForMatch();
                 }
                 break;

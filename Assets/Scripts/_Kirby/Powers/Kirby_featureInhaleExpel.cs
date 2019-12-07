@@ -32,6 +32,7 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
                 && _kirby.enemy_powerInMouth == (int)Powers.None
                 && _kirby.characterController.isGrounded)
             {
+                Debug.Log("Tried to suck");
                 suckOn();
             }
             else

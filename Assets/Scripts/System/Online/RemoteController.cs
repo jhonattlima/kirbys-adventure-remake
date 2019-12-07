@@ -10,30 +10,32 @@ internal class RemoteController : MonoBehaviour
     MatchInfoSnapshot[] storedMatches;
 
     public static RemoteController instance;
+
+    private Coroutine recycleRoutine;
+
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-
         storedMatches = new MatchInfoSnapshot[SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING];
     }
 
     public void listenMatches()
     {
-        StartCoroutine(recycleMatches());
+        recycleRoutine = StartCoroutine(recycleMatches());
         Debug.Log("Remote Controller: Started to listen matches.");
     }
 
     public void createMatch(string matchName)
     {
         NetworkController.Match.CreateMatch(name, 2, true, "", "", "", 0, 0, NetworkController.singleton.OnMatchCreate);
-        StopCoroutine(recycleMatches());
+        StopCoroutine(recycleRoutine);
         Debug.Log("Remote Controller: Created a match with name " + matchName);
     }
 
     public void enterOnMatch(ButtonMatchController button)
     {
-        StopCoroutine(this.recycleMatches());
+        StopCoroutine(recycleRoutine);
         NetworkController.Match.JoinMatch(button.remoteMatch.networkId, "", "",
             "", 0, 0, NetworkController.singleton.OnMatchJoined);
         Debug.Log("Remote Controller: Entered on a match with name " + button.remoteMatch.name);
@@ -41,7 +43,7 @@ internal class RemoteController : MonoBehaviour
 
     public void cancelRemoteDiscovery()
     {
-        StopCoroutine(this.recycleMatches());
+        StopCoroutine(recycleRoutine);
         Debug.Log("Remote Controller: Cancelled Remote mode.");
     }
 

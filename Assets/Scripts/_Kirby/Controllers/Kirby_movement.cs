@@ -24,6 +24,8 @@ public class Kirby_movement : NetworkBehaviour
     public bool isWalking;
     public bool isJumping;
     public bool isFalling;
+    public bool isGrounded;
+    Vector3 movement;
 
     void Start()
     {
@@ -37,6 +39,8 @@ public class Kirby_movement : NetworkBehaviour
     void Update()
     {
         if (!isLocalPlayer) return;
+
+        movement = Vector3.zero;
         if (!_kirby.isParalyzed && !_kirby.isSucking)
         {
             fly();
@@ -45,6 +49,9 @@ public class Kirby_movement : NetworkBehaviour
         }
         transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _turnSpeed);
         applyGravity();
+        _kirby.characterController.Move(movement);
+        isGrounded = _kirby.characterController.isGrounded;
+        UpdateFlags();
     }
 
     // If kirby is not sucking
@@ -52,7 +59,7 @@ public class Kirby_movement : NetworkBehaviour
     private void move()
     {
         _inputHorizontal = Input.GetAxis("Horizontal");
-        Vector3 movement = _kirby.directionRight * _inputHorizontal * moveSpeed * Time.deltaTime;
+        movement += _kirby.directionRight * _inputHorizontal * moveSpeed * Time.deltaTime;
         turn(_inputHorizontal);
         if (_kirby.characterController.isGrounded && movement.x != 0)
         {
@@ -62,7 +69,7 @@ public class Kirby_movement : NetworkBehaviour
         {
             isWalking = false;
         }
-        _kirby.characterController.Move(movement);
+        //_kirby.characterController.Move(movement);
     }
 
     // If kirby is not fullOfEnemy
@@ -99,6 +106,7 @@ public class Kirby_movement : NetworkBehaviour
                 isJumping = true;
             }
         }
+
     }
 
     private void turn(float movement)
@@ -117,19 +125,18 @@ public class Kirby_movement : NetworkBehaviour
 
     private void applyGravity()
     {
+        _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+        movement.y += _verticalSpeed * Time.deltaTime;
+    }
+
+    private void UpdateFlags()
+    {
         if (_kirby.characterController.isGrounded)
         {
             _verticalSpeed = 0;
-            return;
         }
-        if (!_kirby.characterController.isGrounded)
-        {
-            _verticalSpeed += Physics.gravity.y * Time.deltaTime;
-        }
-        Vector3 movement = Vector3.zero;
-        movement.y = _verticalSpeed * Time.deltaTime;
 
-        if (_kirby.isFullOfAir)
+        if (_kirby.isFullOfAir && !_kirby.characterController.isGrounded)
         {
             isFlying = true;
             isJumping = false;
@@ -149,8 +156,6 @@ public class Kirby_movement : NetworkBehaviour
                 isFalling = false;
             }
         }
-
-        _kirby.characterController.Move(movement);
 
         if (_kirby.characterController.isGrounded)
         {

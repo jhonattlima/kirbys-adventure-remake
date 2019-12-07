@@ -32,6 +32,18 @@ public class Kirby_serverController : NetworkBehaviour
     [Command]
     public void CmdChangeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
     {
+        execChangeBoolAnimationStatus(parameterName, newStatus, prefab);
+        RpcChangeBoolAnimationStatus(parameterName, newStatus, prefab);
+    }
+
+    [ClientRpc]
+    public void RpcChangeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
+    {
+        execChangeBoolAnimationStatus(parameterName, newStatus, prefab);
+    }
+
+    private void execChangeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
+    {
         if (prefab.GetComponent<Kirby_actor>())
         {
             prefab.GetComponent<Kirby_actor>().animator.SetBool(parameterName, newStatus);
@@ -44,11 +56,31 @@ public class Kirby_serverController : NetworkBehaviour
 
     public void changeTriggerAnimation(string parameterName, GameObject prefab)
     {
-        if (!_kirby.isServer) CmdChangeTriggerAnimation(parameterName, prefab);
+        if(isServer)
+        {
+            execChangeTriggerAnimation(parameterName, prefab);
+            RpcChangeTriggerAnimation(parameterName, prefab);
+        }
+        else
+        {
+            CmdChangeTriggerAnimation(parameterName, prefab);
+        }
     }
 
     [Command]
     public void CmdChangeTriggerAnimation(string parameterName, GameObject prefab)
+    {
+        RpcChangeTriggerAnimation(parameterName, prefab);
+        execChangeTriggerAnimation(parameterName, prefab);
+    }
+
+    [ClientRpc]
+    public void RpcChangeTriggerAnimation(string parameterName, GameObject prefab)
+    {
+        execChangeTriggerAnimation(parameterName, prefab);
+    }
+
+    private void execChangeTriggerAnimation(string parameterName, GameObject prefab)
     {
         if (prefab.GetComponent<Kirby_actor>())
         {

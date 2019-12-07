@@ -27,13 +27,13 @@ TO DO DESIGN
 - BUG: a ultima plataforma tem um tile a menos
 
 BUGS
-- Checar com o professor pq o jump nao funciona;
 - Checar com o professor como fazer o suck funcionar em todas as areas;
-- Checar com o professor porque o matchmaling online não está escutando as matches;
-- Checar com o professor porque o poder do waddledoo não está sincronizando o transformer;
-- Verificar pq o kirby nao consegue subir nas plataformas e entra em atrito
 
 DONE
+- Verificar pq o kirby nao consegue subir nas plataformas e entra em atrito - ??? - Done.
+- Checar com o professor porque o poder do waddledoo não está sincronizando o transformer; - transformar tudo em boolean - Done.
+- Checar com o professor porque o matchmaking online não está escutando as matches; - Done
+- Checar com o professor pq o jump nao funciona; Done
 - Colocar teto invisível - Done
 - Corrigir bola de ar - Done
 - Corrigir ele estar empurrando do lado esquerdo - Done 

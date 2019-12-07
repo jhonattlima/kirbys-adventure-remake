@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90172fcbee1db814dabec5c9af182640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToBeInstantiated: {fileID: 2333680476837141804, guid: b1cbf0315c561a54e8ebaac144d3d6a9,
+  enemyToBeInstantiated: {fileID: 2382858130463533436, guid: 3f39e0d0158d03142b55b65a31fa9c72,
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0

@@ -49,12 +49,16 @@ public class Enemy_waddleDooActionController : MonoBehaviour
                 {
                     _isMoving = false;
                     lookAtPlayer();
-                    _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
+                    //_enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
+                    _enemy.animator.SetBool("IsAttacking", true);
                 }
                 else setMove();
                 break;
         }
-        yield return new WaitForSeconds(3);
+        //yield return null;
+        yield return new WaitForSeconds(0.5f);
+        _enemy.animator.SetBool("IsAttacking", false);
+        yield return new WaitForSeconds(2.5f);
         _FSMIsRunning = false;
     }
 

@@ -19,7 +19,8 @@ public class Enemy_healthController : MonoBehaviour
         if (healthPoints <= 0 && !died)
         {
             died = true;
-            _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
+            GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().changeTriggerAnimation(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, this.gameObject);
+            //_enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
         }
     }
 
@@ -31,7 +32,9 @@ public class Enemy_healthController : MonoBehaviour
             if (died) return;
             died = true;
             hit.gameObject.GetComponent<Kirby_healthController>().takeDamage(_enemy.touchDamage);
-            _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
+            GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().changeTriggerAnimation(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, this.gameObject);
+            // if(_enemy.isServer) _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
+            // else GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().CmdChangeTriggerAnimation(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, this.gameObject);
         }
     }
 

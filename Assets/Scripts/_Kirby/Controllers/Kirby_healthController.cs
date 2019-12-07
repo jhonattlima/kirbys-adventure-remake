@@ -73,8 +73,7 @@ public class Kirby_healthController : NetworkBehaviour
 
     IEnumerator sufferDamage()
     {
-        if (_kirby.isServer) _kirby.animator.SetTrigger(KirbyConstants.ANIM_NAME_TAKE_DAMAGE);
-        else _kirby.kirbyServerController.CmdChangeTriggerAnimation(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, this.gameObject);
+        _kirby.kirbyServerController.CmdChangeTriggerAnimation(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, this.gameObject);
         _kirby.isParalyzed = true;
         _kirby.isInvulnerable = true;
         if (_kirby.hasPower)
@@ -138,8 +137,5 @@ public class Kirby_healthController : NetworkBehaviour
             star.setPushDirection(-_kirby.spotToDropStar.transform.forward);
         } 
         else _kirby.kirbyServerController.CmdSpawnStarPowerPrefab(this.gameObject);
-        
-        // star.setPushDirection(_kirby.isLookingRight ? _kirby.directionLeft : _kirby.directionRight);
-        
     }
 }
