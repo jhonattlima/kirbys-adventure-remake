@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Kirby_actor localPlayer;
+    public Kirby_serverController localPlayerServerController;
     public GameObject[] listOfPlayers;
     public bool wonTheGame;
     public bool gameOverDisconnection = false;

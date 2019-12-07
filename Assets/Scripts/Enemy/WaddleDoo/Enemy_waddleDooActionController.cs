@@ -26,9 +26,20 @@ public class Enemy_waddleDooActionController : MonoBehaviour
         if (!_FSMIsRunning) StartCoroutine(chooseRandomAction());
         if (_isMoving)
         {
-            _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
+            if(!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_WALK))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, true, this.gameObject);
+            }
         }
-        else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
+        else 
+        {
+            if(_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_WALK))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, false, this.gameObject);
+            }
+        }
         applyGravity();
     }
 
@@ -49,6 +60,7 @@ public class Enemy_waddleDooActionController : MonoBehaviour
                     _isMoving = false;
                     lookAtPlayer();
                     _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_ATTACK, true);
+                    GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_ATTACK, true, this.gameObject);
                 }
                 else setMove();
                 break;

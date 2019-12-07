@@ -24,9 +24,20 @@ public class Enemy_waddleDeeActionController : MonoBehaviour
         if (_isMoving)
         {
             _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
-            _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
+            if(!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_WALK))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, true, this.gameObject);
+            }
         }
-        else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
+        else 
+        {
+            if(_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_WALK))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, false, this.gameObject);
+            }
+        }
         applyGravity();
     }
 

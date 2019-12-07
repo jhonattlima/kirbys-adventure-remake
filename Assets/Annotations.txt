@@ -7,7 +7,8 @@ TO DO PROGRAMMING
 - SFX controller logic;
 - Create enemy spawn logic;
 - PanelKirby status logic;
-- Create logic for using powers qith animation;
+- Create logic for using powers with animation;
+- Create air ball logic sync;
 
 TO DO DESIGN
 - Colocar o painel de vida
@@ -29,10 +30,12 @@ TO DO DESIGN
 
 BUGS
 - Checar com o professor como fazer o suck funcionar em todas as areas;
-- Ver questão do lag no dano recebido;
-- Ver pq WaddleDoo não está morrendo
+- ver bug de animação do poppybrosJr
+- Fazer animação do kirby sem networkanimator;
 
 DONE
+- Ver questão do lag no dano recebido;
+- Ver pq WaddleDoo não está morrendo;
 - Verificar pq o kirby nao consegue subir nas plataformas e entra em atrito - ??? - Done.
 - Checar com o professor porque o poder do waddledoo não está sincronizando o transformer; - transformar tudo em boolean - Done.
 - Checar com o professor porque o matchmaking online não está escutando as matches; - Done

@@ -79,6 +79,7 @@ public class Kirby_actor : NetworkBehaviour
         CameraController.instance.localKirby = this;
         playerNumber = 1;
         GameManager.instance.localPlayer = this;
+        GameManager.instance.localPlayerServerController = kirbyServerController;
         if (isLocalPlayer && !isServer) // If it is player 2
         {
             playerNumber = 2;

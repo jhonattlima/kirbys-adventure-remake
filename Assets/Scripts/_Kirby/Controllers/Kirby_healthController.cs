@@ -13,6 +13,72 @@ public class Kirby_healthController : NetworkBehaviour
         _kirby = GetComponent<Kirby_actor>();
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (!_kirby.isLocalPlayer) return;
+        if (hit.gameObject.CompareTag(KirbyConstants.TAG_ENEMY)
+            && !_kirby.isInvulnerable)
+        {
+            Debug.Log("KirbyHealthController: Kirby hit someone.");
+            takeDamage(hit.gameObject.GetComponent<Enemy_actor>().touchDamage);
+            hit.gameObject.GetComponent<Enemy_healthController>().takeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
+        }
+    }
+
+    public void takeDamage(int amountOfDamage)
+    {
+        if (isTakingDamage || !_kirby.isLocalPlayer) return;
+        isTakingDamage = true;
+        healthPoints -= amountOfDamage;
+        Debug.Log("Ouch, took damage! Life points now: " + healthPoints);
+        //UIPanelKirbyStatusController.instance.setLife(healthPoints);
+        if (healthPoints <= 0) die();
+        else StartCoroutine(sufferDamage());
+    }
+
+    void die()
+    {
+        // runs death animation;
+        // Destroys object;
+        // Return to main lobby;
+        _kirby.kirbyServerController.CmdGameOverByDeath(_kirby.playerNumber);
+    }
+
+    IEnumerator sufferDamage()
+    {
+        if(_kirby.isServer)
+        {
+           if(!_kirby.animator.GetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE)) _kirby.animator.SetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true);
+        } 
+        else
+        {
+            if(!_kirby.animator.GetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE))
+            {
+                _kirby.kirbyServerController.CmdChangeBoolAnimationStatus(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true, this.gameObject);
+                if(!_kirby.animator.GetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE)) _kirby.animator.SetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true);
+            }
+        }
+        Debug.Log("kirby player takeDamageAnimation.");
+
+        _kirby.isParalyzed = true;
+        _kirby.isInvulnerable = true;
+        if (_kirby.hasPower)
+        {
+            expelStar();
+            _kirby.powerBeam.enabled = false;
+            _kirby.powerFire.enabled = false;
+            _kirby.powerShock.enabled = false;
+            _kirby.hasPower = false;
+            _kirby.enemy_powerInMouth = (int)Powers.None;
+        }
+        yield return new WaitForSeconds(KirbyConstants.COOLDOWN_TO_RECOVER_FROM_DAMAGE);
+        _kirby.isParalyzed = false;
+
+        isTakingDamage = false;
+        yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
+        _kirby.isInvulnerable = false;
+    }
+
     public void retrievePower(int power)
     {
         if (_kirby.enemy_powerInMouth != (int)Powers.None) return;
@@ -35,81 +101,28 @@ public class Kirby_healthController : NetworkBehaviour
         _kirby.hasPower = true;
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    private void expelStar()
     {
-        if (!_kirby.isLocalPlayer) return;
-        if (hit.gameObject.CompareTag(KirbyConstants.TAG_ENEMY)
-            && !_kirby.isInvulnerable)
+        if (_kirby.isServer)
         {
-            Debug.Log("KirbyHealthController: Kirby hit someone.");
-            takeDamage(hit.gameObject.GetComponent<Enemy_actor>().touchDamage);
-            hit.gameObject.GetComponent<Enemy_healthController>().takeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
+            Kirby_powerStar star = Instantiate(PrefabsAndInstancesLibrary.instance.starPower, _kirby.spotToDropStar.position, _kirby.spotToDropStar.rotation).GetComponent<Kirby_powerStar>();
+            NetworkServer.Spawn(star.gameObject);
+            star.power = _kirby.enemy_powerInMouth;
+            star.setPushDirection(-_kirby.spotToDropStar.transform.forward);
         }
-    }
-
-    public void takeDamage(int amountOfDamage)
-    {
-        if (isTakingDamage) return;
-        isTakingDamage = true;
-        healthPoints -= amountOfDamage;
-        Debug.Log("Ouch, took damage! Life points now: " + healthPoints);
-        //UIPanelKirbyStatusController.instance.setLife(healthPoints);
-        if (healthPoints <= 0)
-        {
-            die();
-        }
-        else
-        {
-            StartCoroutine(sufferDamage());
-        }
-    }
-
-    void die()
-    {
-        // runs death animation;
-        // Destroys object;
-        // Return to main lobby;
-        _kirby.kirbyServerController.CmdGameOverByDeath(_kirby.playerNumber);
-    }
-
-    IEnumerator sufferDamage()
-    {
-        _kirby.kirbyServerController.CmdChangeTriggerAnimation(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, this.gameObject);
-        _kirby.isParalyzed = true;
-        _kirby.isInvulnerable = true;
-        if (_kirby.hasPower)
-        {
-            expelStar();
-            _kirby.powerBeam.enabled = false;
-            _kirby.powerFire.enabled = false;
-            _kirby.powerShock.enabled = false;
-            _kirby.hasPower = false;
-            _kirby.enemy_powerInMouth = (int)Powers.None;
-        }
-
-        // Vector3 movement;
-        // if (_kirby.isLookingRight)
-        // {
-        //     movement = (_kirby.directionLeft * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
-        // }
-        // else
-        // {
-        //     movement = (_kirby.directionRight * 3) * KirbyConstants.PUSH_SPEED_WHEN_DAMAGED * Time.deltaTime;
-        // }
-        // _kirby.characterController.Move(movement);
-
-        yield return new WaitForSeconds(KirbyConstants.COOLDOWN_TO_RECOVER_FROM_DAMAGE);
-        _kirby.isParalyzed = false;
-
-        isTakingDamage = false;
-        yield return new WaitForSeconds(KirbyConstants.COOLDOWN_INVULNERABLE);
-        _kirby.isInvulnerable = false;
+        else _kirby.kirbyServerController.CmdSpawnStarPowerPrefab(this.gameObject);
     }
 
     // Method called by animation
     public void blink()
     {
         StartCoroutine(keepBlinking());
+    }
+
+    // Method called by animation
+    public void finishGetDamagedAnimation()
+    {
+        _kirby.animator.SetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, false);
     }
 
     IEnumerator keepBlinking()
@@ -126,17 +139,5 @@ public class Kirby_healthController : NetworkBehaviour
         {
             mesh.enabled = true;
         }
-    }
-
-    private void expelStar()
-    {
-        if (_kirby.isServer)
-        {
-            Kirby_powerStar star = Instantiate(PrefabsAndInstancesLibrary.instance.starPower, _kirby.spotToDropStar.position, _kirby.spotToDropStar.rotation).GetComponent<Kirby_powerStar>();
-            NetworkServer.Spawn(star.gameObject);
-            star.power = _kirby.enemy_powerInMouth;
-            star.setPushDirection(-_kirby.spotToDropStar.transform.forward);
-        } 
-        else _kirby.kirbyServerController.CmdSpawnStarPowerPrefab(this.gameObject);
     }
 }

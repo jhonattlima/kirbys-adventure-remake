@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Enemy_healthController : MonoBehaviour
 {
@@ -15,27 +16,37 @@ public class Enemy_healthController : MonoBehaviour
 
     public void takeDamage(int damage)
     {
+        if (died) return;
         healthPoints -= damage;
-        if (healthPoints <= 0 && !died)
+        if (healthPoints <= 0)
         {
             died = true;
-            GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().changeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, true, this.gameObject);
-            //_enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
+            Debug.Log("Enemy hit.");
+
+            if (_enemy.isServer)
+            {
+                if (!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE)) _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, true);
+            }
+            else
+            {
+                if (!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE))
+                {
+                    _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, true);
+                }
+                GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().changeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, true, this.gameObject);
+            }
         }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.GetComponent<Kirby_actor>())
+        if (hit.gameObject.CompareTag(KirbyConstants.TAG_PLAYER))
         {
-            if (!hit.gameObject.GetComponent<Kirby_actor>().isLocalPlayer) return;
-            if (died) return;
-            died = true;
+            if (died || !hit.gameObject.GetComponent<Kirby_actor>().isLocalPlayer) return;
+
             Debug.Log("EnemyHealthController: Enemy hit someone.");
+            takeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
             hit.gameObject.GetComponent<Kirby_healthController>().takeDamage(_enemy.touchDamage);
-            GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().changeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, true, this.gameObject);
-            // if(_enemy.isServer) _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
-            // else GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().CmdChangeTriggerAnimation(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, this.gameObject);
         }
     }
 

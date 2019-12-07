@@ -29,8 +29,22 @@ public class Enemy_sparkyActionController : MonoBehaviour
         if (!_FSMIsRunning) StartCoroutine(chooseRandomAction());
         move();
         applyGravity();
-        if (_enemy.characterController.isGrounded) _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, false);
-        else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, true);
+        if (!_enemy.characterController.isGrounded)
+        {
+            if(!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_JUMP))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, true);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_JUMP, true, this.gameObject);
+            }
+        }
+        else
+        {
+            if(_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_JUMP))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, false);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_JUMP, false, this.gameObject);
+            }
+        }
     }
 
     // Jump in direction of the closest kirby
@@ -80,8 +94,12 @@ public class Enemy_sparkyActionController : MonoBehaviour
             case ActionsSparky.shock:
                 if (_enemy.isKirbyClose)
                 {
-                    transform.LookAt(Camera.main.transform);
-                    _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_ATTACK, true);
+                    if(!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_ATTACK))
+                    {
+                        transform.LookAt(Camera.main.transform);
+                        _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_ATTACK, true);
+                        GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_ATTACK, true, this.gameObject);
+                    }
                 }
                 else jump();
                 break;

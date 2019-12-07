@@ -26,8 +26,35 @@ public class Enemy_PoppyBrosJrController : MonoBehaviour
         if (!_enemy.isServer || _enemy.healthController.died) return;
         if (!_FSMIsRunning) StartCoroutine(chooseRandomAction());
         _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
-        if (_enemy.characterController.isGrounded) _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
-        else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
+
+        if (_enemy.characterController.isGrounded)
+        {
+            if(!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_WALK))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, true, this.gameObject);
+            }
+
+            if(!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_JUMP))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, true);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_JUMP, true, this.gameObject);
+            }
+        }
+        else
+        {
+            if(_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_WALK))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, false, this.gameObject);
+            }
+
+            if(_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_JUMP))
+            {
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, false);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_JUMP, false, this.gameObject);
+            }
+        }
         applyGravity();
     }
 
@@ -43,7 +70,6 @@ public class Enemy_PoppyBrosJrController : MonoBehaviour
         {
             lookAtPlayer();
             _verticalSpeed = _jumpSpeed;
-            _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, true);
         }
     }
 

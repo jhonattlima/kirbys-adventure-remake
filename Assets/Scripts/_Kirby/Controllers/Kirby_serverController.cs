@@ -27,57 +27,41 @@ public class Kirby_serverController : NetworkBehaviour
     public void changeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
     {
         if (!_kirby.isServer) CmdChangeBoolAnimationStatus(parameterName, newStatus, prefab);
+        else RpcChangeBoolAnimationStatus(parameterName, newStatus, prefab);
     }
 
     [Command]
     public void CmdChangeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
     {
-        if (prefab.GetComponent<Kirby_actor>())
+        if (prefab.CompareTag(KirbyConstants.TAG_PLAYER))
         {
-            prefab.GetComponent<Kirby_actor>().animator.SetBool(parameterName, newStatus);
+            if (prefab.GetComponent<Kirby_actor>().animator.GetBool(parameterName) != newStatus) prefab.GetComponent<Kirby_actor>().animator.SetBool(parameterName, newStatus);
         }
         else
         {
-            prefab.GetComponent<Enemy_actor>().animator.SetBool(parameterName, newStatus);
+            if (prefab.GetComponent<Enemy_actor>().animator.GetBool(parameterName) != newStatus) prefab.GetComponent<Enemy_actor>().animator.SetBool(parameterName, newStatus);
         }
+        RpcChangeBoolAnimationStatus(parameterName, newStatus, prefab);
     }
 
-    public void changeTriggerAnimation(string parameterName, GameObject prefab)
+    [ClientRpc]
+    public void RpcChangeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
     {
-        if(isServer)
+        if (prefab.CompareTag(KirbyConstants.TAG_PLAYER))
         {
-            execChangeTriggerAnimation(parameterName, prefab);
-            RpcChangeTriggerAnimation(parameterName, prefab);
+            if (prefab.GetComponent<Kirby_actor>().animator.GetBool(parameterName) != newStatus) prefab.GetComponent<Kirby_actor>().animator.SetBool(parameterName, newStatus);
         }
         else
         {
-            CmdChangeTriggerAnimation(parameterName, prefab);
+            if (prefab.GetComponent<Enemy_actor>().animator.GetBool(parameterName) != newStatus) prefab.GetComponent<Enemy_actor>().animator.SetBool(parameterName, newStatus);
         }
     }
 
     [Command]
-    public void CmdChangeTriggerAnimation(string parameterName, GameObject prefab)
+    public void CmdGetDamaged(int amountOfDamage, GameObject prefab)
     {
-        RpcChangeTriggerAnimation(parameterName, prefab);
-        execChangeTriggerAnimation(parameterName, prefab);
-    }
-
-    [ClientRpc]
-    public void RpcChangeTriggerAnimation(string parameterName, GameObject prefab)
-    {
-        execChangeTriggerAnimation(parameterName, prefab);
-    }
-
-    private void execChangeTriggerAnimation(string parameterName, GameObject prefab)
-    {
-        if (prefab.GetComponent<Kirby_actor>())
-        {
-            prefab.GetComponent<Kirby_actor>().animator.SetTrigger(parameterName);
-        }
-        else
-        {
-            prefab.GetComponent<Enemy_actor>().animator.SetTrigger(parameterName);
-        }
+        if (prefab.GetComponent<Kirby_actor>()) prefab.GetComponent<Kirby_healthController>().takeDamage(amountOfDamage);
+        else prefab.GetComponent<Enemy_healthController>().takeDamage(amountOfDamage);
     }
 
     [Command]
@@ -109,7 +93,6 @@ public class Kirby_serverController : NetworkBehaviour
     [ClientRpc]
     public void RpcGameOverByDeath(int kirbyThatHasDiedNumber)
     {
-        Debug.Log("Entered on RPC");
         if (kirbyThatHasDiedNumber.Equals(GameManager.instance.localPlayer.playerNumber))
         {
             Debug.Log("Kirby Server Controller: This LocalKirby is the one that lost.");

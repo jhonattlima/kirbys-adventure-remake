@@ -311,10 +311,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5877970354012000429}
-  - component: {fileID: 5877970354021826373}
   - component: {fileID: 4308234900049643821}
   - component: {fileID: 2682012726886566170}
-  - component: {fileID: 1960870760642829742}
+  - component: {fileID: 5877970354021826373}
   - component: {fileID: 138813148266963263}
   - component: {fileID: 2293675007098756464}
   - component: {fileID: 7431748566021860271}
@@ -345,25 +344,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!95 &5877970354021826373
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5877970354012294285}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
-  m_Controller: {fileID: 9100000, guid: 18a07a2bf0a594291a78a3849b20a1fe, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4308234900049643821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,26 +399,25 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &1960870760642829742
-MonoBehaviour:
+--- !u!95 &5877970354021826373
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5877970354012294285}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 5877970354021826373}
-  m_ParameterSendBits: 0
-  param0: 
-  param1: 
-  param2: 
-  param3: 
-  param4: 
-  param5: 
+  m_Avatar: {fileID: 9000000, guid: 3d386ca80d8ee41a9bd16b3ad7fa5e30, type: 3}
+  m_Controller: {fileID: 9100000, guid: 18a07a2bf0a594291a78a3849b20a1fe, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!143 &138813148266963263
 CharacterController:
   m_ObjectHideFlags: 0
