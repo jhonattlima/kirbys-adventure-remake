@@ -3,10 +3,11 @@ SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
 - Finish expel star logic;
-- Programar controller de music;
-- Programar controller de SFX;
+- Music controller logic;
+- SFX controller logic;
 - Create enemy spawn logic;
-- Programar controller de painel de vida
+- PanelKirby status logic;
+- Create logic for using powers qith animation;
 
 TO DO DESIGN
 - Colocar o painel de vida
@@ -28,6 +29,8 @@ TO DO DESIGN
 
 BUGS
 - Checar com o professor como fazer o suck funcionar em todas as areas;
+- Ver questão do lag no dano recebido;
+- Ver pq WaddleDoo não está morrendo
 
 DONE
 - Verificar pq o kirby nao consegue subir nas plataformas e entra em atrito - ??? - Done.

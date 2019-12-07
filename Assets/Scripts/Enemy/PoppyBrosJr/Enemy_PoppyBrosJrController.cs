@@ -43,8 +43,14 @@ public class Enemy_PoppyBrosJrController : MonoBehaviour
         {
             lookAtPlayer();
             _verticalSpeed = _jumpSpeed;
-            _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_JUMP);
+            _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, true);
         }
+    }
+
+    //Method called by Animator
+    public void finishJump()
+    {
+        _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, false);
     }
 
     private void lookAtPlayer()

@@ -39,7 +39,7 @@ public class Enemy_sparkyActionController : MonoBehaviour
         if (_enemy.characterController.isGrounded)
         {
             _verticalSpeed = _jumpSpeed;
-            _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_JUMP);
+            _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, true);
         }
     }
 
@@ -81,7 +81,7 @@ public class Enemy_sparkyActionController : MonoBehaviour
                 if (_enemy.isKirbyClose)
                 {
                     transform.LookAt(Camera.main.transform);
-                    _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
+                    _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_ATTACK, true);
                 }
                 else jump();
                 break;

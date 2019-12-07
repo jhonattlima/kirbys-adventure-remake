@@ -28,7 +28,7 @@ internal class RemoteController : MonoBehaviour
 
     public void createMatch(string matchName)
     {
-        NetworkController.Match.CreateMatch(name, 2, true, "", "", "", 0, 0, NetworkController.singleton.OnMatchCreate);
+        NetworkController.Match.CreateMatch(matchName, 2, true, "", "", "", 0, 0, NetworkController.singleton.OnMatchCreate);
         StopCoroutine(recycleRoutine);
         Debug.Log("Remote Controller: Created a match with name " + matchName);
     }
@@ -59,7 +59,6 @@ internal class RemoteController : MonoBehaviour
             {
                 foreach (var match in updatedMatches)
                 {
-                    Debug.Log("Matches found : " + match.name);
                     if (counter < SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING)
                     {
                         storedMatches[counter] = match;

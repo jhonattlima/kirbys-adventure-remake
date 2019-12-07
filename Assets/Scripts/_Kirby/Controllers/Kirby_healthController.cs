@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class Kirby_healthController : NetworkBehaviour
 {
-    private Kirby_actor _kirby;
-    private int healthPoints = KirbyConstants.PLAYER_HEALTH_POINTS;
+    Kirby_actor _kirby;
+    int healthPoints = KirbyConstants.PLAYER_HEALTH_POINTS;
     bool isTakingDamage = false;
 
-    private void Start()
+    void Start()
     {
         _kirby = GetComponent<Kirby_actor>();
     }
@@ -35,12 +35,13 @@ public class Kirby_healthController : NetworkBehaviour
         _kirby.hasPower = true;
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (!_kirby.isLocalPlayer) return;
         if (hit.gameObject.CompareTag(KirbyConstants.TAG_ENEMY)
             && !_kirby.isInvulnerable)
         {
+            Debug.Log("KirbyHealthController: Kirby hit someone.");
             takeDamage(hit.gameObject.GetComponent<Enemy_actor>().touchDamage);
             hit.gameObject.GetComponent<Enemy_healthController>().takeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
         }
@@ -63,7 +64,7 @@ public class Kirby_healthController : NetworkBehaviour
         }
     }
 
-    private void die()
+    void die()
     {
         // runs death animation;
         // Destroys object;

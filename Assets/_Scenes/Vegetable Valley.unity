@@ -443,7 +443,7 @@ Transform:
   - {fileID: 1107826257}
   - {fileID: 798995450}
   m_Father: {fileID: 1887391166}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &53379389 stripped
 GameObject:
@@ -469,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d8d05441f72394d823c39536b2766a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lanMode: 0
 --- !u!1 &78448928
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +834,7 @@ Transform:
   m_Children:
   - {fileID: 299858291}
   m_Father: {fileID: 1887391166}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299858290
 GameObject:
@@ -913,7 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90172fcbee1db814dabec5c9af182640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToBeInstantiated: {fileID: 2382858130463533436, guid: 3f39e0d0158d03142b55b65a31fa9c72,
+  enemyToBeInstantiated: {fileID: 1790482912967930562, guid: 733586498a16f6342a9f050c0cbba6e6,
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
@@ -1162,7 +1163,7 @@ Transform:
   - {fileID: 678012072}
   - {fileID: 715601754}
   m_Father: {fileID: 1887391166}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &419859734
 GameObject:
@@ -5021,10 +5022,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 394541561}
-  - {fileID: 2027238690}
   - {fileID: 228415877}
   - {fileID: 34984823}
+  - {fileID: 2027238690}
+  - {fileID: 394541561}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5362,7 +5363,7 @@ Transform:
   - {fileID: 20026141}
   - {fileID: 1959834265}
   m_Father: {fileID: 1887391166}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2091466763
 GameObject:

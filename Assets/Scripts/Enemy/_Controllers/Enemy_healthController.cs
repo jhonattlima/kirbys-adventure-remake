@@ -19,7 +19,7 @@ public class Enemy_healthController : MonoBehaviour
         if (healthPoints <= 0 && !died)
         {
             died = true;
-            GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().changeTriggerAnimation(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, this.gameObject);
+            GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().changeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, true, this.gameObject);
             //_enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
         }
     }
@@ -31,11 +31,18 @@ public class Enemy_healthController : MonoBehaviour
             if (!hit.gameObject.GetComponent<Kirby_actor>().isLocalPlayer) return;
             if (died) return;
             died = true;
+            Debug.Log("EnemyHealthController: Enemy hit someone.");
             hit.gameObject.GetComponent<Kirby_healthController>().takeDamage(_enemy.touchDamage);
-            GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().changeTriggerAnimation(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, this.gameObject);
+            GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().changeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, true, this.gameObject);
             // if(_enemy.isServer) _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
             // else GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().CmdChangeTriggerAnimation(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE, this.gameObject);
         }
+    }
+
+    //Method called by attack animation
+    public void finishAttack()
+    {
+        _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_ATTACK, false);
     }
 
     // Method called by death animation

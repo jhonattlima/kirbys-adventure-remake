@@ -44,9 +44,6 @@ public class NetworkController : NetworkManager
         if (!conn.address.Equals(SystemConstants.NETWORK_NAME_LOCAL_CLIENT))
         {
             onServerConnect?.Invoke(conn);
-
-            Debug.Log("testing");
-            Discovery.turnOffBroadcast();
         }
     }
 

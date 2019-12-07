@@ -8,10 +8,11 @@ using UnityEngine.Networking.Match;
 
 public class UIPanelMainMenuController : MonoBehaviour
 {
-    private bool lanMode;
+    public bool lanMode;
     private GameObject[] buttonsMatch;
 
     public static UIPanelMainMenuController instance;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -63,7 +64,7 @@ public class UIPanelMainMenuController : MonoBehaviour
                 break;
             case SystemConstants.BUTTON_NAME_MATCH:
                 joinGame(button.GetComponent<ButtonMatchController>());
-                Debug.Log("UI Panel Main Menu Controller: Pressed button match.");
+                Debug.Log("UI Panel Main Menu Controller: match button " + button.GetComponentInChildren<Text>().text);
                 break;
         }
     }

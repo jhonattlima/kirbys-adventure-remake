@@ -26,7 +26,6 @@ public class Enemy_waddleDooActionController : MonoBehaviour
         if (!_FSMIsRunning) StartCoroutine(chooseRandomAction());
         if (_isMoving)
         {
-            _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
             _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
         }
         else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
@@ -49,16 +48,12 @@ public class Enemy_waddleDooActionController : MonoBehaviour
                 {
                     _isMoving = false;
                     lookAtPlayer();
-                    //_enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
-                    _enemy.animator.SetBool("IsAttacking", true);
+                    _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_ATTACK, true);
                 }
                 else setMove();
                 break;
         }
-        //yield return null;
-        yield return new WaitForSeconds(0.5f);
-        _enemy.animator.SetBool("IsAttacking", false);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3);
         _FSMIsRunning = false;
     }
 
@@ -73,10 +68,12 @@ public class Enemy_waddleDooActionController : MonoBehaviour
 
     private void applyGravity()
     {
-        if (!_enemy.characterController.isGrounded) _verticalSpeed += Physics.gravity.y * Time.deltaTime;
-        Vector3 movement = Vector3.zero;
-        movement.y = _verticalSpeed * Time.deltaTime;
-        _enemy.characterController.Move(movement);
+        Vector3 nextMove = new Vector3();
+        if(_isMoving) nextMove.x = movement.x * _moveSpeed * Time.deltaTime;
+        _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+        nextMove.y = _verticalSpeed * Time.deltaTime;
+        _enemy.characterController.Move(nextMove);
+        if(_enemy.characterController.isGrounded) _verticalSpeed = 0;
     }
 
     private void lookAtPlayer()

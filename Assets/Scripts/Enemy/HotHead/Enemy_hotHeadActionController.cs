@@ -5,13 +5,12 @@ using UnityEngine.Networking;
 
 public class Enemy_hotHeadActionController : NetworkBehaviour
 {
+    Enemy_actor _enemy;
     float _moveSpeed = 0.5f;
     float _verticalSpeed;
     bool _isKirbyClose = false;
     bool _FSMIsRunning = false;
     bool _isMoving = false;
-    // bool _lastIsMoving = false;
-    Enemy_actor _enemy;
     Vector3 movement;
 
     void Start()
@@ -28,12 +27,9 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
         {
             _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
             _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
-            //GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().CmdChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, true, this.gameObject);
         }
-        //else GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().CmdChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, false, this.gameObject); 
         else _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
         applyGravity();
-        // figureOutAnimation();
     }
 
     private void setMove()
@@ -58,20 +54,6 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
         transform.LookAt(closestPlayer);
     }
 
-    // private void figureOutAnimation()
-    // {
-    //     if(_isMoving && _isMoving != _lastIsMoving)
-    //     {
-    //         _lastIsMoving = _isMoving;
-    //         _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, true);
-    //     }
-    //     else if(!_isMoving && _isMoving != _lastIsMoving)
-    //     {
-    //         _lastIsMoving = _isMoving;
-    //         _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_WALK, false);
-    //     }
-    // }
-
     IEnumerator chooseRandomAction()
     {
         _FSMIsRunning = true;
@@ -88,9 +70,7 @@ public class Enemy_hotHeadActionController : NetworkBehaviour
                 {
                     lookAtPlayer();
                     _isMoving = false;
-                    //GameManager.instance.localPlayer.GetComponent<Kirby_serverController>().RpcChangeTriggerAnimation(KirbyConstants.ANIM_ENEMY_ATTACK, this.gameObject);
-                    GetComponent<NetworkAnimator>().SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
-                    _enemy.animator.SetTrigger(KirbyConstants.ANIM_ENEMY_ATTACK);
+                    _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_ATTACK, true);
                 }
                 else
                 {

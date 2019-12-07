@@ -32,18 +32,6 @@ public class Kirby_serverController : NetworkBehaviour
     [Command]
     public void CmdChangeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
     {
-        execChangeBoolAnimationStatus(parameterName, newStatus, prefab);
-        RpcChangeBoolAnimationStatus(parameterName, newStatus, prefab);
-    }
-
-    [ClientRpc]
-    public void RpcChangeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
-    {
-        execChangeBoolAnimationStatus(parameterName, newStatus, prefab);
-    }
-
-    private void execChangeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
-    {
         if (prefab.GetComponent<Kirby_actor>())
         {
             prefab.GetComponent<Kirby_actor>().animator.SetBool(parameterName, newStatus);
