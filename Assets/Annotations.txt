@@ -2,8 +2,8 @@ SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
+- MakeHurtKirbyLogic;
 - SFX controller logic;
-- Make Enemy destroy logic when no player is close;
 - PanelKirby status logic;
 
 TO DO DESIGN
@@ -30,6 +30,7 @@ BUGS
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
 
 DONE
+- Make Enemy destroy logic when no player is close; -Done
 - Kirby tentando sugar a estrela gera exception; - Done
 - Create trophy logic; - Done.
 - Create enemy spawner logic; - Done.

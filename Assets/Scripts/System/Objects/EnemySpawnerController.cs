@@ -15,7 +15,7 @@ public class EnemySpawnerController : NetworkBehaviour
     {
         if (!enemyAlreadyInstantiated)
         {
-            Debug.Log("EnemySpawnerController: No enemy instantiated. Will do now...");
+            // Debug.Log("EnemySpawnerController: No enemy instantiated. Will do now...");
             if(isBecomingInstantiated) return;
             isBecomingInstantiated = true;
             GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(this.gameObject);
