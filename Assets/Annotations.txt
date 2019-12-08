@@ -2,7 +2,6 @@ SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
-- MakeHurtKirbyLogic;
 - SFX controller logic;
 - PanelKirby status logic;
 
@@ -26,10 +25,12 @@ TO DO DESIGN
 - BUG: a ultima plataforma tem um tile a menos
 
 BUGS
+- Inimigo desaparecendo quando o kirby voa;
 - Checar com o professor como fazer o suck funcionar em todas as areas - só checar, já está funcionando ( checar a suckareaController);
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
 
 DONE
+- MakeHurtKirbyLogic; - Done;
 - Make Enemy destroy logic when no player is close; -Done
 - Kirby tentando sugar a estrela gera exception; - Done
 - Create trophy logic; - Done.
