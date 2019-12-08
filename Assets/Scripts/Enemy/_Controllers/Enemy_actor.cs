@@ -12,19 +12,10 @@ public class Enemy_actor : NetworkBehaviour
     public int touchDamage;
     public bool isKirbyClose = false;
 
-    private void Awake()
+    void Awake()
     {
         healthController = GetComponent<Enemy_healthController>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.GetComponent<Kirby_actor>())
-        {
-            other.gameObject.GetComponent<Kirby_healthController>().takeDamage(touchDamage);
-            animator.SetTrigger(KirbyConstants.ANIM_ENEMY_TAKE_DAMAGE);
-        }
     }
 }

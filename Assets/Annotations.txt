@@ -3,33 +3,38 @@ SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
 - SFX controller logic;
-- PanelKirby status logic;
+- PanelSelectPlayer logic;
+- PanelKirby status logic.
 
 TO DO DESIGN
-- Colocar o painel de vida (o vermelho e azul vai aparecer para ambos, fixar no topo da tela);
-- Criar animação onde o kirby cospe uma bola de ar (mas sem a bola, Jhonatt vai criar um objeto para ela que vai aparecer na animação, correr um pouco e sumir no final);
+- Colocar o painel de vida (o vermelho e azul vai aparecer para ambos, ancorar no topo da tela em tamanho fixo e com um espaço para o nome do Jogador (max 15 caracteres));
+- As imagens da barra de vida precisam ser uma com 5 pastilhas, outra com 4 e assim por diante, assim só vamos trocando toda a imagem;
+- Criar animação onde o kirby cospe uma bola de ar (mas sem a bola, já temos o prefab dentrod o kirby, 
+    é só ligar ele no começo da animação e fazer ele percorrer o caminho, sumindo no final (desligar o objeto);
 - Criar menu de seleção de personagem com textBox para o player colocar o nome E 
     já colocar os comandos usados no jogo em um canto para instruir o jogador:
     Z: Sucking, Expel enemy or Air;
     X: Jump;
     W,A,S,D or <-, ^, v , ->: directions;
-    Objective: Reach the prize in the end of the stage or survive over your oponent to win.
-- Fazer balão de ar do kirby;
-- Fazer estrela que o kirby dropa ao ser atingido;
+    Objective: Reach the trophy in the end of the stage or survive over your oponent to win.
+- Fazer balão de ar do kirby (já tem prefab, é só mudar o mesh e redimensionar o collider);
+- Fazer estrela que o kirby dropa ao ser atingido (já tem prefab, é só mudar o mesh e redimensionar o collider);
 - Fazer outro material para o kirby azul
 - Fazer item que o kirby que alcançar ganha no final
 - Fazer tela de game over you lose e tela de game over you win
-- Fazer chao invisível para queda e morte do kirby na área 3
 - Fazer particulas do fire, spark e beam
 - Fazer flecha animada pra pôr na porta
-- BUG: a ultima plataforma tem um tile a menos
+- Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
+    Obs: não deixar nenhum spawner proximo ao ponto de inicio da fase pra não triggar automaticamente quando um kirby nascer.
+- Colocar um tile a mais na úlima plataforma
 
 BUGS
-- Inimigo desaparecendo quando o kirby voa;
 - Checar com o professor como fazer o suck funcionar em todas as areas - só checar, já está funcionando ( checar a suckareaController);
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
 
 DONE
+- Fazer chao invisível para queda e morte do kirby na área 3
+- Inimigo desaparecendo quando o kirby voa; - Done
 - MakeHurtKirbyLogic; - Done;
 - Make Enemy destroy logic when no player is close; -Done
 - Kirby tentando sugar a estrela gera exception; - Done
@@ -57,8 +62,6 @@ DONE
 - Get ideas about become visible or not - with colliders - Done
 - Why enemies are only being hit on server side. -- BECAUSE THIS ONLY SEND COMMAND THROUGH PLAYER PREFAB - somente o player pode mandar cmds. - Done
 - Programar controller de conexão online - Done.
-
-Requisitos do trabalho
 
 Requisitos para a disciplina de Redes:
 ● Arquitetura servidor e clientes, utilizando as bibliotecas de rede da Unity;
