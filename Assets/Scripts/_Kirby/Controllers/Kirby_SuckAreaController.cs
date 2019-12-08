@@ -17,10 +17,14 @@ public class Kirby_SuckAreaController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (!_kirby.isLocalPlayer) return;
-        if (other.CompareTag(KirbyConstants.TAG_ENEMY) || other.GetComponent<Kirby_powerStar>())
+        if (other.CompareTag(KirbyConstants.TAG_ENEMY))
         {
             if (_kirby.isLookingRight) other.GetComponent<CharacterController>().Move(transformMouth.position.normalized * Time.deltaTime * suckSpeed * -1);
             else other.GetComponent<CharacterController>().Move(transformMouth.position.normalized * Time.deltaTime * suckSpeed);
         }
+        // else if (other.GetComponent<Kirby_powerStar>())
+        // {
+        //     other.GetComponent<Rigidbody>().velocity = transformMouth.position.normalized * suckSpeed;
+        // }
     }
 }

@@ -15,6 +15,7 @@ public class Kirby_serverController : NetworkBehaviour
     [Command]
     public void CmdStartGame()
     {
+        
         prepareGameToStart();
         RpcStartGame();
     }
@@ -32,6 +33,7 @@ public class Kirby_serverController : NetworkBehaviour
         PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(false);
         AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.stageVegetableValley);
         GameManager.instance.listOfPlayers = GameObject.FindGameObjectsWithTag(KirbyConstants.TAG_PLAYER);
+        GameManager.instance.listOfPlayers[1].gameObject.GetComponent<Kirby_actor>().playerNumber = 2;
         GameManager.instance.localPlayer.isParalyzed = false;
     }
 
@@ -92,13 +94,14 @@ public class Kirby_serverController : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSpawnEnemyPrefab(GameObject enemy, GameObject spawnSpot)
+    public void CmdSpawnEnemyPrefab(GameObject enemySpawner)
     {
-        spawnSpot.GetComponent<EnemySpawnerController>().isBecomingInstantiated = true;
-        GameObject enemyInstantiated = Instantiate(enemy, spawnSpot.transform.position, Quaternion.identity);
+        EnemySpawnerController enemySpawnerController = enemySpawner.GetComponent<EnemySpawnerController>();
+        enemySpawnerController.isBecomingInstantiated = true;
+        GameObject enemyInstantiated = Instantiate(enemySpawnerController.enemyToBeInstantiated, enemySpawner.transform.position, Quaternion.identity);
         NetworkServer.Spawn(enemyInstantiated);
-        spawnSpot.GetComponent<EnemySpawnerController>().enemyAlreadyInstantiated = enemyInstantiated;
-        spawnSpot.GetComponent<EnemySpawnerController>().isBecomingInstantiated = false;
+        enemySpawner.GetComponent<EnemySpawnerController>().enemyAlreadyInstantiated = enemyInstantiated;
+        enemySpawner.GetComponent<EnemySpawnerController>().isBecomingInstantiated = false;
     }
 
     [Command]
@@ -133,21 +136,22 @@ public class Kirby_serverController : NetworkBehaviour
     public void CmdGameOverByDeath(int kirbyThatHasDiedNumber)
     {
         RpcGameOverByDeath(kirbyThatHasDiedNumber);
+        execGameOver(kirbyThatHasDiedNumber);
     }
 
     [ClientRpc]
     public void RpcGameOverByDeath(int kirbyThatHasDiedNumber)
     {
-        if (kirbyThatHasDiedNumber.Equals(GameManager.instance.localPlayer.playerNumber))
-        {
-            Debug.Log("Kirby Server Controller: This LocalKirby is the one that lost.");
-            GameManager.instance.wonTheGame = false;
-        }
-        else
-        {
-            Debug.Log("Kirby Server Controller: This LocalKirby is the one that won.");
-            GameManager.instance.wonTheGame = true;
-        }
+        execGameOver(kirbyThatHasDiedNumber);
+    }
+
+    private void execGameOver(int kirbyThatHasDiedNumber)
+    {
+        Debug.Log("LocalPlayer is " + GameManager.instance.localPlayer.playerNumber);
+        Debug.Log("Won the game is " + GameManager.instance.wonTheGame);
+        if (kirbyThatHasDiedNumber == GameManager.instance.localPlayer.playerNumber) GameManager.instance.wonTheGame = false;
+        else GameManager.instance.wonTheGame = true;
+        GameManager.instance.gameOverDisconnection = true;
         GameManager.instance.gameOver();
     }
 

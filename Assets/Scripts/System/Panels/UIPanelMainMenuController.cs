@@ -22,6 +22,7 @@ public class UIPanelMainMenuController : MonoBehaviour
     void Start()
     {
         buttonsMatch = PrefabsAndInstancesLibrary.instance.panelListOfMatchesButtonsList;
+        clearMatchButtons();
         AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.mainMenu);
     }
 
@@ -81,6 +82,11 @@ public class UIPanelMainMenuController : MonoBehaviour
         for (int i = 0; i < SystemConstants.NETWORK_MAXIMUM_MATCHES_SHOWING; i++)
         {
             buttonsMatch[i].gameObject.GetComponentInChildren<Text>().text = string.Empty;
+            foreach(GameObject button in buttonsMatch)
+            {
+                button.GetComponent<ButtonMatchController>().lanMatch = null;
+                button.GetComponent<ButtonMatchController>().remoteMatch = null;
+            }
             buttonsMatch[i].gameObject.SetActive(false);
         }
     }

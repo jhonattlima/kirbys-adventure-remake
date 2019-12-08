@@ -29,6 +29,8 @@ public class Kirby_actor : NetworkBehaviour
     public bool isSucking = false;
     public bool isParalyzed = false;
     public bool isInvulnerable = false;
+
+    [SyncVar]
     public int playerNumber;
 
     public Vector3 directionRight
@@ -82,7 +84,6 @@ public class Kirby_actor : NetworkBehaviour
         GameManager.instance.localPlayerServerController = kirbyServerController;
         if (isLocalPlayer && !isServer) // If it is player 2
         {
-            playerNumber = 2;
             kirbyServerController.CmdStartGame();
         }
     }

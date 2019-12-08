@@ -36,11 +36,10 @@ public class GameManager : MonoBehaviour
 
     public void gameOver()
     {
-        gameOverDisconnection = true;
         localPlayer.GetComponent<Kirby_actor>().isParalyzed = true;
-        NetworkManager.singleton.StopHost();
-        NetworkManager.singleton.StopMatchMaker();
         localPlayer = null;
+        listOfPlayers = null;
+        localPlayerServerController = null;
         StartCoroutine(setGameOverPanel());
     }
 
@@ -49,6 +48,8 @@ public class GameManager : MonoBehaviour
         PrefabsAndInstancesLibrary.instance.panelGameOver.SetActive(true);
         yield return new WaitForSeconds(5);
         PrefabsAndInstancesLibrary.instance.panelGameOver.SetActive(false);
+        NetworkManager.singleton.StopHost();
+        NetworkManager.singleton.StopMatchMaker();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         gameOverDisconnection = false;
     }
@@ -71,7 +72,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Error: One of the players disconnected.");
         yield return new WaitForSeconds(1);
-
         PrefabsAndInstancesLibrary.instance.panelNetworkErrorMessage.SetActive(true);
         yield return new WaitForSeconds(SystemConstants.TIME_TO_SHOW_ERROR_PANEL);
         PrefabsAndInstancesLibrary.instance.panelNetworkErrorMessage.SetActive(false);

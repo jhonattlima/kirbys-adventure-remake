@@ -3,7 +3,7 @@ SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
 - SFX controller logic;
-- Create enemy spawn logic;
+- Make Enemy destroy logic when no player is close;
 - PanelKirby status logic;
 
 TO DO DESIGN
@@ -27,9 +27,13 @@ TO DO DESIGN
 
 BUGS
 - Checar com o professor como fazer o suck funcionar em todas as areas - só checar, já está funcionando ( checar a suckareaController);
-- Ver com o professor o que tá gerando exception.
+- Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
 
 DONE
+- Kirby tentando sugar a estrela gera exception; - Done
+- Create trophy logic; - Done.
+- Create enemy spawner logic; - Done.
+- Create hole of death logic; - Done.
 - Music controller logic; -Done.
 - Create logic for using powers with animation; -Done.
 - Create star bullet logic; -Done.

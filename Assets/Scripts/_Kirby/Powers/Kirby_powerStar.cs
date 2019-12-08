@@ -29,7 +29,7 @@ public class Kirby_powerStar : MonoBehaviour
         {
             Debug.Log("Star: Kirby got power: " + power);
             other.gameObject.GetComponent<Kirby_healthController>().retrievePower(power);
-            Destroy(gameObject);
+            GameManager.instance.localPlayer.kirbyServerController.CmdDestroyPrefab(this.gameObject);
         }
     }
 

@@ -32,16 +32,8 @@ public class Kirby_healthController : NetworkBehaviour
         healthPoints -= amountOfDamage;
         Debug.Log("Ouch, took damage! Life points now: " + healthPoints);
         //UIPanelKirbyStatusController.instance.setLife(healthPoints);
-        if (healthPoints <= 0) die();
+        if (healthPoints <= 0) _kirby.kirbyServerController.CmdGameOverByDeath(_kirby.playerNumber); //died
         else StartCoroutine(sufferDamage());
-    }
-
-    void die()
-    {
-        // runs death animation;
-        // Destroys object;
-        // Return to main lobby;
-        _kirby.kirbyServerController.CmdGameOverByDeath(_kirby.playerNumber);
     }
 
     IEnumerator sufferDamage()
