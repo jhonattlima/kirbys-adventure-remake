@@ -66,7 +66,6 @@ public class Kirby_serverController : NetworkBehaviour
             // Debug.Log("Is animator here? " + prefab.GetComponent<Kirby_actor>().animator.name);
             // Debug.Log("Which parameter was used? " + parameterName);
             // Debug.Log("Which status was used? " + newStatus);
-
             if (prefab.GetComponent<Kirby_actor>().animator.GetBool(parameterName) != newStatus) prefab.GetComponent<Kirby_actor>().animator.SetBool(parameterName, newStatus);
         }
         else
@@ -159,5 +158,24 @@ public class Kirby_serverController : NetworkBehaviour
     public void CmdDealDamageToMob(GameObject mob, int damage)
     {
         mob.GetComponent<Enemy_healthController>().takeDamage(damage);
+    }
+
+    public void playAtPoint(GameObject playPoint, string sfxName)
+    {
+        AudioPlayerSFXController.instance.playAtPoint(playPoint, sfxName);
+        if(isServer) RpcPlaySfx(playPoint, sfxName);
+        else CmdPlaySfx(playPoint, sfxName);
+    }
+
+    [Command]
+    public void CmdPlaySfx(GameObject playPoint, string sfxName)
+    {
+        AudioPlayerSFXController.instance.playAtPoint(playPoint, sfxName);
+    }
+
+    [ClientRpc]
+    public void RpcPlaySfx(GameObject playPoint, string sfxName)
+    {
+        AudioPlayerSFXController.instance.playAtPoint(playPoint, sfxName);
     }
 }

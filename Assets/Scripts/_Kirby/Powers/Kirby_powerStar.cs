@@ -12,6 +12,10 @@ public class Kirby_powerStar : MonoBehaviour
         StartCoroutine(waitToBecomeActive());
     }
 
+    private void Start() {
+        Destroy(gameObject, KirbyConstants.KIRBY_STAR_COOLDOWN_TO_BE_ACTIVE + 5 );
+    }
+
     IEnumerator waitToBecomeActive()
     {
         yield return new WaitForSeconds(KirbyConstants.KIRBY_STAR_COOLDOWN_TO_BE_ACTIVE);
@@ -31,10 +35,5 @@ public class Kirby_powerStar : MonoBehaviour
             other.gameObject.GetComponent<Kirby_healthController>().retrievePower(power);
             GameManager.instance.localPlayer.kirbyServerController.CmdDestroyPrefab(this.gameObject);
         }
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
     }
 }

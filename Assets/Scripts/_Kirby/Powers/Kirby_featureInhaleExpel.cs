@@ -65,6 +65,10 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
             {
                 activatePower();
             }
+            else
+            {
+                AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbySwallow);
+            }
             _kirby.isFullOfEnemy = false;
         }
     }
@@ -87,18 +91,27 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
         }
         //UIPanelLifePowercontroller.instance.setPower(_kirby.enemy_powerInMouth);
         _kirby.hasPower = true;
+        AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyAbsorb);
     }
 
     public void suckOn()
     {
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, true);
-        _kirby.isSucking = true;
+        if(!_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK))
+        {
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, true);
+            _kirby.isSucking = true;
+            AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyInhale);
+        }
     }
 
     public void suckOff()
     {
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, false);
-        _kirby.isSucking = false;
+        if(_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK))
+        {
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, false);
+            _kirby.isSucking = false;
+            AudioPlayerSFXController.instance._audioSource.Stop();
+        }
     }
 
     public void expelAir()
@@ -108,6 +121,7 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, true, this.gameObject);
             _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, true);
             _kirby.isFullOfAir = false;
+            AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyExpelAirBall);
         }
     }
 
@@ -124,6 +138,7 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
         starBullet.setBulletDirection(_kirby.isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
         _kirby.isFullOfEnemy = false;
         _kirby.enemy_powerInMouth = (int)Powers.None;
+        AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyExpelStar);
         if(!isServer) _kirby.kirbyServerController.CmdSpawnStarBulletPrefab(this.gameObject, _kirby.isLookingRight);
         else _kirby.kirbyServerController.RpcSpawnStarBulletPrefab(this.gameObject, _kirby.isLookingRight);
     }

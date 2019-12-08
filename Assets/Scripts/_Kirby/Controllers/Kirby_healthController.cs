@@ -94,6 +94,7 @@ public class Kirby_healthController : NetworkBehaviour
             NetworkServer.Spawn(star.gameObject);
             star.power = _kirby.enemy_powerInMouth;
             star.setPushDirection(-_kirby.spotToDropStar.transform.forward);
+            AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyExpelStar);
         }
         else _kirby.kirbyServerController.CmdSpawnStarPowerPrefab(this.gameObject);
     }

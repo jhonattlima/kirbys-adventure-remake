@@ -61,15 +61,15 @@ public class Kirby_movement : NetworkBehaviour
         _inputHorizontal = Input.GetAxis("Horizontal");
         movement += _kirby.directionRight * _inputHorizontal * moveSpeed * Time.deltaTime;
         turn(_inputHorizontal);
-        if (_kirby.characterController.isGrounded && movement.x != 0)
+        if (_kirby.characterController.isGrounded && movement.x != 0 && !isWalking)
         {
             isWalking = true;
+            AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyWalk);
         }
-        else
+        else if( (!_kirby.characterController.isGrounded || movement.x == 0) && isWalking)
         {
             isWalking = false;
         }
-        //_kirby.characterController.Move(movement);
     }
 
     // If kirby is not fullOfEnemy
@@ -79,7 +79,7 @@ public class Kirby_movement : NetworkBehaviour
     private void fly()
     {
         if (!_kirby.isFullOfEnemy
-            && Input.GetKey(KirbyConstants.KEY_FLY))
+            && Input.GetKeyDown(KirbyConstants.KEY_FLY))
         {
             if (_kirby.characterController.isGrounded)
             {
@@ -91,6 +91,7 @@ public class Kirby_movement : NetworkBehaviour
             }
             _kirby.isFullOfAir = true;
             isFlying = true;
+            AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyFly);
         }
     }
 
@@ -104,9 +105,10 @@ public class Kirby_movement : NetworkBehaviour
             {
                 _verticalSpeed = _jumpSpeed;
                 isJumping = true;
+                //_kirby.kirbyServerController.playAtPoint(this.gameObject, AudioPlayerSFXController.SFX_NAME_KIRBY_JUMP);
+                AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyJump);
             }
         }
-
     }
 
     private void turn(float movement)
