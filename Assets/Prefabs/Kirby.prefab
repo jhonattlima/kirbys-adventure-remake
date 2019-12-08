@@ -295,6 +295,7 @@ MonoBehaviour:
   isSucking: 0
   isParalyzed: 0
   isInvulnerable: 0
+  cooldownAction: 0
   playerNumber: 0
 --- !u!114 &6356111907700193545
 MonoBehaviour:

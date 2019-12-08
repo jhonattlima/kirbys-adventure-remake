@@ -12,13 +12,10 @@ public class Kirby_movement : NetworkBehaviour
     float _verticalSpeed;
     float _flySpeed;
     float _jumpSpeed;
-    float _maxflyCooldown;
     float _inputHorizontal;
     float _inputVertical;
     Quaternion _endRotation;
-    float cooldownAction;
     Kirby_actor _kirby;
-
     // Used to handle animationsS
     public bool isFlying;
     public bool isWalking;

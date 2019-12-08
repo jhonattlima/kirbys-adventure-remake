@@ -2,7 +2,6 @@ SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
-- Put cooldown on airball, suck and powers;
 - PanelSelectPlayer logic;
 - PanelKirby status logic.
 
@@ -33,6 +32,7 @@ BUGS
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
 
 DONE
+- Put cooldown on airball; - Done;
 - SFX controller logic; -Done;
 - Fazer chao invisível para queda e morte do kirby na área 3; - Done;
 - Inimigo desaparecendo quando o kirby voa; - Done

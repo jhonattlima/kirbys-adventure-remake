@@ -29,6 +29,7 @@ public class Kirby_actor : NetworkBehaviour
     public bool isSucking = false;
     public bool isParalyzed = false;
     public bool isInvulnerable = false;
+    public float cooldownAction = 0;
 
     [SyncVar]
     public int playerNumber;
@@ -62,7 +63,7 @@ public class Kirby_actor : NetworkBehaviour
         }
     }
 
-    private void Awake()
+    void Awake()
     {
         currentArea = PrefabsAndInstancesLibrary.instance.scenarioOnePart1.transform;
         transform.Rotate(0, 90f, 0);
@@ -75,7 +76,7 @@ public class Kirby_actor : NetworkBehaviour
         powerBeam = GetComponent<Kirby_powerBeam>();
     }
 
-    private void Start()
+    void Start()
     {
         if (!isLocalPlayer) return;
         CameraController.instance.localKirby = this;
@@ -85,6 +86,14 @@ public class Kirby_actor : NetworkBehaviour
         if (isLocalPlayer && !isServer) // If it is player 2
         {
             kirbyServerController.CmdStartGame();
+        }
+    }
+
+    void Update()
+    {
+        if(cooldownAction > 0)
+        {
+            cooldownAction -= Time.deltaTime;
         }
     }
 }

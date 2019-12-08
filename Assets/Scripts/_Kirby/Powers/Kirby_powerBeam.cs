@@ -28,7 +28,7 @@ public class Kirby_powerBeam : NetworkBehaviour
     public void activateBeam()
     {
         _kirby.isParalyzed = true;
-        if(!_kirby.animator.GetBool(KirbyConstants.ANIM_TRIGGER_POWER_BEAM))
+        if (!_kirby.animator.GetBool(KirbyConstants.ANIM_TRIGGER_POWER_BEAM))
         {
             _kirby.animator.SetBool(KirbyConstants.ANIM_TRIGGER_POWER_BEAM, true);
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_TRIGGER_POWER_BEAM, true, this.gameObject);

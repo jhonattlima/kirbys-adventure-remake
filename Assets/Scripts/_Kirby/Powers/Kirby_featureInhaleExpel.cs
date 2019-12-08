@@ -40,11 +40,11 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
                 {
                     if (_kirby.isFullOfAir)
                     {
-                        expelAir();
+                        if(_kirby.cooldownAction <= 0) expelAir();
                     }
                     else if (_kirby.isFullOfEnemy)
                     {
-                        expelEnemy();
+                        if(_kirby.cooldownAction <= 0) expelEnemy();
                     }
                 }
             }
@@ -122,6 +122,7 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
             _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, true);
             _kirby.isFullOfAir = false;
             AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyExpelAirBall);
+            _kirby.cooldownAction = KirbyConstants.COOLDOWN_ACTION;
         }
     }
 
@@ -141,5 +142,6 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
         AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyExpelStar);
         if(!isServer) _kirby.kirbyServerController.CmdSpawnStarBulletPrefab(this.gameObject, _kirby.isLookingRight);
         else _kirby.kirbyServerController.RpcSpawnStarBulletPrefab(this.gameObject, _kirby.isLookingRight);
+        _kirby.cooldownAction = KirbyConstants.COOLDOWN_ACTION;
     }
 }
