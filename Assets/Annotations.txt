@@ -10,12 +10,12 @@ TO DO DESIGN
 - As imagens da barra de vida precisam ser uma com 5 pastilhas, outra com 4 e assim por diante, assim só vamos trocando toda a imagem;
 - Criar animação onde o kirby cospe uma bola de ar (mas sem a bola, já temos o prefab dentrod o kirby, 
     é só ligar ele no começo da animação e fazer ele percorrer o caminho, sumindo no final (desligar o objeto);
-- Criar menu de seleção de personagem com textBox para o player colocar o nome E 
-    já colocar os comandos usados no jogo em um canto para instruir o jogador:
+- Criar menu de seleção de personagem e já colocar os comandos usados no jogo em um canto para instruir o jogador:
     Z: Sucking, Expel enemy or Air;
     X: Jump;
     W,A,S,D or <-, ^, v , ->: directions;
-    Objective: Reach the trophy in the end of the stage or survive over your oponent to win.
+    Objective: Reach the trophy in the end of the stage or survive over your oponent to win;
+- Colocar mais um campo no painel de seleção de match para pôr o próprio nome além do nome da sala;
 - Fazer balão de ar do kirby (já tem prefab, é só mudar o mesh e redimensionar o collider);
 - Fazer estrela que o kirby dropa ao ser atingido (já tem prefab, é só mudar o mesh e redimensionar o collider);
 - Fazer outro material para o kirby azul
