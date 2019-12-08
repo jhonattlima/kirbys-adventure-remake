@@ -27,14 +27,17 @@ public class Kirby_powerBeam : NetworkBehaviour
 
     public void activateBeam()
     {
-        _kirby.animator.SetTrigger(KirbyConstants.ANIM_TRIGGER_POWER_BEAM);
-        StartCoroutine(waitForAnimationToFinish());
+        _kirby.isParalyzed = true;
+        if(!_kirby.animator.GetBool(KirbyConstants.ANIM_TRIGGER_POWER_BEAM))
+        {
+            _kirby.animator.SetBool(KirbyConstants.ANIM_TRIGGER_POWER_BEAM, true);
+            _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_TRIGGER_POWER_BEAM, true, this.gameObject);
+        }
     }
 
-    IEnumerator waitForAnimationToFinish()
+    public void finishBeamPower()
     {
-        _kirby.isParalyzed = true;
-        yield return new WaitForSeconds(_kirby.animator.GetCurrentAnimatorStateInfo(0).length);
         _kirby.isParalyzed = false;
+        _kirby.animator.SetBool(KirbyConstants.ANIM_TRIGGER_POWER_BEAM, false);
     }
 }

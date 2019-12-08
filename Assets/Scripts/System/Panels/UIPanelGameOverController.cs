@@ -14,10 +14,12 @@ public class UIPanelGameOverController : MonoBehaviour
         if (GameManager.instance.wonTheGame)
         {
             gameoverMessage.text = "Congrats! You win!!!";
+            AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.gameOverYouwin);
         }
         else
         {
             gameoverMessage.text = "Game over! You lose!!!";
+            AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.gameOverYouLost);
         }
     }
 }

@@ -15,13 +15,24 @@ public class Kirby_serverController : NetworkBehaviour
     [Command]
     public void CmdStartGame()
     {
+        prepareGameToStart();
         RpcStartGame();
     }
 
     [ClientRpc]
     public void RpcStartGame()
     {
-        GameManager.instance.startMatch();
+        prepareGameToStart();
+    }
+
+    private void prepareGameToStart()
+    {
+        PrefabsAndInstancesLibrary.instance.panelKirbyStatus.SetActive(true);
+        PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
+        PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(false);
+        AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.stageVegetableValley);
+        GameManager.instance.listOfPlayers = GameObject.FindGameObjectsWithTag(KirbyConstants.TAG_PLAYER);
+        GameManager.instance.localPlayer.isParalyzed = false;
     }
 
     public void changeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
@@ -49,6 +60,11 @@ public class Kirby_serverController : NetworkBehaviour
     {
         if (prefab.CompareTag(KirbyConstants.TAG_PLAYER))
         {
+            // Debug.Log("Is kirbyActor here? " + prefab.GetComponent<Kirby_actor>().name);
+            // Debug.Log("Is animator here? " + prefab.GetComponent<Kirby_actor>().animator.name);
+            // Debug.Log("Which parameter was used? " + parameterName);
+            // Debug.Log("Which status was used? " + newStatus);
+
             if (prefab.GetComponent<Kirby_actor>().animator.GetBool(parameterName) != newStatus) prefab.GetComponent<Kirby_actor>().animator.SetBool(parameterName, newStatus);
         }
         else
@@ -68,6 +84,7 @@ public class Kirby_serverController : NetworkBehaviour
     public void CmdSpawnStarPowerPrefab(GameObject kirby)
     {
         Kirby_actor _kirby = kirby.GetComponent<Kirby_actor>();
+        Debug.Log("Entered on spawn star power");
         Kirby_powerStar star = Instantiate(PrefabsAndInstancesLibrary.instance.starPower, _kirby.spotToDropStar.position, _kirby.spotToDropStar.rotation).GetComponent<Kirby_powerStar>();
         NetworkServer.Spawn(star.gameObject);
         star.power = _kirby.enemy_powerInMouth;
@@ -82,6 +99,34 @@ public class Kirby_serverController : NetworkBehaviour
         NetworkServer.Spawn(enemyInstantiated);
         spawnSpot.GetComponent<EnemySpawnerController>().enemyAlreadyInstantiated = enemyInstantiated;
         spawnSpot.GetComponent<EnemySpawnerController>().isBecomingInstantiated = false;
+    }
+
+    [Command]
+    public void CmdDestroyPrefab(GameObject prefab)
+    {
+        Destroy(prefab);
+    }
+
+    [Command]
+    public void CmdSpawnStarBulletPrefab(GameObject kirby, bool isLookingRight)
+    {
+        Kirby_actor actor = kirby.GetComponent<Kirby_actor>();
+        Kirby_powerStarBullet starBullet = Instantiate(actor.starBulletPrefab, kirby.transform.position, kirby.transform.rotation).GetComponent<Kirby_powerStarBullet>();
+        starBullet._kirby = actor;
+        starBullet.setBulletDirection(isLookingRight ? actor.directionRight : actor.directionLeft);
+        actor.isFullOfEnemy = false;
+        actor.enemy_powerInMouth = (int)Powers.None;
+    }
+
+    [ClientRpc]
+    public void RpcSpawnStarBulletPrefab(GameObject kirby, bool isLookingRight)
+    {
+        Kirby_actor actor = kirby.GetComponent<Kirby_actor>();
+        Kirby_powerStarBullet starBullet = Instantiate(actor.starBulletPrefab, kirby.transform.position, kirby.transform.rotation).GetComponent<Kirby_powerStarBullet>();
+        starBullet._kirby = actor;
+        starBullet.setBulletDirection(isLookingRight ? actor.directionRight : actor.directionLeft);
+        actor.isFullOfEnemy = false;
+        actor.enemy_powerInMouth = (int)Powers.None;
     }
 
     [Command]
@@ -108,12 +153,6 @@ public class Kirby_serverController : NetworkBehaviour
 
     [Command]
     public void CmdDealDamageToMob(GameObject mob, int damage)
-    {
-        RpcDealDamageToMob(mob, damage);
-    }
-
-    [ClientRpc]
-    public void RpcDealDamageToMob(GameObject mob, int damage)
     {
         mob.GetComponent<Enemy_healthController>().takeDamage(damage);
     }

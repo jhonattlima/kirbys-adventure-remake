@@ -2,24 +2,21 @@ SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
-- Finish expel star logic;
-- Music controller logic;
 - SFX controller logic;
 - Create enemy spawn logic;
 - PanelKirby status logic;
-- Create logic for using powers with animation;
-- Create air ball logic sync;
 
 TO DO DESIGN
-- Colocar o painel de vida
+- Colocar o painel de vida (o vermelho e azul vai aparecer para ambos, fixar no topo da tela);
+- Criar animação onde o kirby cospe uma bola de ar (mas sem a bola, Jhonatt vai criar um objeto para ela que vai aparecer na animação, correr um pouco e sumir no final);
 - Criar menu de seleção de personagem com textBox para o player colocar o nome E 
     já colocar os comandos usados no jogo em um canto para instruir o jogador:
     Z: Sucking, Expel enemy or Air;
     X: Jump;
     W,A,S,D or <-, ^, v , ->: directions;
     Objective: Reach the prize in the end of the stage or survive over your oponent to win.
-- Fazer balão de ar do kirby
-- Fazer estrela que o kirby dropa ao ser atingido
+- Fazer balão de ar do kirby;
+- Fazer estrela que o kirby dropa ao ser atingido;
 - Fazer outro material para o kirby azul
 - Fazer item que o kirby que alcançar ganha no final
 - Fazer tela de game over you lose e tela de game over you win
@@ -29,11 +26,16 @@ TO DO DESIGN
 - BUG: a ultima plataforma tem um tile a menos
 
 BUGS
-- Checar com o professor como fazer o suck funcionar em todas as areas;
-- ver bug de animação do poppybrosJr
-- Fazer animação do kirby sem networkanimator;
+- Checar com o professor como fazer o suck funcionar em todas as areas - só checar, já está funcionando ( checar a suckareaController);
+- Ver com o professor o que tá gerando exception.
 
 DONE
+- Music controller logic; -Done.
+- Create logic for using powers with animation; -Done.
+- Create star bullet logic; -Done.
+- Finish expel star logic; - Done.
+- Fazer animação do kirby sem networkanimator; - Done.
+- ver bug de animação do poppybrosJr - Done;
 - Ver questão do lag no dano recebido;
 - Ver pq WaddleDoo não está morrendo;
 - Verificar pq o kirby nao consegue subir nas plataformas e entra em atrito - ??? - Done.

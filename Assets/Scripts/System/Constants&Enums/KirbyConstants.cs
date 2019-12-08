@@ -23,6 +23,7 @@ public class KirbyConstants
     public const string ANIM_CHECK_MOV_IS_JUMPING = "IsJumping";
     public const string ANIM_CHECK_MOV_IS_FLYING = "IsFlying";
     public const string ANIM_CHECK_MOV_IS_FULL = "IsFull";
+    public const string ANIM_CHECK_MOV_IS_THROWING_AIRBALL = "IsThrowingAir";
     public const int PLAYER_HEALTH_POINTS = 4;
     public const int PLAYER_NORMAL_DAMAGE = 1;
     public const float COOLDOWN_ACTION = 0.5f;

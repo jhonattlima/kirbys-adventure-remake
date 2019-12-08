@@ -46,19 +46,11 @@ public class Kirby_healthController : NetworkBehaviour
 
     IEnumerator sufferDamage()
     {
-        if(_kirby.isServer)
+        if(!_kirby.animator.GetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE))
         {
-           if(!_kirby.animator.GetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE)) _kirby.animator.SetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true);
-        } 
-        else
-        {
-            if(!_kirby.animator.GetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE))
-            {
-                _kirby.kirbyServerController.CmdChangeBoolAnimationStatus(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true, this.gameObject);
-                if(!_kirby.animator.GetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE)) _kirby.animator.SetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true);
-            }
+            _kirby.animator.SetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true);
+            _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true, this.gameObject);
         }
-        Debug.Log("kirby player takeDamageAnimation.");
 
         _kirby.isParalyzed = true;
         _kirby.isInvulnerable = true;
@@ -94,6 +86,7 @@ public class Kirby_healthController : NetworkBehaviour
                 _kirby.powerBeam.enabled = true;
                 break;
         }
+        
         Debug.Log("Entered on retrieve power");
         _kirby.enemy_powerInMouth = power;
         _kirby.isFullOfAir = false;

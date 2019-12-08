@@ -32,7 +32,6 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
                 && _kirby.enemy_powerInMouth == (int)Powers.None
                 && _kirby.characterController.isGrounded)
             {
-                Debug.Log("Tried to suck");
                 suckOn();
             }
             else
@@ -92,33 +91,40 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
 
     public void suckOn()
     {
-        //_kirby.mouth.gameObject.SetActive(true);
-        //_kirby.areaOfSucking.gameObject.SetActive(true);
         _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, true);
         _kirby.isSucking = true;
     }
 
     public void suckOff()
     {
-        //_kirby.mouth.gameObject.SetActive(false);
-        //_kirby.areaOfSucking.gameObject.SetActive(false);
         _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, false);
         _kirby.isSucking = false;
     }
 
     public void expelAir()
     {
-        Kirby_powerAirBall airBall = Instantiate(_kirby.airPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerAirBall>();
-        airBall.GetComponent<Kirby_powerAirBall>()._kirby = _kirby;
-        airBall.setBulletDirection(_kirby.isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
-        _kirby.isFullOfAir = false;
+        if(!_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL))
+        {
+            _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, true, this.gameObject);
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, true);
+            _kirby.isFullOfAir = false;
+        }
+    }
+
+    // Method called by Animator
+    public void finishExpelAir()
+    {
+        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, false);
     }
 
     private void expelEnemy()
     {
         Kirby_powerStarBullet starBullet = Instantiate(_kirby.starBulletPrefab, transform.position, transform.rotation).GetComponent<Kirby_powerStarBullet>();
+        starBullet._kirby = _kirby;
         starBullet.setBulletDirection(_kirby.isLookingRight ? _kirby.directionRight : _kirby.directionLeft);
         _kirby.isFullOfEnemy = false;
         _kirby.enemy_powerInMouth = (int)Powers.None;
+        if(!isServer) _kirby.kirbyServerController.CmdSpawnStarBulletPrefab(this.gameObject, _kirby.isLookingRight);
+        else _kirby.kirbyServerController.RpcSpawnStarBulletPrefab(this.gameObject, _kirby.isLookingRight);
     }
 }

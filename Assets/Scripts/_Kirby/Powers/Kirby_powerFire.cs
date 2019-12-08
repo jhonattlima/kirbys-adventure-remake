@@ -30,14 +30,20 @@ public class Kirby_powerFire : NetworkBehaviour
     public void fireOn()
     {
         _kirby.isParalyzed = true;
-        //_kirby.fireArea.SetActive(true);
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, true);
+        if(!_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE))
+        {
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, true);
+            _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_FIRE, true, this.gameObject);
+        }
     }
 
     public void fireOff()
     {
         _kirby.isParalyzed = false;
-        //_kirby.fireArea.SetActive(false);
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, false);
+        if(_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE))
+        {
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, false);
+            _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_FIRE, false, this.gameObject);
+        }
     }
 }

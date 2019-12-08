@@ -27,6 +27,7 @@ public class Kirby_powerStarBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag(KirbyConstants.TAG_PLAYER)) return;
         if (!_kirby.isLocalPlayer) return;
         if (other.GetComponent<Enemy_actor>())
         {

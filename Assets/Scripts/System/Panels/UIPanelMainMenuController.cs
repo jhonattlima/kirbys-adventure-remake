@@ -22,6 +22,7 @@ public class UIPanelMainMenuController : MonoBehaviour
     void Start()
     {
         buttonsMatch = PrefabsAndInstancesLibrary.instance.panelListOfMatchesButtonsList;
+        AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.mainMenu);
     }
 
     public void eventButtonClick(Button button)

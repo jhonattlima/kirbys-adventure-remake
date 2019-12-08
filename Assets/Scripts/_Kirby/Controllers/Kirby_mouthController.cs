@@ -21,6 +21,7 @@ public class Kirby_mouthController : MonoBehaviour
             _kirby.enemy_powerInMouth = (int)other.GetComponent<Enemy_actor>().type;
             _kirby.isFullOfEnemy = true;
             Destroy(other.gameObject);
+            if(!_kirby.isServer) _kirby.kirbyServerController.CmdDestroyPrefab(other.gameObject);
         }
     }
 }

@@ -30,14 +30,20 @@ public class Kirby_powerShock : NetworkBehaviour
     public void shockOn()
     {
         _kirby.isParalyzed = true;
-        //_kirby.shockArea.SetActive(true);
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, true);
+        if(!_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK))
+        {
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, true);
+            _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_SHOCK, true, this.gameObject);
+        }
     }
 
     public void shockOff()
     {
         _kirby.isParalyzed = false;
-        //_kirby.shockArea.SetActive(false);
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false);
+        if(_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK))
+        {
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false);
+            _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false, this.gameObject);
+        }
     }
 }

@@ -27,6 +27,7 @@ public class Enemy_PoppyBrosJrController : MonoBehaviour
         if (!_FSMIsRunning) StartCoroutine(chooseRandomAction());
         _enemy.characterController.Move(movement * _moveSpeed * Time.deltaTime);
 
+        applyGravity();
         if (_enemy.characterController.isGrounded)
         {
             if(!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_WALK))
@@ -35,10 +36,10 @@ public class Enemy_PoppyBrosJrController : MonoBehaviour
                 GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, true, this.gameObject);
             }
 
-            if(!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_JUMP))
+            if(_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_JUMP))
             {
-                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, true);
-                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_JUMP, true, this.gameObject);
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, false);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_JUMP, false, this.gameObject);
             }
         }
         else
@@ -49,13 +50,12 @@ public class Enemy_PoppyBrosJrController : MonoBehaviour
                 GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_WALK, false, this.gameObject);
             }
 
-            if(_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_JUMP))
+            if(!_enemy.animator.GetBool(KirbyConstants.ANIM_ENEMY_JUMP))
             {
-                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, false);
-                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_JUMP, false, this.gameObject);
+                _enemy.animator.SetBool(KirbyConstants.ANIM_ENEMY_JUMP, true);
+                GameManager.instance.localPlayerServerController.RpcChangeBoolAnimationStatus(KirbyConstants.ANIM_ENEMY_JUMP, true, this.gameObject);
             }
         }
-        applyGravity();
     }
 
     private void setMove()
