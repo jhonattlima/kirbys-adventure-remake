@@ -31,6 +31,8 @@ public class Kirby_actor : NetworkBehaviour
     public bool isInvulnerable = false;
     public float cooldownAction = 0;
 
+    public KirbyType kirbyType;
+
     [SyncVar]
     public int playerNumber;
 
@@ -91,9 +93,10 @@ public class Kirby_actor : NetworkBehaviour
 
     void Update()
     {
-        if(cooldownAction > 0)
+        if (cooldownAction > 0)
         {
             cooldownAction -= Time.deltaTime;
         }
     }
 }
+
