@@ -27,7 +27,7 @@ public class UIPanelKirbyStatusController : MonoBehaviour
     public void setLife(int amount, Enum_kirbyTypes kirbyType)
     {
         Image chosenImage = kirbyType.Equals(Enum_kirbyTypes.pink) ? lifeBarPink : lifeBarBlue;
-        chosenImage.sprite = spritesLifePoints[amount];
+        chosenImage.sprite = spritesLifePoints[amount - 1];
     }
 
     public void setPower(Powers power, Enum_kirbyTypes kirbyType)
