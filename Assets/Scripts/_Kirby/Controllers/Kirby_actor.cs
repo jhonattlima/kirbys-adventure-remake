@@ -31,7 +31,7 @@ public class Kirby_actor : NetworkBehaviour
     public bool isInvulnerable = false;
     public float cooldownAction = 0;
 
-    public KirbyType kirbyType;
+    public Enum_kirbyTypes kirbyType;
 
     [SyncVar]
     public int playerNumber;
