@@ -6,53 +6,47 @@ using UnityEngine.UI;
 public class UIPanelKirbyStatusController : MonoBehaviour
 {
     public static UIPanelKirbyStatusController instance;
-    public Text LifeText;
-    public Text PowerText;
+    public Sprite[] spritesLifePoints;
+    public Sprite[] spritesPowers;
+    public Image lifeBarPink;
+    public Image powerIconPink;
+    public Image lifeBarBlue;
+    public Image powerIconBlue;
 
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
 
-        setLife(KirbyConstants.PLAYER_HEALTH_POINTS);
-        setPower((int)Powers.None);
+        setLife(KirbyConstants.PLAYER_HEALTH_POINTS, Enum_kirbyTypes.pink);
+        setLife(KirbyConstants.PLAYER_HEALTH_POINTS, Enum_kirbyTypes.blue);
+        setPower(Powers.None, Enum_kirbyTypes.pink);
+        setPower(Powers.None, Enum_kirbyTypes.blue);
     }
 
-    public void setLife(int amount)
+    public void setLife(int amount, Enum_kirbyTypes kirbyType)
     {
-        LifeText.text = "Lifes: X " + amount;
-        if (amount == 1)
-        {
-            LifeText.color = Color.red;
-        }
-        else
-        {
-            LifeText.color = Color.blue;
-        }
+        Image chosenImage = kirbyType.Equals(Enum_kirbyTypes.pink) ? lifeBarPink : lifeBarBlue;
+        chosenImage.sprite = spritesLifePoints[amount];
     }
 
-    public void setPower(int power)
+    public void setPower(Powers power, Enum_kirbyTypes kirbyType)
     {
-        string chosenPower;
+        Image chosenImage = kirbyType.Equals(Enum_kirbyTypes.pink) ? powerIconPink : powerIconBlue;
         switch (power)
         {
-            case (int)Powers.Fire:
-                chosenPower = "Fire";
-                PowerText.color = Color.red;
+            case Powers.Fire:
+                chosenImage.sprite = spritesPowers[1];
                 break;
-            case (int)Powers.Shock:
-                chosenPower = "Shock";
-                PowerText.color = Color.yellow;
+            case Powers.Shock:
+                chosenImage.sprite = spritesPowers[2];
                 break;
-            case (int)Powers.Beam:
-                chosenPower = "Beam";
-                PowerText.color = Color.magenta;
+            case Powers.Beam:
+                chosenImage.sprite = spritesPowers[3];
                 break;
             default:
-                chosenPower = "None";
-                PowerText.color = Color.white;
+                chosenImage.sprite = spritesPowers[0];
                 break;
         }
-        PowerText.text = "Power: " + chosenPower;
     }
 }

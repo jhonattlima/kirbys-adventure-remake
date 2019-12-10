@@ -1,4 +1,4 @@
-﻿enum Powers
+﻿public enum Powers
 {
     None,
     Fire,
