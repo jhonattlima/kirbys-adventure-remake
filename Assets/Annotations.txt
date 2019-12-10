@@ -6,21 +6,10 @@ TO DO PROGRAMMING
 - PanelKirby status logic.
 
 TO DO DESIGN
-- Colocar o painel de vida (o vermelho e azul vai aparecer para ambos, ancorar no topo da tela em tamanho fixo e com um espaço para o nome do Jogador (max 15 caracteres)); -Done
-- As imagens da barra de vida precisam ser uma com 5 pastilhas, outra com 4 e assim por diante, assim só vamos trocando toda a imagem;
+
 - Criar animação onde o kirby cospe uma bola de ar (mas sem a bola, já temos o prefab dentrod o kirby, 
     é só ligar ele no começo da animação e fazer ele percorrer o caminho, sumindo no final (desligar o objeto);
-- Criar menu de seleção de personagem e já colocar os comandos usados no jogo em um canto para instruir o jogador:
-    Z: Sucking, Expel enemy or Air;
-    X: Jump;
-    W,A,S,D or <-, ^, v , ->: directions;
-    Objective: Reach the trophy in the end of the stage or survive over your oponent to win;
-- Colocar mais um campo no painel de seleção de match para pôr o próprio nome além do nome da sala;
 - Fazer balão de ar do kirby (já tem prefab, é só mudar o mesh e redimensionar o collider);
-- Fazer estrela que o kirby dropa ao ser atingido (já tem prefab, é só mudar o mesh e redimensionar o collider);
-- Fazer outro material para o kirby azul
-- Fazer item que o kirby que alcançar ganha no final
-- Fazer tela de game over you lose e tela de game over you win - Done.
 - Fazer particulas do fire, spark e beam
 - Fazer flecha animada pra pôr na porta
 - Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
@@ -63,6 +52,20 @@ DONE
 - Get ideas about become visible or not - with colliders - Done
 - Why enemies are only being hit on server side. -- BECAUSE THIS ONLY SEND COMMAND THROUGH PLAYER PREFAB - somente o player pode mandar cmds. - Done
 - Programar controller de conexão online - Done.
+
+DONE DESIGN
+- Colocar o painel de vida (o vermelho e azul vai aparecer para ambos, ancorar no topo da tela em tamanho fixo e com um espaço para o nome do Jogador (max 15 caracteres)); -Done
+- Fazer outro material para o kirby azul -Done
+- Fazer tela de game over you lose e tela de game over you win - Done.
+- Fazer item que o kirby que alcançar ganha no final  - Done
+- As imagens da barra de vida precisam ser uma com 5 pastilhas, outra com 4 e assim por diante, assim só vamos trocando toda a imagem; - Done
+- Criar menu de seleção de personagem e já colocar os comandos usados no jogo em um canto para instruir o jogador:
+    Z: Sucking, Expel enemy or Air;
+    X: Jump;
+    W,A,S,D or <-, ^, v , ->: directions;
+    Objective: Reach the trophy in the end of the stage or survive over your oponent to win; - Done
+- Colocar mais um campo no painel de seleção de match para pôr o próprio nome além do nome da sala; - Done
+- Fazer estrela que o kirby dropa ao ser atingido (já tem prefab, é só mudar o mesh e redimensionar o collider); - Done
 
 Requisitos para a disciplina de Redes:
 ● Arquitetura servidor e clientes, utilizando as bibliotecas de rede da Unity;
