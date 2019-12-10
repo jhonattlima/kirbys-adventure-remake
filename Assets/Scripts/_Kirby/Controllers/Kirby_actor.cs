@@ -69,10 +69,6 @@ public class Kirby_actor : NetworkBehaviour
     {
         currentArea = PrefabsAndInstancesLibrary.instance.scenarioOnePart1.transform;
         transform.Rotate(0, 90f, 0);
-        //characterController = GetComponent<CharacterController>();
-        //animator = GetComponent<Animator>();
-        //kirbyServerController = GetComponent<Kirby_serverController>();
-        //shockArea = GetComponentInChildren<Kirby_powerShock>(true).gameObject;
         powerFire = GetComponent<Kirby_powerFire>();
         powerShock = GetComponent<Kirby_powerShock>();
         powerBeam = GetComponent<Kirby_powerBeam>();
