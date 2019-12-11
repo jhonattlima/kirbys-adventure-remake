@@ -19,12 +19,11 @@ public class Kirby_SuckAreaController : MonoBehaviour
         if (!_kirby.isLocalPlayer) return;
         if (other.CompareTag(KirbyConstants.TAG_ENEMY))
         {
-            if (_kirby.isLookingRight) other.GetComponent<CharacterController>().Move(transformMouth.position.normalized * Time.deltaTime * suckSpeed * -1);
-            else other.GetComponent<CharacterController>().Move(transformMouth.position.normalized * Time.deltaTime * suckSpeed);
+            Vector3 moveTarget = transformMouth.position;
+            Vector3 currentPosition = other.transform.position;
+            Vector3 moveDirection = (moveTarget - currentPosition).normalized;
+
+            other.GetComponent<CharacterController>().Move(moveDirection * Time.deltaTime * suckSpeed);
         }
-        // else if (other.GetComponent<Kirby_powerStar>())
-        // {
-        //     other.GetComponent<Rigidbody>().velocity = transformMouth.position.normalized * suckSpeed;
-        // }
     }
 }

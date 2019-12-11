@@ -34,10 +34,16 @@ public class UIPanelMainMenuController : MonoBehaviour
                 lanMode = true;
                 LanController.instance.listenMatches();
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
+                PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.text = "";
+                PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.text = "";
+                PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.text = "";
                 break;
             case SystemConstants.BUTTON_NAME_ONLINE_MODE:
                 lanMode = false;
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
+                PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.text = "";
+                PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.text = "";
+                PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.text = "";
                 RemoteController.instance.listenMatches();
                 break;
             case SystemConstants.BUTTON_NAME_QUIT_MODE:
@@ -47,7 +53,17 @@ public class UIPanelMainMenuController : MonoBehaviour
                 if (string.IsNullOrEmpty(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text)
                     || PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text.Contains("/"))
                 {
-                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().text = "Please insert a valid name";
+                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().text = "Please insert a valid match name.";
+                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().color = Color.red;
+                }
+                else if (string.IsNullOrEmpty(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.GetComponentInChildren<Text>().text))
+                {
+                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().text = "You need to put a player name.";
+                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().color = Color.red;
+                }
+                else if (PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.GetComponentInChildren<Text>().text.Length > 15)
+                {
+                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().text = "Player name must have no more than 15 letters.";
                     PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().color = Color.red;
                 }
                 else

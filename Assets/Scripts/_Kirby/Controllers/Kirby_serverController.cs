@@ -28,7 +28,7 @@ public class Kirby_serverController : NetworkBehaviour
 
     private void prepareGameToStart()
     {
-        PrefabsAndInstancesLibrary.instance.panelKirbyStatus.SetActive(true);
+        PrefabsAndInstancesLibrary.instance.canvasKirbyStatus.SetActive(true);
         PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
         PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(false);
         AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.stageVegetableValley);
@@ -177,5 +177,11 @@ public class Kirby_serverController : NetworkBehaviour
     public void RpcPlaySfx(GameObject playPoint, string sfxName)
     {
         AudioPlayerSFXController.instance.playAtPoint(playPoint, sfxName);
+    }
+
+    [Command]
+    public void CmdSetPlayerType(GameObject kirbyPrefab, Enum_kirbyTypes kirbyType)
+    {
+        kirbyPrefab.GetComponent<Kirby_actor>().kirbyType = kirbyType;
     }
 }

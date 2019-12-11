@@ -21,4 +21,6 @@ public class EnemySpawnerController : NetworkBehaviour
             GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(this.gameObject);
         }
     }
+
+    //todo change for OnTriggerEnter
 }

@@ -31,6 +31,7 @@ public class Kirby_actor : NetworkBehaviour
     public bool isInvulnerable = false;
     public float cooldownAction = 0;
 
+    [SyncVar]
     public Enum_kirbyTypes kirbyType;
 
     [SyncVar]
@@ -81,9 +82,11 @@ public class Kirby_actor : NetworkBehaviour
         playerNumber = 1;
         GameManager.instance.localPlayer = this;
         GameManager.instance.localPlayerServerController = kirbyServerController;
+        kirbyType = GameManager.instance.selectedKirbyType;
         if (isLocalPlayer && !isServer) // If it is player 2
         {
             kirbyServerController.CmdStartGame();
+            kirbyServerController.CmdSetPlayerType(this.gameObject, kirbyType);
         }
     }
 

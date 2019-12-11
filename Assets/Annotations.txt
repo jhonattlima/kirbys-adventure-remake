@@ -4,6 +4,7 @@ SpawnSpot2 - 6,5 2 -1
 TO DO PROGRAMMING
 - PanelSelectPlayer logic;
 - PanelKirby status logic.
+- Diminuir tamanho da antfarm pra que os kirbys nao possam andar para o fundo ou frente
 
 TO DO DESIGN
 
@@ -17,10 +18,10 @@ TO DO DESIGN
 - Colocar um tile a mais na úlima plataforma
 
 BUGS
-- Checar com o professor como fazer o suck funcionar em todas as areas - só checar, já está funcionando ( checar a suckareaController);
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
 
 DONE
+- Checar com o professor como fazer o suck funcionar em todas as areas - só checar, já está funcionando ( checar a suckareaController); - Done;
 - Put cooldown on airball; - Done;
 - SFX controller logic; -Done;
 - Fazer chao invisível para queda e morte do kirby na área 3; - Done;

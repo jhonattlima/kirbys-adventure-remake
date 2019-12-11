@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] listOfPlayers;
     public bool wonTheGame;
     public bool gameOverDisconnection = false;
+    public Enum_kirbyTypes selectedKirbyType;
 
     // Start is called before the first frame update
     void Awake()
