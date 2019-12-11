@@ -20,6 +20,7 @@ public class Kirby_actor : NetworkBehaviour
     public GameObject starBulletPrefab;
     public Transform spotToDropStar;
     public List<SkinnedMeshRenderer> body;
+    public Kirby_bodyMaterialsController bodyMaterialsController;
     public Transform currentArea;
     public Powers enemy_powerInMouth = Powers.None;
     public bool isLookingRight = true;

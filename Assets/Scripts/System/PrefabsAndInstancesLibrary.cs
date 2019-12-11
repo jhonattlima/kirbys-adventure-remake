@@ -22,14 +22,17 @@ public class PrefabsAndInstancesLibrary : MonoBehaviour
     public GameObject panelMainMenu;
     public GameObject panelListOfMatches;
     public GameObject[] panelListOfMatchesButtonsList;
-    public Text panelListOfMatchesInputFieldMatchName;
-    public Text panelListOfMatchesInputFieldPlayerName;
-    public Text panelListTextWarningMessage;
     public GameObject panelWaitingForAnotherPlayerToConnect;
     public GameObject panelNetworkErrorMessage;
     public GameObject panelCharacterSelect;
     public GameObject canvasKirbyStatus;
     public GameObject panelGameOver;
+    public Text panelListOfMatchesInputFieldMatchName;
+    public Text panelListOfMatchesInputFieldPlayerName;
+    public Text panelListTextWarningMessage;
+    public Material kirbyBlueMouth;
+    public Material kirbyBlueEye;
+    public Material kirbyBlueFoot;
 
     public static PrefabsAndInstancesLibrary instance;
     private void Awake()
