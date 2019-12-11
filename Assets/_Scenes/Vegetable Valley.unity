@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2296,9 +2296,9 @@ MonoBehaviour:
   panelListOfMatchesInputFieldMatchName: {fileID: 5714117718554796632}
   panelListOfMatchesInputFieldPlayerName: {fileID: 1693083774}
   panelListTextWarningMessage: {fileID: 311114585}
-  kirbyBlueMouth: {fileID: 2100000, guid: 6f4643af3e0a847d3baea1c1bfe7ccb8, type: 2}
-  kirbyBlueEye: {fileID: 2100000, guid: 08af187dc26044ba2a163d71896f794a, type: 2}
-  kirbyBlueFoot: {fileID: 2100000, guid: 3dffcaded0f9e4112924f4ab1312eb54, type: 2}
+  kirbyBlueMouth: {fileID: 2800000, guid: 75e35ff59c18d42868b2d2bf30414490, type: 3}
+  kirbyBlueEye: {fileID: 2800000, guid: 824f75fdb00934380b3f677d7ae55533, type: 3}
+  kirbyBlueFoot: {fileID: 2800000, guid: 33c648befed0243a9908248bf66fea42, type: 3}
 --- !u!4 &481434330
 Transform:
   m_ObjectHideFlags: 0

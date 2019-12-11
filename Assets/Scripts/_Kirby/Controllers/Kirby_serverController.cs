@@ -194,7 +194,6 @@ public class Kirby_serverController : NetworkBehaviour
     [Command]
     public void CmdSetPlayerShaderToBlue(GameObject kirby)
     {
-        Debug.Log("EnteredHere");
         execChangeShadersToBlue(kirby);
         RpcSetPlayerShadertoBlue(kirby);
     }
@@ -208,8 +207,12 @@ public class Kirby_serverController : NetworkBehaviour
     private void execChangeShadersToBlue(GameObject kirby)
     {
         Kirby_actor actor = kirby.GetComponent<Kirby_actor>();
-        actor.bodyMaterialsController.kirbyEyes = PrefabsAndInstancesLibrary.instance.kirbyBlueEye;
-        actor.bodyMaterialsController.kirbyMouth = PrefabsAndInstancesLibrary.instance.kirbyBlueMouth;
-        actor.bodyMaterialsController.kirbyFoot = PrefabsAndInstancesLibrary.instance.kirbyBlueFoot;
+        Debug.Log("Entered here");
+        if(actor.kirbyType == Enum_kirbyTypes.blue)
+        {
+            actor.bodyMaterialsController.kirbyEyes.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueEye);
+            actor.bodyMaterialsController.kirbyMouth.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueMouth);
+            actor.bodyMaterialsController.kirbyFoot.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueFoot);
+        }
     }
 }

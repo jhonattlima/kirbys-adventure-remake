@@ -30,9 +30,9 @@ public class PrefabsAndInstancesLibrary : MonoBehaviour
     public Text panelListOfMatchesInputFieldMatchName;
     public Text panelListOfMatchesInputFieldPlayerName;
     public Text panelListTextWarningMessage;
-    public Material kirbyBlueMouth;
-    public Material kirbyBlueEye;
-    public Material kirbyBlueFoot;
+    public Texture kirbyBlueMouth;
+    public Texture kirbyBlueEye;
+    public Texture kirbyBlueFoot;
 
     public static PrefabsAndInstancesLibrary instance;
     private void Awake()
