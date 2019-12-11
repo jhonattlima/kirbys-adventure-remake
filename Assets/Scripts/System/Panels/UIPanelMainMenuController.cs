@@ -62,6 +62,7 @@ public class UIPanelMainMenuController : MonoBehaviour
                 }
                 else
                 {
+                    GameManager.instance.playerName = PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.text;
                     PrefabsAndInstancesLibrary.instance.panelCharacterSelect.SetActive(true);
                 }
                 break;

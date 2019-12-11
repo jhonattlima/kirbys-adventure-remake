@@ -14,7 +14,8 @@ TO DO DESIGN
 - Fazer flecha animada pra pôr na porta
 - Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
     Obs: não deixar nenhum spawner proximo ao ponto de inicio da fase pra não triggar automaticamente quando um kirby nascer.
-- Colocar um tile a mais na úlima plataforma
+- Colocar um tile a mais na úlima plataforma;
+- Colocar um céu bonito e imagens de fundo :D.
 
 BUGS
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.

@@ -7,7 +7,6 @@ public class Kirby_healthController : NetworkBehaviour
     Kirby_actor _kirby;
     int healthPoints = KirbyConstants.PLAYER_HEALTH_POINTS;
     bool isTakingDamage = false;
-
     void Start()
     {
         _kirby = GetComponent<Kirby_actor>();
@@ -32,13 +31,17 @@ public class Kirby_healthController : NetworkBehaviour
         healthPoints -= amountOfDamage;
         Debug.Log("Ouch, took damage! Life points now: " + healthPoints);
         //UIPanelKirbyStatusController.instance.setLife(healthPoints);
-        if (healthPoints <= 0) _kirby.kirbyServerController.CmdGameOverByDeath(_kirby.playerNumber); //died
+        if (healthPoints <= 0)
+        {
+            _kirby.isAlive = false;
+            _kirby.kirbyServerController.CmdGameOverByDeath(_kirby.playerNumber); //died
+        } 
         else StartCoroutine(sufferDamage());
     }
 
     IEnumerator sufferDamage()
     {
-        if(!_kirby.animator.GetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE))
+        if(_kirby.isAlive && !_kirby.animator.GetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE))
         {
             _kirby.animator.SetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true);
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, true, this.gameObject);
@@ -63,10 +66,10 @@ public class Kirby_healthController : NetworkBehaviour
         _kirby.isInvulnerable = false;
     }
 
-    public void retrievePower(int power)
+    public void retrievePower(Powers power)
     {
-        if (_kirby.enemy_powerInMouth != (int)Powers.None) return;
-        switch ((Powers)power)
+        if (_kirby.enemy_powerInMouth != Powers.None) return;
+        switch (power)
         {
             case Powers.Fire:
                 _kirby.powerFire.enabled = true;
@@ -108,7 +111,7 @@ public class Kirby_healthController : NetworkBehaviour
     // Method called by animation
     public void finishGetDamagedAnimation()
     {
-        _kirby.animator.SetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, false);
+        if(_kirby.isAlive) _kirby.animator.SetBool(KirbyConstants.ANIM_NAME_TAKE_DAMAGE, false);
     }
 
     IEnumerator keepBlinking()

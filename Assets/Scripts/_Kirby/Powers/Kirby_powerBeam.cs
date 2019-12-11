@@ -16,7 +16,8 @@ public class Kirby_powerBeam : NetworkBehaviour
     void Update()
     {
         if (!isLocalPlayer) return;
-
+        if(!_kirby.isAlive) return;
+        
         if (Input.GetKeyDown(KirbyConstants.KEY_SUCK)
         && _kirby.characterController.isGrounded
         && !_kirby.isFullOfAir)

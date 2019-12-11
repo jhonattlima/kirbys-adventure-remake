@@ -33,7 +33,6 @@ public class Kirby_serverController : NetworkBehaviour
         PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(false);
         AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.stageVegetableValley);
         GameManager.instance.listOfPlayers = GameObject.FindGameObjectsWithTag(KirbyConstants.TAG_PLAYER);
-        GameManager.instance.listOfPlayers[1].gameObject.GetComponent<Kirby_actor>().playerNumber = 2;
         GameManager.instance.localPlayer.isParalyzed = false;
     }
 
@@ -180,9 +179,19 @@ public class Kirby_serverController : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSetPlayerType(GameObject kirbyPrefab, Enum_kirbyTypes kirbyType)
+    public void CmdSetPlayerInfo(GameObject kirby, int playerNumber, Enum_kirbyTypes kirbyType, string playerName)
     {
-        kirbyPrefab.GetComponent<Kirby_actor>().kirbyType = kirbyType;
-    }
+        Kirby_actor actor = kirby.GetComponent<Kirby_actor>();
+        actor.playerNumber = playerNumber;
+        actor.kirbyType = kirbyType;
+        actor.playerName = playerName;
+        if(actor.kirbyType == Enum_kirbyTypes.pink)
+        {
 
+        }
+        else
+        {
+
+        }
+    }
 }

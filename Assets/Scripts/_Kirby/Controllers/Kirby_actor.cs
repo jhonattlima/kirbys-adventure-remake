@@ -21,9 +21,10 @@ public class Kirby_actor : NetworkBehaviour
     public Transform spotToDropStar;
     public List<SkinnedMeshRenderer> body;
     public Transform currentArea;
-    public int enemy_powerInMouth = (int)Powers.None;
-    public bool hasPower = false;
+    public Powers enemy_powerInMouth = Powers.None;
     public bool isLookingRight = true;
+    public bool isAlive = true;
+    public bool hasPower = false;
     public bool isFullOfEnemy = false;
     public bool isFullOfAir = false;
     public bool isSucking = false;
@@ -32,10 +33,11 @@ public class Kirby_actor : NetworkBehaviour
     public float cooldownAction = 0;
 
     [SyncVar]
-    public Enum_kirbyTypes kirbyType;
-
+    public string playerName;
     [SyncVar]
     public int playerNumber;
+    [SyncVar]
+    public Enum_kirbyTypes kirbyType;
 
     public Vector3 directionRight
     {
@@ -79,15 +81,15 @@ public class Kirby_actor : NetworkBehaviour
     {
         if (!isLocalPlayer) return;
         CameraController.instance.localKirby = this;
-        playerNumber = 1;
         GameManager.instance.localPlayer = this;
         GameManager.instance.localPlayerServerController = kirbyServerController;
-        kirbyType = GameManager.instance.selectedKirbyType;
+        playerNumber = 1;
         if (isLocalPlayer && !isServer) // If it is player 2
         {
+            playerNumber = 2;
             kirbyServerController.CmdStartGame();
-            kirbyServerController.CmdSetPlayerType(this.gameObject, kirbyType);
         }
+        kirbyServerController.CmdSetPlayerInfo(this.gameObject, playerNumber, GameManager.instance.selectedKirbyType, GameManager.instance.playerName);
     }
 
     void Update()

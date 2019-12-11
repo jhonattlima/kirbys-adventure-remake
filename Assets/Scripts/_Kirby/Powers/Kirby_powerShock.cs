@@ -15,6 +15,8 @@ public class Kirby_powerShock : NetworkBehaviour
     void Update()
     {
         if (!isLocalPlayer) return;
+        if(!_kirby.isAlive) return;
+        
         if (Input.GetKey(KirbyConstants.KEY_SUCK)
         && _kirby.characterController.isGrounded
         && !_kirby.isFullOfAir)

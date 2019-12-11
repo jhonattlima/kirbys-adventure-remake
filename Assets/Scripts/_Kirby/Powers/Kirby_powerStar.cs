@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Kirby_powerStar : MonoBehaviour
 {
-    public int power;
+    public Powers power;
     private bool isActivated = false;
 
     private void Awake()

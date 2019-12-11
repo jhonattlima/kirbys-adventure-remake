@@ -8,7 +8,7 @@ public class Enemy_actor : NetworkBehaviour
     public Enemy_healthController healthController;
     public CharacterController characterController;
     public Animator animator;
-    public int type;
+    public Powers type;
     public int touchDamage;
     public bool isKirbyClose = false;
 

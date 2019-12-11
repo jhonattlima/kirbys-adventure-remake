@@ -12,6 +12,6 @@ public class Enemy_waddleDoo : MonoBehaviour
 
         _enemy.healthController.healthPoints = 1;
         _enemy.touchDamage = 1;
-        _enemy.type = (int)Powers.Beam;
+        _enemy.type = Powers.Beam;
     }
 }

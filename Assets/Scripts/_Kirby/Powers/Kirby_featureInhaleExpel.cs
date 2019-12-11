@@ -15,6 +15,7 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
 
     void Update()
     {
+        if(!_kirby.isAlive) return;
         if (!isLocalPlayer) return;
         if (!_kirby.isParalyzed)
         {
@@ -75,17 +76,17 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
 
     public void activatePower()
     {
-        if (_kirby.enemy_powerInMouth == (int)Powers.None) return;
+        if (_kirby.enemy_powerInMouth == Powers.None) return;
         Debug.Log("Activated power");
         switch (_kirby.enemy_powerInMouth)
         {
-            case (int)Powers.Fire:
+            case Powers.Fire:
                 _kirby.powerFire.enabled = true;
                 break;
-            case (int)Powers.Shock:
+            case Powers.Shock:
                 _kirby.powerShock.enabled = true;
                 break;
-            case (int)Powers.Beam:
+            case Powers.Beam:
                 _kirby.powerBeam.enabled = true;
                 break;
         }

@@ -5,20 +5,22 @@ using UnityEngine.UI;
 
 public class UIPanelGameOverController : MonoBehaviour
 {
-    public Image gameOverYouWin;
-    public Image gameOverYouLose;
-    public Text gameoverMessage;
+    public Sprite gameOverYouWin;
+    public Sprite gameOverYouLose;
+    public Image backgroundImage;
 
     private void OnEnable()
     {
         if (GameManager.instance.wonTheGame)
         {
-            gameoverMessage.text = "Congrats! You win!!!";
+            Debug.Log("Congrats! You win!!!");
+            backgroundImage.sprite = gameOverYouWin;
             AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.gameOverYouwin);
         }
         else
         {
-            gameoverMessage.text = "Game over! You lose!!!";
+            Debug.Log("Game over! You lose!!!");
+            backgroundImage.sprite = gameOverYouLose;
             AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.gameOverYouLost);
         }
     }

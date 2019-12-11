@@ -12,6 +12,6 @@ public class Enemy_sparky : MonoBehaviour
 
         _enemy.healthController.healthPoints = 1;
         _enemy.touchDamage = 1;
-        _enemy.type = (int)Powers.Shock;
+        _enemy.type = Powers.Shock;
     }
 }

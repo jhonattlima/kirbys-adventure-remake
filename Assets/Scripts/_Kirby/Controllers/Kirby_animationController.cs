@@ -29,6 +29,8 @@ public class Kirby_animationController : MonoBehaviour
 
     public void checkMovements()
     {
+        if(!_kirby.isAlive) return;
+
         if (_movement.isWalking && _movement.isWalking != lastIsWalking)
         {
             lastIsWalking = _movement.isWalking;
@@ -84,6 +86,8 @@ public class Kirby_animationController : MonoBehaviour
 
     private void checkActor()
     {
+        if(!_kirby.isAlive) return;
+        
         if ((_kirby.isFullOfAir && _kirby.isFullOfAir != lastIsFullOfAir) ||
             (_kirby.isFullOfEnemy && _kirby.isFullOfEnemy != lastIsFullOfEnemy))
         {

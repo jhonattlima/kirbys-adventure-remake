@@ -465,7 +465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &102380612
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1751,6 +1751,7 @@ MonoBehaviour:
   wonTheGame: 0
   gameOverDisconnection: 0
   selectedKirbyType: 0
+  playerName: 
 --- !u!1 &394541560
 GameObject:
   m_ObjectHideFlags: 0
@@ -5546,7 +5547,7 @@ PrefabInstance:
     - target: {fileID: 2363564639637912992, guid: 1db401088a6e70d44a12bf9b48117007,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2363564639637912993, guid: 1db401088a6e70d44a12bf9b48117007,
         type: 3}
@@ -6732,13 +6733,14 @@ GameObject:
   - component: {fileID: 1624857825}
   - component: {fileID: 1624857824}
   - component: {fileID: 1624857823}
+  - component: {fileID: 1624857827}
   m_Layer: 5
   m_Name: CanvasKirbyStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1624857822
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6828,6 +6830,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624857821}
   m_CullTransparentMesh: 0
+--- !u!114 &1624857827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624857821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a702e3dc25af30479df969c7aed36ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spritesLifePoints:
+  - {fileID: 21300000, guid: 37a3e7c9517e2447bacb70a80f2dc9e8, type: 3}
+  - {fileID: 21300002, guid: 37a3e7c9517e2447bacb70a80f2dc9e8, type: 3}
+  - {fileID: 21300004, guid: 37a3e7c9517e2447bacb70a80f2dc9e8, type: 3}
+  - {fileID: 21300006, guid: 37a3e7c9517e2447bacb70a80f2dc9e8, type: 3}
+  - {fileID: 21300008, guid: 37a3e7c9517e2447bacb70a80f2dc9e8, type: 3}
+  - {fileID: 21300010, guid: 37a3e7c9517e2447bacb70a80f2dc9e8, type: 3}
+  - {fileID: 21300012, guid: 37a3e7c9517e2447bacb70a80f2dc9e8, type: 3}
+  spritesPowers:
+  - {fileID: 21300000, guid: b0e9b9d4a73794f22abe81b3260e0494, type: 3}
+  - {fileID: 21300004, guid: b0e9b9d4a73794f22abe81b3260e0494, type: 3}
+  - {fileID: 21300006, guid: b0e9b9d4a73794f22abe81b3260e0494, type: 3}
+  - {fileID: 21300002, guid: b0e9b9d4a73794f22abe81b3260e0494, type: 3}
+  lifeBarPink: {fileID: 0}
+  powerIconPink: {fileID: 1480003153}
+  lifeBarBlue: {fileID: 0}
+  powerIconBlue: {fileID: 795439261}
 --- !u!1 &1627097295
 GameObject:
   m_ObjectHideFlags: 0
@@ -7099,7 +7130,7 @@ GameObject:
   - component: {fileID: 1695906953}
   - component: {fileID: 1695906952}
   m_Layer: 5
-  m_Name: ButtonBlue
+  m_Name: ButtonCharacterBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8351,9 +8382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb2b2f6727add54a8c09bb17f8645c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverYouWin: {fileID: 0}
-  gameOverYouLose: {fileID: 0}
-  gameoverMessage: {fileID: 1715764143}
+  gameOverYouWin: {fileID: 21300000, guid: 0ad04d5b0470f46ab8e3a0c57df9a9bf, type: 3}
+  gameOverYouLose: {fileID: 21300000, guid: 77da79070b0784d5084816b53befe654, type: 3}
+  backgroundImage: {fileID: 1911865044}
 --- !u!114 &1911865044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8922,7 +8953,7 @@ GameObject:
   - component: {fileID: 2101343245}
   - component: {fileID: 2101343244}
   m_Layer: 5
-  m_Name: ButtonPink
+  m_Name: ButtonCharacterPink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
