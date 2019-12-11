@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class UIPanelKirbyStatusController : MonoBehaviour
 {
     public static UIPanelKirbyStatusController instance;
-    public Sprite[] spritesLifePoints;
+    public Sprite[] spritesLifePointsPink;
+    public Sprite[] spritesLifePointsBlue;
     public Sprite[] spritesPowers;
+    public Text namePink;
     public Image lifeBarPink;
     public Image powerIconPink;
+    public Text nameBlue;
     public Image lifeBarBlue;
     public Image powerIconBlue;
 
@@ -27,7 +30,8 @@ public class UIPanelKirbyStatusController : MonoBehaviour
     public void setLife(int amount, Enum_kirbyTypes kirbyType)
     {
         Image chosenImage = kirbyType.Equals(Enum_kirbyTypes.pink) ? lifeBarPink : lifeBarBlue;
-        chosenImage.sprite = spritesLifePoints[amount - 1];
+        Sprite[] chosenCollection = kirbyType.Equals(Enum_kirbyTypes.pink) ? spritesLifePointsPink : spritesLifePointsBlue;
+        chosenImage.sprite = chosenCollection[amount];
     }
 
     public void setPower(Powers power, Enum_kirbyTypes kirbyType)
@@ -48,5 +52,12 @@ public class UIPanelKirbyStatusController : MonoBehaviour
                 chosenImage.sprite = spritesPowers[0];
                 break;
         }
+    }
+
+    public void setName(string name, Enum_kirbyTypes kirbyType)
+    {
+        Debug.Log("Name received to set " + name);
+        Text chosenText = kirbyType.Equals(Enum_kirbyTypes.pink) ? namePink : nameBlue;
+        chosenText.text = name;
     }
 }
