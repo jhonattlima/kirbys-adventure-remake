@@ -185,13 +185,31 @@ public class Kirby_serverController : NetworkBehaviour
         actor.playerNumber = playerNumber;
         actor.kirbyType = kirbyType;
         actor.playerName = playerName;
-        if(actor.kirbyType == Enum_kirbyTypes.pink)
+        if(actor.kirbyType == Enum_kirbyTypes.blue)
         {
-
+            CmdSetPlayerShaderToBlue(kirby);
         }
-        else
-        {
+    }
 
-        }
+    [Command]
+    public void CmdSetPlayerShaderToBlue(GameObject kirby)
+    {
+        Debug.Log("EnteredHere");
+        execChangeShadersToBlue(kirby);
+        RpcSetPlayerShadertoBlue(kirby);
+    }
+
+    [ClientRpc]
+    public void RpcSetPlayerShadertoBlue(GameObject kirby)
+    {
+        execChangeShadersToBlue(kirby);
+    }
+
+    private void execChangeShadersToBlue(GameObject kirby)
+    {
+        Kirby_actor actor = kirby.GetComponent<Kirby_actor>();
+        actor.bodyMaterialsController.kirbyEyes = PrefabsAndInstancesLibrary.instance.kirbyBlueEye;
+        actor.bodyMaterialsController.kirbyMouth = PrefabsAndInstancesLibrary.instance.kirbyBlueMouth;
+        actor.bodyMaterialsController.kirbyFoot = PrefabsAndInstancesLibrary.instance.kirbyBlueFoot;
     }
 }

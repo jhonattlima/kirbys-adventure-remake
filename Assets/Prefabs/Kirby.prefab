@@ -286,18 +286,21 @@ MonoBehaviour:
   - {fileID: 899774280203400924}
   - {fileID: 899774280203400926}
   - {fileID: 899774280203400912}
+  bodyMaterialsController: {fileID: 5855747461207443965}
   currentArea: {fileID: 0}
   enemy_powerInMouth: 0
-  hasPower: 0
   isLookingRight: 1
+  isAlive: 1
+  hasPower: 0
   isFullOfEnemy: 0
   isFullOfAir: 0
   isSucking: 0
   isParalyzed: 0
   isInvulnerable: 0
   cooldownAction: 0
-  kirbyType: 0
+  playerName: 
   playerNumber: 0
+  kirbyType: 0
 --- !u!114 &6356111907700193545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,6 +847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 899774280199923702}
   - component: {fileID: 899774280203400912}
+  - component: {fileID: 5855747461207443965}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -930,6 +934,21 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000000013969839, y: -0.0007438252, z: 9.313226e-10}
     m_Extent: {x: 0.0072320797, y: 0.005743824, z: 0.0049999985}
   m_DirtyAABB: 0
+--- !u!114 &5855747461207443965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899774280200289238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b488227caeedd45afdb0880d05a668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kirbyEyes: {fileID: 2100000, guid: fe4223361f93d4344912d8bf3c73ea5e, type: 2}
+  kirbyMouth: {fileID: 2100000, guid: e53606a58fb284589bbabe0100dafa70, type: 2}
+  kirbyFoot: {fileID: 2100000, guid: 41181e23c1722437c8ca616b0d141967, type: 2}
 --- !u!1 &899774280200289240
 GameObject:
   m_ObjectHideFlags: 0
