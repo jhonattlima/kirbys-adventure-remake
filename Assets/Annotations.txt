@@ -8,9 +8,8 @@ TO DO PROGRAMMING
 
 TO DO DESIGN
 
-- Criar animação onde o kirby cospe uma bola de ar (mas sem a bola, já temos o prefab dentrod o kirby, 
+- Criar animação onde o kirby cospe uma bola de ar (mas sem a bola, já temos o prefab dentro do kirby, 
     é só ligar ele no começo da animação e fazer ele percorrer o caminho, sumindo no final (desligar o objeto);
-- Fazer balão de ar do kirby (já tem prefab, é só mudar o mesh e redimensionar o collider);
 - Fazer particulas do fire, spark e beam
 - Fazer flecha animada pra pôr na porta
 - Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
@@ -67,6 +66,7 @@ DONE DESIGN
     Objective: Reach the trophy in the end of the stage or survive over your oponent to win; - Done
 - Colocar mais um campo no painel de seleção de match para pôr o próprio nome além do nome da sala; - Done
 - Fazer estrela que o kirby dropa ao ser atingido (já tem prefab, é só mudar o mesh e redimensionar o collider); - Done
+- Fazer balão de ar do kirby (já tem prefab, é só mudar o mesh e redimensionar o collider); -Done
 
 Requisitos para a disciplina de Redes:
 ● Arquitetura servidor e clientes, utilizando as bibliotecas de rede da Unity;
