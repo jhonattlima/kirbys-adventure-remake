@@ -19,5 +19,9 @@ public class SystemConstants
     public const string BUTTON_NAME_MATCH = "ButtonMatch";
     public const string BUTTON_NAME_BACK = "ButtonBack";
 
+    public const string BUTTON_NAME_CHARACTER_BLUE = "ButtonCharacterBlue";
+
+    public const string BUTTON_NAME_CHARACTER_PINK = "ButtonCharacterPink";
+
     public static float TIME_TO_SHOW_ERROR_PANEL = 5;
 }

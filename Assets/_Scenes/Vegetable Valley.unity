@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -458,8 +458,9 @@ GameObject:
   - component: {fileID: 102380612}
   - component: {fileID: 102380614}
   - component: {fileID: 102380613}
+  - component: {fileID: 102380615}
   m_Layer: 5
-  m_Name: PanelSelectCharacter
+  m_Name: PanelCharacterSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,6 +524,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102380611}
   m_CullTransparentMesh: 0
+--- !u!114 &102380615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102380611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d615dae9b3707345a6932bc6cc012c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &110892215 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1369855068539923344, guid: c135d085da94b074493820974b1bc1d4,
@@ -2427,6 +2440,7 @@ MonoBehaviour:
   panelListTextWarningMessage: {fileID: 311114585}
   panelWaitingForAnotherPlayerToConnect: {fileID: 1174155611}
   panelNetworkErrorMessage: {fileID: 1659820942}
+  panelCharacterSelect: {fileID: 102380611}
   canvasKirbyStatus: {fileID: 1624857821}
   panelGameOver: {fileID: 1911865042}
 --- !u!4 &481434330
@@ -7085,7 +7099,7 @@ GameObject:
   - component: {fileID: 1695906953}
   - component: {fileID: 1695906952}
   m_Layer: 5
-  m_Name: btnBlue
+  m_Name: ButtonBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7150,7 +7164,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1695906953}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 102380615}
+        m_MethodName: buttonSelect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1695906952}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1695906953
@@ -8897,7 +8922,7 @@ GameObject:
   - component: {fileID: 2101343245}
   - component: {fileID: 2101343244}
   m_Layer: 5
-  m_Name: btnPink
+  m_Name: ButtonPink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8962,7 +8987,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2101343245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 102380615}
+        m_MethodName: buttonSelect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2101343244}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2101343245

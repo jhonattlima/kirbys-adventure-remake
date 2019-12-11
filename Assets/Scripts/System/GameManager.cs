@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public void waitForMatch()
     {
         PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
+        PrefabsAndInstancesLibrary.instance.panelCharacterSelect.SetActive(false);
         PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(true);
     }
 

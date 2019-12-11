@@ -27,6 +27,7 @@ public class PrefabsAndInstancesLibrary : MonoBehaviour
     public Text panelListTextWarningMessage;
     public GameObject panelWaitingForAnotherPlayerToConnect;
     public GameObject panelNetworkErrorMessage;
+    public GameObject panelCharacterSelect;
     public GameObject canvasKirbyStatus;
     public GameObject panelGameOver;
 

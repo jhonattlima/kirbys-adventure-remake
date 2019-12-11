@@ -34,16 +34,10 @@ public class UIPanelMainMenuController : MonoBehaviour
                 lanMode = true;
                 LanController.instance.listenMatches();
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
-                PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.text = "";
-                PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.text = "";
-                PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.text = "";
                 break;
             case SystemConstants.BUTTON_NAME_ONLINE_MODE:
                 lanMode = false;
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(true);
-                PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.text = "";
-                PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.text = "";
-                PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.text = "";
                 RemoteController.instance.listenMatches();
                 break;
             case SystemConstants.BUTTON_NAME_QUIT_MODE:
@@ -68,9 +62,7 @@ public class UIPanelMainMenuController : MonoBehaviour
                 }
                 else
                 {
-                    if (lanMode) LanController.instance.createMatch(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text);
-                    else RemoteController.instance.createMatch(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldMatchName.GetComponentInChildren<Text>().text);
-                    GameManager.instance.waitForMatch();
+                    PrefabsAndInstancesLibrary.instance.panelCharacterSelect.SetActive(true);
                 }
                 break;
             case SystemConstants.BUTTON_NAME_BACK:
@@ -78,6 +70,7 @@ public class UIPanelMainMenuController : MonoBehaviour
                 else RemoteController.instance.cancelRemoteDiscovery();
                 clearMatchButtons();
                 PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(true);
+                PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.text = "";
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(false);
                 break;
             case SystemConstants.BUTTON_NAME_MATCH:

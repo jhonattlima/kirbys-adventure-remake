@@ -184,4 +184,5 @@ public class Kirby_serverController : NetworkBehaviour
     {
         kirbyPrefab.GetComponent<Kirby_actor>().kirbyType = kirbyType;
     }
+
 }
