@@ -1,0 +1,208 @@
+fileFormatVersion: 2
+guid: 73b62a32edc514cbfac578c28038ab46
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: AlphaFly
+    100002: AlphaFull
+    100004: AlphaInh
+    100006: AlphaNrml
+    100008: Arm.L
+    100010: Arm.R
+    100012: Armature
+    100014: Bandana
+    100016: Body
+    100018: Body 1
+    100020: Bone
+    100022: Bone.001
+    100024: Fly
+    100026: Foot.L
+    100028: Foot.R
+    100030: Full
+    100032: Googles
+    100034: Inhale
+    100036: Leg.L
+    100038: Leg.R
+    100040: //RootNode
+    100042: Normal
+    100044: Toe.L
+    100046: Toe.R
+    400000: AlphaFly
+    400002: AlphaFull
+    400004: AlphaInh
+    400006: AlphaNrml
+    400008: Arm.L
+    400010: Arm.R
+    400012: Armature
+    400014: Bandana
+    400016: Body
+    400018: Body 1
+    400020: Bone
+    400022: Bone.001
+    400024: Fly
+    400026: Foot.L
+    400028: Foot.R
+    400030: Full
+    400032: Googles
+    400034: Inhale
+    400036: Leg.L
+    400038: Leg.R
+    400040: //RootNode
+    400042: Normal
+    400044: Toe.L
+    400046: Toe.R
+    2100000: KbMouthC
+    2100002: KbEyeC
+    2100004: KbLargeMouthC
+    2100006: KbFootC
+    2100008: AlphaEye
+    2100010: AlphaMouth
+    2100012: mat1
+    2100014: mat2.001
+    2100016: mat1.001
+    4300000: Body
+    4300002: AlphaFly
+    4300004: AlphaNrml
+    4300006: AlphaFull
+    4300008: AlphaInh
+    4300010: Bandana
+    4300012: Googles
+    7400000: Armature|@TPose
+    7400002: Armature|Damage
+    7400004: Armature|Fall
+    7400006: Armature|Fly
+    7400008: Armature|Full_Damage
+    7400010: Armature|Full_Idle
+    7400012: Armature|Full_Walk
+    7400014: Armature|Idle
+    7400016: Armature|Inhale
+    7400018: Armature|Jump
+    7400020: Armature|Power_Beam
+    7400022: Armature|Power_Fire
+    7400024: Armature|Power_Spark
+    7400026: Armature|Running
+    7400028: Armature|Walk
+    9500000: //RootNode
+    13700000: AlphaFly
+    13700002: AlphaFull
+    13700004: AlphaInh
+    13700006: AlphaNrml
+    13700008: Bandana
+    13700010: Body
+    13700012: Googles
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AlphaEye
+    second: {fileID: 2100000, guid: 22d9addd21d54452a884a81e6083096e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AlphaMouth
+    second: {fileID: 2100000, guid: 9b8eb447a39ae4407b5b62ac60cc7f72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KbEyeC
+    second: {fileID: 2100000, guid: e53606a58fb284589bbabe0100dafa70, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KbFootC
+    second: {fileID: 2100000, guid: 41181e23c1722437c8ca616b0d141967, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KbLargeMouthC
+    second: {fileID: 2100000, guid: 90f47e3907a2a40259afa1c6014d59ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KbMouthC
+    second: {fileID: 2100000, guid: fe4223361f93d4344912d8bf3c73ea5e, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
