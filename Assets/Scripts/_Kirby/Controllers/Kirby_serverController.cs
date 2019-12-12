@@ -114,11 +114,10 @@ public class Kirby_serverController : NetworkBehaviour
     public void CmdSpawnEnemyPrefab(GameObject enemySpawner)
     {
         EnemySpawnerController enemySpawnerController = enemySpawner.GetComponent<EnemySpawnerController>();
-        enemySpawnerController.isBecomingInstantiated = true;
         GameObject enemyInstantiated = Instantiate(enemySpawnerController.enemyToBeInstantiated, enemySpawner.transform.position, Quaternion.identity);
         NetworkServer.Spawn(enemyInstantiated);
-        enemySpawner.GetComponent<EnemySpawnerController>().enemyAlreadyInstantiated = enemyInstantiated;
-        enemySpawner.GetComponent<EnemySpawnerController>().isBecomingInstantiated = false;
+        enemySpawnerController.enemyAlreadyInstantiated = enemyInstantiated;
+        enemySpawnerController.isBecomingInstantiated = false;
     }
 
     [Command]
