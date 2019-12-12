@@ -15,7 +15,7 @@ public class Kirby_serverController : NetworkBehaviour
     [Command]
     public void CmdStartGame()
     {
-        
+
         prepareGameToStart();
         RpcStartGame();
     }
@@ -33,10 +33,22 @@ public class Kirby_serverController : NetworkBehaviour
         PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(false);
         AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.stageVegetableValley);
         GameManager.instance.listOfPlayers = GameObject.FindGameObjectsWithTag(KirbyConstants.TAG_PLAYER);
-        foreach(var player in GameManager.instance.listOfPlayers)
+
+        Enum_kirbyTypes kirbyTypesPlayer1 = Enum_kirbyTypes.pink;
+        foreach (var player in GameManager.instance.listOfPlayers)
         {
             Kirby_actor actor = player.GetComponent<Kirby_actor>();
-            Debug.Log("Name should be " + actor.playerName);
+            if (actor.playerNumber == 1) kirbyTypesPlayer1 = actor.kirbyType;
+        }
+
+        foreach (var player in GameManager.instance.listOfPlayers)
+        {
+            Kirby_actor actor = player.GetComponent<Kirby_actor>();
+            if (actor.playerNumber == 2)
+            {
+                actor.kirbyType = kirbyTypesPlayer1.Equals(Enum_kirbyTypes.pink) ? Enum_kirbyTypes.blue : Enum_kirbyTypes.pink;
+            }
+            //Debug.Log("Is server " + isServer + "Name should be " + actor.playerName);
             UIPanelKirbyStatusController.instance.setName(actor.playerName, actor.kirbyType);
             actor.isParalyzed = false;
         }
@@ -44,6 +56,7 @@ public class Kirby_serverController : NetworkBehaviour
 
     public void changeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
     {
+        if (!_kirby.isAlive) return;
         if (!_kirby.isServer) CmdChangeBoolAnimationStatus(parameterName, newStatus, prefab);
         else RpcChangeBoolAnimationStatus(parameterName, newStatus, prefab);
     }
@@ -168,7 +181,7 @@ public class Kirby_serverController : NetworkBehaviour
     public void playAtPoint(GameObject playPoint, string sfxName)
     {
         AudioPlayerSFXController.instance.playAtPoint(playPoint, sfxName);
-        if(isServer) RpcPlaySfx(playPoint, sfxName);
+        if (isServer) RpcPlaySfx(playPoint, sfxName);
         else CmdPlaySfx(playPoint, sfxName);
     }
 
@@ -191,7 +204,7 @@ public class Kirby_serverController : NetworkBehaviour
         actor.playerNumber = playerNumber;
         actor.kirbyType = kirbyType;
         actor.playerName = playerName;
-        if(actor.kirbyType == Enum_kirbyTypes.blue)
+        if (actor.kirbyType == Enum_kirbyTypes.blue)
         {
             CmdSetPlayerShaderToBlue(kirby);
         }
@@ -200,8 +213,8 @@ public class Kirby_serverController : NetworkBehaviour
     [Command]
     public void CmdSetPlayerShaderToBlue(GameObject kirby)
     {
-        execChangeShadersToBlue(kirby);
-        RpcSetPlayerShadertoBlue(kirby);
+        // execChangeShadersToBlue(kirby);
+        // RpcSetPlayerShadertoBlue(kirby);
     }
 
     [ClientRpc]
@@ -220,4 +233,42 @@ public class Kirby_serverController : NetworkBehaviour
         //     actor.bodyMaterialsController.kirbyFoot.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueFoot);
         // }
     }
+
+    [Command]
+    public void CmdSetKirbyLife(int healthPoints, Enum_kirbyTypes kirbyType)
+    {
+        execSetKirbyLife(healthPoints, kirbyType);
+        RpcSetKirbyLife(healthPoints, kirbyType);
+    }
+
+    [ClientRpc]
+    public void RpcSetKirbyLife(int healthPoints, Enum_kirbyTypes kirbyType)
+    {
+        execSetKirbyLife(healthPoints, kirbyType);
+    }
+
+    private void execSetKirbyLife(int healthPoints, Enum_kirbyTypes kirbyType)
+    {
+        UIPanelKirbyStatusController.instance.setLife(healthPoints, kirbyType);
+    }
+
+
+    [Command]
+    public void CmdSetKirbyPower(Powers power, Enum_kirbyTypes kirbyType)
+    {
+        execSetKirbyPower(power, kirbyType);
+        RpcSetKirbyPower(power, kirbyType);
+    }
+
+    [ClientRpc]
+    public void RpcSetKirbyPower(Powers power, Enum_kirbyTypes kirbyType)
+    {
+        execSetKirbyPower(power, kirbyType);
+    }
+
+    private void execSetKirbyPower(Powers power, Enum_kirbyTypes kirbyType)
+    {
+        UIPanelKirbyStatusController.instance.setPower(power, kirbyType);
+    }
+
 }

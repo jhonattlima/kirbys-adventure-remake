@@ -93,6 +93,7 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
         //UIPanelLifePowercontroller.instance.setPower(_kirby.enemy_powerInMouth);
         _kirby.hasPower = true;
         AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyAbsorb);
+        _kirby.kirbyServerController.CmdSetKirbyPower(_kirby.enemy_powerInMouth, _kirby.kirbyType);
     }
 
     public void suckOn()

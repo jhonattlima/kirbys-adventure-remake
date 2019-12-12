@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 public class Kirby_healthController : NetworkBehaviour
 {
     Kirby_actor _kirby;
-    int healthPoints = KirbyConstants.PLAYER_HEALTH_POINTS;
+    public int healthPoints = KirbyConstants.PLAYER_HEALTH_POINTS;
     bool isTakingDamage = false;
     void Start()
     {
@@ -18,7 +18,7 @@ public class Kirby_healthController : NetworkBehaviour
         if (hit.gameObject.CompareTag(KirbyConstants.TAG_ENEMY)
             && !_kirby.isInvulnerable)
         {
-            Debug.Log("KirbyHealthController: Kirby hit someone.");
+            // Debug.Log("KirbyHealthController: Kirby hit someone.");
             takeDamage(hit.gameObject.GetComponent<Enemy_actor>().touchDamage);
             hit.gameObject.GetComponent<Enemy_healthController>().takeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
         }
@@ -30,13 +30,16 @@ public class Kirby_healthController : NetworkBehaviour
         isTakingDamage = true;
         healthPoints -= amountOfDamage;
         Debug.Log("Ouch, took damage! Life points now: " + healthPoints);
-        //UIPanelKirbyStatusController.instance.setLife(healthPoints);
+        _kirby.kirbyServerController.CmdSetKirbyLife(healthPoints, _kirby.kirbyType);
         if (healthPoints <= 0)
         {
             _kirby.isAlive = false;
             _kirby.kirbyServerController.CmdGameOverByDeath(_kirby.playerNumber); //died
         } 
-        else StartCoroutine(sufferDamage());
+        else
+        {
+            StartCoroutine(sufferDamage());
+        }
     }
 
     IEnumerator sufferDamage()
@@ -57,6 +60,7 @@ public class Kirby_healthController : NetworkBehaviour
             _kirby.powerShock.enabled = false;
             _kirby.hasPower = false;
             _kirby.enemy_powerInMouth = (int)Powers.None;
+            _kirby.kirbyServerController.CmdSetKirbyPower(_kirby.enemy_powerInMouth, _kirby.kirbyType);
         }
         yield return new WaitForSeconds(KirbyConstants.COOLDOWN_TO_RECOVER_FROM_DAMAGE);
         _kirby.isParalyzed = false;
@@ -81,9 +85,9 @@ public class Kirby_healthController : NetworkBehaviour
                 _kirby.powerBeam.enabled = true;
                 break;
         }
-        
-        Debug.Log("Entered on retrieve power");
+        // Debug.Log("Entered on retrieve power");
         _kirby.enemy_powerInMouth = power;
+        _kirby.kirbyServerController.CmdSetKirbyPower(_kirby.enemy_powerInMouth, _kirby.kirbyType);
         _kirby.isFullOfAir = false;
         _kirby.isFullOfEnemy = false;
         _kirby.hasPower = true;
