@@ -11,16 +11,31 @@ public class EnemySpawnerController : NetworkBehaviour
     [SyncVar]
     public bool isBecomingInstantiated = false;
 
-    private void OnBecameVisible()
+    // private void OnBecameVisible()
+    // {
+    //     if (!enemyAlreadyInstantiated)
+    //     {
+    //         // Debug.Log("EnemySpawnerController: No enemy instantiated. Will do now...");
+    //         if(isBecomingInstantiated) return;
+    //         isBecomingInstantiated = true;
+    //         GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(this.gameObject);
+    //     }
+    // }
+    
+    private void OnTriggerEnter(Collider other) 
     {
-        if (!enemyAlreadyInstantiated)
+        if(!isServer) return;
+        if (!enemyAlreadyInstantiated && other.CompareTag(KirbyConstants.TAG_PLAYER))
         {
-            // Debug.Log("EnemySpawnerController: No enemy instantiated. Will do now...");
-            if(isBecomingInstantiated) return;
             isBecomingInstantiated = true;
-            GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(this.gameObject);
+            GameObject enemyInstantiated = Instantiate(enemyToBeInstantiated, transform.position, Quaternion.identity);
+            NetworkServer.Spawn(enemyInstantiated);
+            enemyAlreadyInstantiated = enemyInstantiated;
+            isBecomingInstantiated = false;
+            // Debug.Log("EnemySpawnerController: No enemy instantiated. Will do now...");
+            // if(isBecomingInstantiated) return;
+            // isBecomingInstantiated = true;
+            // GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(this.gameObject);
         }
     }
-
-    //todo change for OnTriggerEnter
 }

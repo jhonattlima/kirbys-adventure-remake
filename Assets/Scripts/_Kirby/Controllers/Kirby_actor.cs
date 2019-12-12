@@ -16,7 +16,6 @@ public class Kirby_actor : NetworkBehaviour
     public Kirby_powerShock powerShock;
     public GameObject shockArea;
     public GameObject airPrefab;
-    public GameObject starPrefab;
     public GameObject starBulletPrefab;
     public Transform spotToDropStar;
     public List<SkinnedMeshRenderer> body;

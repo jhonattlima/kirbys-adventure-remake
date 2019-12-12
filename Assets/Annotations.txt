@@ -2,9 +2,7 @@ SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
-- Arrumar spawner;
 - Arrumar animação do airball;
-- Arrumar animação do starPrefab;
 - Arrumar animação do starBullet;
 - Diminuir tamanho da antfarm pra que os kirbys nao possam andar para o fundo ou frente
 
@@ -20,11 +18,15 @@ TO DO DESIGN
 - Colocar um céu bonito e imagens de fundo :D.
 - fazer alguma frescura pra diferenciar os kirbys.
 - Ajustar tamanho do nome do player no painel, bem como fonte e etc.
+- Fazer a tela de "esperando outro player opaca com uma mensagem bonita.
 
 BUGS
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
+- kirby fica em idle animation se usar poder e andar;
 
 DONE
+- Arrumar animação do starPrefab; - Done
+- Arrumar spawner;
 - PanelKirby status logic. - Done;
 - PanelSelectPlayer logic; - Done;
 - Checar com o professor como fazer o suck funcionar em todas as areas - só checar, já está funcionando ( checar a suckareaController); - Done;
