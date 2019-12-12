@@ -23,6 +23,7 @@ TO DO DESIGN
 BUGS
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
 - kirby fica em idle animation se usar poder e andar;
+- Spawner bugado do lado do cliente
 
 DONE
 - Arrumar animação do starPrefab; - Done
