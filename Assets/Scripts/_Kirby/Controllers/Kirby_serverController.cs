@@ -33,7 +33,13 @@ public class Kirby_serverController : NetworkBehaviour
         PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(false);
         AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.stageVegetableValley);
         GameManager.instance.listOfPlayers = GameObject.FindGameObjectsWithTag(KirbyConstants.TAG_PLAYER);
-        GameManager.instance.localPlayer.isParalyzed = false;
+        foreach(var player in GameManager.instance.listOfPlayers)
+        {
+            Kirby_actor actor = player.GetComponent<Kirby_actor>();
+            Debug.Log("Name should be " + actor.playerName);
+            UIPanelKirbyStatusController.instance.setName(actor.playerName, actor.kirbyType);
+            actor.isParalyzed = false;
+        }
     }
 
     public void changeBoolAnimationStatus(string parameterName, bool newStatus, GameObject prefab)
@@ -207,12 +213,11 @@ public class Kirby_serverController : NetworkBehaviour
     private void execChangeShadersToBlue(GameObject kirby)
     {
         Kirby_actor actor = kirby.GetComponent<Kirby_actor>();
-        Debug.Log("Entered here");
-        if(actor.kirbyType == Enum_kirbyTypes.blue)
-        {
-            actor.bodyMaterialsController.kirbyEyes.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueEye);
-            actor.bodyMaterialsController.kirbyMouth.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueMouth);
-            actor.bodyMaterialsController.kirbyFoot.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueFoot);
-        }
+        // if(actor.kirbyType == Enum_kirbyTypes.blue)
+        // {
+        //     actor.bodyMaterialsController.kirbyEyes.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueEye);
+        //     actor.bodyMaterialsController.kirbyMouth.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueMouth);
+        //     actor.bodyMaterialsController.kirbyFoot.SetTexture("_MainTex", PrefabsAndInstancesLibrary.instance.kirbyBlueFoot);
+        // }
     }
 }

@@ -75,8 +75,22 @@ public class UIPanelMainMenuController : MonoBehaviour
                 PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(false);
                 break;
             case SystemConstants.BUTTON_NAME_MATCH:
-                joinGame(button.GetComponent<ButtonMatchController>());
-                Debug.Log("UI Panel Main Menu Controller: match button " + button.GetComponentInChildren<Text>().text);
+                if (string.IsNullOrEmpty(PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.GetComponentInChildren<Text>().text))
+                {
+                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().text = "You need to put a player name.";
+                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().color = Color.red;
+                }
+                else if (PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.GetComponentInChildren<Text>().text.Length > 15)
+                {
+                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().text = "Player name must have no more than 15 letters.";
+                    PrefabsAndInstancesLibrary.instance.panelListTextWarningMessage.GetComponent<Text>().color = Color.red;
+                }
+                else
+                {
+                    GameManager.instance.playerName = PrefabsAndInstancesLibrary.instance.panelListOfMatchesInputFieldPlayerName.text;
+                    joinGame(button.GetComponent<ButtonMatchController>());
+                    Debug.Log("UI Panel Main Menu Controller: match button " + button.GetComponentInChildren<Text>().text);
+                }
                 break;
         }
     }
