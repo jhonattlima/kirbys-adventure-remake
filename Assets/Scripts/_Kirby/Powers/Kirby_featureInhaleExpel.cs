@@ -31,7 +31,8 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
             if (!_kirby.isFullOfAir
                 && !_kirby.isFullOfEnemy
                 && _kirby.enemy_powerInMouth == (int)Powers.None
-                && _kirby.characterController.isGrounded)
+                && _kirby.characterController.isGrounded
+                && _kirby.cooldownAction <= 0)
             {
                 suckOn();
             }

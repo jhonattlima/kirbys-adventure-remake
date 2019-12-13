@@ -41,14 +41,14 @@ public class Kirby_movement : NetworkBehaviour
         if (!_kirby.isParalyzed && !_kirby.isSucking)
         {
             fly();
-            move();
             jump();
+            move();
         }
         transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _turnSpeed);
         applyGravity();
         _kirby.characterController.Move(movement);
         isGrounded = _kirby.characterController.isGrounded;
-        UpdateFlags();
+        updateFlags();
     }
 
     // If kirby is not sucking
@@ -58,15 +58,6 @@ public class Kirby_movement : NetworkBehaviour
         _inputHorizontal = Input.GetAxis("Horizontal");
         movement += _kirby.directionRight * _inputHorizontal * moveSpeed * Time.deltaTime;
         turn(_inputHorizontal);
-        if (_kirby.characterController.isGrounded && movement.x != 0 && !isWalking)
-        {
-            isWalking = true;
-            AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyWalk);
-        }
-        else if(!_kirby.characterController.isGrounded || (_kirby.characterController.isGrounded && movement.x == 0) && isWalking)
-        {
-            isWalking = false;
-        }
     }
 
     // If kirby is not fullOfEnemy
@@ -128,8 +119,18 @@ public class Kirby_movement : NetworkBehaviour
         movement.y += _verticalSpeed * Time.deltaTime;
     }
 
-    private void UpdateFlags()
+    private void updateFlags()
     {
+        if (_kirby.characterController.isGrounded && _inputHorizontal != 0 && !_kirby.isParalyzed && !_kirby.isSucking && !isWalking)
+        {
+            isWalking = true;
+            AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyWalk);
+        }
+        else if(!_kirby.characterController.isGrounded || _kirby.isParalyzed || _kirby.isSucking || (_kirby.characterController.isGrounded && _inputHorizontal == 0) && isWalking)
+        {
+            isWalking = false;
+        }
+
         if (_kirby.characterController.isGrounded)
         {
             _verticalSpeed = 0;

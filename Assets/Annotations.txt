@@ -2,21 +2,31 @@ SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
-- Diminuir tamanho da antfarm pra que os kirbys nao possam andar para o fundo ou frente
 
 TO DO DESIGN
+- A porta do 2 para o 3 não pode ter paredes solidas pq tem uma curva e o kirby se mexe em linha reta
+- Colocar um espaço confinado no bronto que fica no quadrinho no meio da area 2, ele ta atravessando a parede;
+- colocar o outro kirby (só a aureola nele)
 - Fazer flecha animada pra pôr na porta
 - Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
     Obs: não deixar nenhum spawner proximo ao ponto de inicio da fase pra não triggar automaticamente quando um kirby nascer.
-- colocar o outro kirby
+- Colocar trofeu no final da fase;
+- Testar jogo e ir registrando os bugs abaixo;
 
 BUGS
 - Spawner bugado do lado do cliente;
-- Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
-- kirby fica em idle animation se usar poder e andar;
-- Ver pq kirby fica invulneravel;
+- Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba. - nothing i could do;
+- throwing air não ta replicando nos servers;
 
 DONE
+- colocar dano nos poderes dos inimigos; - Done
+- ajustar play de poderes do kirby e INIMIGOS; - Done;
+- Fogo está saindo da mão esquerda do kirb e não do meio; -Done;
+- is throing air not being deactivated; Done;
+- Diminuir tamanho da antfarm pra que os kirbys nao possam andar para o fundo ou frente; - done;
+- colocar delay em ele sugar depois de cuspir estrela; - Done;
+- kirby fica em idle animation se usar poder e andar; - Done;
+- Ver pq kirby fica invulneravel; - Done;
 - Arrumar animação do airball; - Done
 - Arrumar animação do starBullet; - Done;
 - Arrumar animação do starPrefab; - Done;

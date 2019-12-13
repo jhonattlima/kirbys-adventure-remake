@@ -13,7 +13,6 @@ public class KirbyConstants
     public const string TAG_ENEMY = "Enemy";
     public const string TAG_PLAYER = "Player";
     public const string ANIM_NAME_TAKE_DAMAGE = "GetDamaged";
-    public const string ANIM_NAME_POWER_BEAM = "BeamSweep";
     public const string ANIM_TRIGGER_POWER_BEAM = "Power_Beam";
     public const string ANIM_CHECK_POWER_FIRE = "Power_Fire";
     public const string ANIM_CHECK_POWER_SHOCK = "Power_Shock";
