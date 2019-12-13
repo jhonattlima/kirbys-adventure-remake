@@ -30,6 +30,7 @@ public class Kirby_serverController : NetworkBehaviour
     {
         PrefabsAndInstancesLibrary.instance.canvasKirbyStatus.SetActive(true);
         PrefabsAndInstancesLibrary.instance.panelMainMenu.SetActive(false);
+        PrefabsAndInstancesLibrary.instance.panelListOfMatches.SetActive(false);
         PrefabsAndInstancesLibrary.instance.panelWaitingForAnotherPlayerToConnect.SetActive(false);
         AudioPlayerMusicController.instance.play(AudioPlayerMusicController.instance.stageVegetableValley);
         GameManager.instance.listOfPlayers = GameObject.FindGameObjectsWithTag(KirbyConstants.TAG_PLAYER);

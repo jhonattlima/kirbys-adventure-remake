@@ -3,7 +3,6 @@ SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
 - Arrumar animação do airball;
-- Arrumar animação do starBullet;
 - Diminuir tamanho da antfarm pra que os kirbys nao possam andar para o fundo ou frente
 
 TO DO DESIGN
@@ -16,7 +15,8 @@ BUGS
 - Spawner bugado do lado do cliente
 
 DONE
-- Arrumar animação do starPrefab; - Done
+- Arrumar animação do starBullet; - Done;
+- Arrumar animação do starPrefab; - Done;
 - Arrumar spawner;
 - PanelKirby status logic. - Done;
 - PanelSelectPlayer logic; - Done;
