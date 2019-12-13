@@ -14,6 +14,10 @@ public class AudioPlayerSFXController : MonoBehaviour
     public AudioClip kirbyExpelStar;
     public AudioClip kirbyExpelAirBall;
     public AudioClip kirbyWalk;
+    public AudioClip kirbyPowerFire;
+    public AudioClip kirbyPowerSpark;
+    public AudioClip kirbyPowerBeam;
+
     public const string SFX_NAME_KIRBY_FLOAT = "kirbyFloat";
     public const string SFX_NAME_KIRBY_JUMP = "kirbyJump";
     public const string SFX_NAME_KIRBY_INHALE = "kirbyInhale";

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.15765852, g: 0.38022882, b: 0.4252651, a: 1}
+  m_IndirectSpecularColor: {r: 0.15770692, g: 0.38023022, b: 0.42523667, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -651,6 +651,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1001 &122457642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1341,6 +1342,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &180317648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1555,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &228415876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,6 +2925,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!135 &453368252
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3068,6 +3072,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &481434328
 GameObject:
   m_ObjectHideFlags: 0
@@ -3578,6 +3583,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!135 &577077227
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4152,6 +4158,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!135 &740378844
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4298,6 +4305,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &784288806
 GameObject:
   m_ObjectHideFlags: 0
@@ -4749,6 +4757,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &909980899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,6 +4982,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!135 &923259093
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5768,6 +5778,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &1107826256
 GameObject:
   m_ObjectHideFlags: 0
@@ -6049,6 +6060,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &1135690430
 GameObject:
   m_ObjectHideFlags: 0
@@ -6273,6 +6285,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!135 &1169862174
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6493,6 +6506,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &1245551760
 GameObject:
   m_ObjectHideFlags: 0
@@ -6626,6 +6640,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &1256761728
 GameObject:
   m_ObjectHideFlags: 0
@@ -6759,6 +6774,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &1265557947
 GameObject:
   m_ObjectHideFlags: 0
@@ -6892,6 +6908,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1001 &1280147937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7659,6 +7676,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!135 &1384192442
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7805,6 +7823,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!114 &1404696425 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2363564639497071680, guid: 1db401088a6e70d44a12bf9b48117007,
@@ -7950,6 +7969,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &1457428711
 GameObject:
   m_ObjectHideFlags: 0
@@ -8183,6 +8203,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!135 &1520518322
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8528,7 +8549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1624857822
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8975,6 +8996,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &1659820942
 GameObject:
   m_ObjectHideFlags: 0
@@ -9488,6 +9510,9 @@ MonoBehaviour:
   kirbyExpelStar: {fileID: 8300000, guid: 25205118079704ed7970ea3e7ab7a878, type: 3}
   kirbyExpelAirBall: {fileID: 8300000, guid: 2c1685ba857c74ce69919edfad8fd746, type: 3}
   kirbyWalk: {fileID: 8300000, guid: 428a34dc7a179498a969d638b981aa1e, type: 3}
+  kirbyPowerFire: {fileID: 0}
+  kirbyPowerSpark: {fileID: 0}
+  kirbyPowerBeam: {fileID: 0}
   _audioSource: {fileID: 0}
 --- !u!82 &1733331290
 AudioSource:
@@ -10183,6 +10208,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!135 &1864125910
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10457,6 +10483,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!1 &1957183979 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1369855068539923344, guid: c135d085da94b074493820974b1bc1d4,
@@ -11433,6 +11460,7 @@ MonoBehaviour:
     type: 3}
   enemyAlreadyInstantiated: {fileID: 0}
   isBecomingInstantiated: 0
+  playersInArea: 0
 --- !u!135 &2145911593
 SphereCollider:
   m_ObjectHideFlags: 0

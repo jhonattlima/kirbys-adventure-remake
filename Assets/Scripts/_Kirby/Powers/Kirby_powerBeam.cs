@@ -33,6 +33,7 @@ public class Kirby_powerBeam : NetworkBehaviour
             _kirby.isParalyzed = true;
             _kirby.animator.SetBool(KirbyConstants.ANIM_TRIGGER_POWER_BEAM, true);
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_TRIGGER_POWER_BEAM, true, this.gameObject);
+            AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyPowerBeam);
         }
     }
 
@@ -40,5 +41,6 @@ public class Kirby_powerBeam : NetworkBehaviour
     {
         _kirby.isParalyzed = false;
         _kirby.animator.SetBool(KirbyConstants.ANIM_TRIGGER_POWER_BEAM, false);
+        AudioPlayerSFXController.instance._audioSource.Stop();
     }
 }

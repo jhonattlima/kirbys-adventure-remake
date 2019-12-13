@@ -36,6 +36,7 @@ public class Kirby_powerShock : NetworkBehaviour
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_SHOCK, true, this.gameObject);
             _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, true);
             _kirby.isParalyzed = true;
+            AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyPowerSpark);
         }
     }
 
@@ -46,6 +47,7 @@ public class Kirby_powerShock : NetworkBehaviour
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false, this.gameObject);
             _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false);
             _kirby.isParalyzed = false;
+            AudioPlayerSFXController.instance._audioSource.Stop();
         }
     }
 }
