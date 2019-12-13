@@ -1,10 +1,7 @@
-SpawnSpot1 - 2 2 -1
-SpawnSpot2 - 6,5 2 -1
-
 TO DO PROGRAMMING
 
 TO DO DESIGN
-- A porta do 2 para o 3 não pode ter paredes solidas pq tem uma curva e o kirby se mexe em linha reta
+- A porta do 2 para o 3 não pode ter paredes solidas pq tem uma curva e o kirby se mexe em linha reta; testar entrando na porta 2 e vendo se sai do outro lado certinho.
 - Colocar um espaço confinado no bronto que fica no quadrinho no meio da area 2, ele ta atravessando a parede;
 - colocar o outro kirby (só a aureola nele)
 - Fazer flecha animada pra pôr na porta
@@ -14,11 +11,11 @@ TO DO DESIGN
 - Testar jogo e ir registrando os bugs abaixo;
 
 BUGS
-- Spawner bugado do lado do cliente;
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba. - nothing i could do;
 - throwing air não ta replicando nos servers;
 
 DONE
+- Spawner bugado do lado do cliente; - Done;
 - colocar dano nos poderes dos inimigos; - Done
 - ajustar play de poderes do kirby e INIMIGOS; - Done;
 - Fogo está saindo da mão esquerda do kirb e não do meio; -Done;
