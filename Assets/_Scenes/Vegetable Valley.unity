@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.15770692, g: 0.38023022, b: 0.42523667, a: 1}
+  m_IndirectSpecularColor: {r: 0.15765852, g: 0.38022882, b: 0.4252651, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9510,9 +9510,9 @@ MonoBehaviour:
   kirbyExpelStar: {fileID: 8300000, guid: 25205118079704ed7970ea3e7ab7a878, type: 3}
   kirbyExpelAirBall: {fileID: 8300000, guid: 2c1685ba857c74ce69919edfad8fd746, type: 3}
   kirbyWalk: {fileID: 8300000, guid: 428a34dc7a179498a969d638b981aa1e, type: 3}
-  kirbyPowerFire: {fileID: 0}
-  kirbyPowerSpark: {fileID: 0}
-  kirbyPowerBeam: {fileID: 0}
+  kirbyPowerFire: {fileID: 8300000, guid: 5a2eea83efd764b5a98f9a564847e8ab, type: 3}
+  kirbyPowerSpark: {fileID: 8300000, guid: b80918a98403b437fa4cfd5a74dfaabf, type: 3}
+  kirbyPowerBeam: {fileID: 8300000, guid: 8bebaf563da66478ab77635638ad23a2, type: 3}
   _audioSource: {fileID: 0}
 --- !u!82 &1733331290
 AudioSource:
@@ -11474,6 +11474,85 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1595207371436537452
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4480633397229517317, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_Name
+      value: arrowDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229517317, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 37.469296
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.70065
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -48.265022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480633397231707333, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a9131d253cd0f4592b16ea7a4ed7676b, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5334a7a61c78742f58f3e6b23ac6f6ff, type: 3}
 --- !u!1001 &1891231916603213191
 PrefabInstance:
   m_ObjectHideFlags: 0

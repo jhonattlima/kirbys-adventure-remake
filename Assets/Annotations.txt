@@ -1,13 +1,6 @@
 TO DO PROGRAMMING
 
 TO DO DESIGN
-- A porta do 2 para o 3 não pode ter paredes solidas pq tem uma curva e o kirby se mexe em linha reta; testar entrando na porta 2 e vendo se sai do outro lado certinho.
-- Colocar um espaço confinado no bronto que fica no quadrinho no meio da area 2, ele ta atravessando a parede;
-- Fazer flecha animada pra pôr na porta
-- Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
-    Obs: não deixar nenhum spawner proximo ao ponto de inicio da fase pra não triggar automaticamente quando um kirby nascer.
-- Colocar trofeu no final da fase;
-- audios dos inimigos;
 - Testar jogo e ir registrando os bugs abaixo;
 
 BUGS
@@ -93,6 +86,13 @@ DONE DESIGN
 - Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
     Obs: não deixar nenhum spawner proximo ao ponto de inicio da fase pra não triggar automaticamente quando um kirby nascer. -Done
 - Fazer flecha animada pra pôr na porta. -Done
+- Colocar um espaço confinado no bronto que fica no quadrinho no meio da area 2, ele ta atravessando a parede; -Done
+- colocar o outro kirby (só a aureola nele) -Done (?)
+- Colocar trofeu no final da fase; -Done
+- Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo); 
+    Obs: não deixar nenhum spawner proximo ao ponto de inicio da fase pra não triggar automaticamente quando um kirby nascer. -Done (?)
+- A porta do 2 para o 3 não pode ter paredes solidas pq tem uma curva e o kirby se mexe em linha reta; testar entrando na porta 2 e vendo se sai do outro lado certinho. -Done
+- Fazer flecha animada pra pôr na porta -Done 
 
 Requisitos para a disciplina de Redes:
 ● Arquitetura servidor e clientes, utilizando as bibliotecas de rede da Unity;
