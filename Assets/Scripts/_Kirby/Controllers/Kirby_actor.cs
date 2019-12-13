@@ -17,6 +17,8 @@ public class Kirby_actor : NetworkBehaviour
     public GameObject shockArea;
     public GameObject airPrefab;
     public GameObject starBulletPrefab;
+    public GameObject arrowPink;
+    public GameObject arrowBlue;
     public Transform spotToDropStar;
     public List<SkinnedMeshRenderer> body;
     public Kirby_bodyMaterialsController bodyMaterialsController;
