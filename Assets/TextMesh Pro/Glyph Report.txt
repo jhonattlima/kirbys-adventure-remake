@@ -1,9 +1,0 @@
-Font: Noway Round  Pt. Size: 77
-Characters packed: 95/99
-
-Missing Characters
-----------------------------------------
-ID: 126	Hex: 7E	Char [~]
-ID: 160	Hex: A0	Char [ ]
-ID: 8203	Hex: 200B	Char [​]
-ID: 9633	Hex: 25A1	Char [□]
