@@ -50,6 +50,8 @@ public class Kirby_serverController : NetworkBehaviour
                 actor.kirbyType = kirbyTypesPlayer1.Equals(Enum_kirbyTypes.pink) ? Enum_kirbyTypes.blue : Enum_kirbyTypes.pink;
             }
             UIPanelKirbyStatusController.instance.setName(actor.playerName, actor.kirbyType);
+            GameObject arrow =  actor.kirbyType.Equals(Enum_kirbyTypes.pink)? actor.arrowPink : actor.arrowBlue;
+            arrow.SetActive(true);
             actor.isParalyzed = false;
         }
     }
