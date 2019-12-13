@@ -97,7 +97,7 @@ public class Kirby_animationController : MonoBehaviour
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_MOV_IS_FULL, true, this.gameObject);
         }
         else if ((!_kirby.isFullOfAir && _kirby.isFullOfAir != lastIsFullOfAir) ||
-            (!_kirby.isFullOfEnemy && _kirby.isFullOfEnemy != lastIsFullOfEnemy))
+                (!_kirby.isFullOfEnemy && _kirby.isFullOfEnemy != lastIsFullOfEnemy))
         {
             lastIsFullOfAir = _kirby.isFullOfAir;
             lastIsFullOfEnemy = _kirby.isFullOfEnemy;
