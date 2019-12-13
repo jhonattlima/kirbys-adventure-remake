@@ -10,9 +10,14 @@ public class Kirby_powerStarBullet : MonoBehaviour
     private float _starSpeed = KirbyConstants.KIRBY_STAR_BULLET_SPEED;
     private Vector3 direction;
 
+    private void Start() {
+        transform.LookAt(Camera.main.transform.position);
+    }
+
     void Update()
     {
         transform.position += direction * _starSpeed * Time.deltaTime;
+        transform.Rotate(0 , 0 , 1);
     }
 
     public void setBulletDirection(Vector3 direction)

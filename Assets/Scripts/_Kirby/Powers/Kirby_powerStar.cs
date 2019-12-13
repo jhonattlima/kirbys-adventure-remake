@@ -14,6 +14,7 @@ public class Kirby_powerStar : MonoBehaviour
 
     private void Start() {
         Destroy(gameObject, KirbyConstants.KIRBY_STAR_COOLDOWN_TO_BE_ACTIVE + 5 );
+        transform.LookAt(Camera.main.transform.position);
     }
 
     IEnumerator waitToBecomeActive()
