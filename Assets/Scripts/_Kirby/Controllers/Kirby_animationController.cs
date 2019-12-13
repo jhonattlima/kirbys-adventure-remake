@@ -133,8 +133,5 @@ public class Kirby_animationController : MonoBehaviour
         _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, false);
         _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false);
         _kirby.animator.SetBool(KirbyConstants.ANIM_TRIGGER_POWER_BEAM, false);
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, false);
-        _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, false);
-
     }
 }
