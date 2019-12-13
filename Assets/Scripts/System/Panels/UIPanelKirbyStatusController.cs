@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIPanelKirbyStatusController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class UIPanelKirbyStatusController : MonoBehaviour
     public Text nameBlue;
     public Image lifeBarBlue;
     public Image powerIconBlue;
+    public TextMeshProUGUI textNamePink;  
+    public TextMeshProUGUI textNameBlue; 
 
     private void Awake()
     {
@@ -56,8 +59,8 @@ public class UIPanelKirbyStatusController : MonoBehaviour
 
     public void setName(string name, Enum_kirbyTypes kirbyType)
     {
-        Debug.Log("Name received to set " + name);
-        Text chosenText = kirbyType.Equals(Enum_kirbyTypes.pink) ? namePink : nameBlue;
+        // Debug.Log("Name received to set " + name);
+        TextMeshProUGUI chosenText = kirbyType.Equals(Enum_kirbyTypes.pink) ? textNamePink : textNameBlue;
         chosenText.text = name;
     }
 }

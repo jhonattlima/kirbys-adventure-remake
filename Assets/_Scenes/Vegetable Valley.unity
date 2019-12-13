@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.15765852, g: 0.38022882, b: 0.4252651, a: 1}
+  m_IndirectSpecularColor: {r: 0.15770692, g: 0.38023022, b: 0.42523667, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2292,26 +2292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b42b16558ec4d84999c4e478d20d457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  airBall: {fileID: 3874217358728632113, guid: 7d08741a44270ed4898ad2279acba941, type: 3}
   starPower: {fileID: 4455788589664677811, guid: f2246341d69c54250b18f18bdb65a860,
     type: 3}
-  starBullet: {fileID: 6279613008664123690, guid: 6efb1011f9e8cec4aaf100e0ded670b1,
-    type: 3}
   scenarioOnePart1: {fileID: 955452543}
-  scenarioOnePart2: {fileID: 2005610331}
-  scenarioOnePart3: {fileID: 988823355}
-  enemyHotHead: {fileID: 2333680476837141804, guid: b1cbf0315c561a54e8ebaac144d3d6a9,
-    type: 3}
-  enemySparky: {fileID: 5877970354012294285, guid: 2999d4a4f2b532e4ea3feeea65e6aa6c,
-    type: 3}
-  enemyWaddleDoo: {fileID: 2382858130463533436, guid: 3f39e0d0158d03142b55b65a31fa9c72,
-    type: 3}
-  enemyWaddleDee: {fileID: 7976732380070056834, guid: 5d4486a10e0333f4eab098d77d91d7ee,
-    type: 3}
-  enemyBrontoBurt: {fileID: 1790482912967930562, guid: 733586498a16f6342a9f050c0cbba6e6,
-    type: 3}
-  enemyPoppyBrosJr: {fileID: 3085826359258681092, guid: 95d5a053ea8d3f04bb2157570c421ab6,
-    type: 3}
   panelMainMenu: {fileID: 53379389}
   panelListOfMatches: {fileID: 5714117718696075237}
   panelListOfMatchesButtonsList:
@@ -2333,9 +2316,6 @@ MonoBehaviour:
   panelListOfMatchesInputFieldMatchName: {fileID: 5714117718554796632}
   panelListOfMatchesInputFieldPlayerName: {fileID: 1693083774}
   panelListTextWarningMessage: {fileID: 311114585}
-  kirbyBlueMouth: {fileID: 2800000, guid: 75e35ff59c18d42868b2d2bf30414490, type: 3}
-  kirbyBlueEye: {fileID: 2800000, guid: 824f75fdb00934380b3f677d7ae55533, type: 3}
-  kirbyBlueFoot: {fileID: 2800000, guid: 33c648befed0243a9908248bf66fea42, type: 3}
 --- !u!4 &481434330
 Transform:
   m_ObjectHideFlags: 0
@@ -3311,6 +3291,8 @@ MonoBehaviour:
   nameBlue: {fileID: 0}
   lifeBarBlue: {fileID: 0}
   powerIconBlue: {fileID: 0}
+  textNamePink: {fileID: 0}
+  textNameBlue: {fileID: 0}
 --- !u!114 &754516633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6387,6 +6369,8 @@ MonoBehaviour:
   nameBlue: {fileID: 0}
   lifeBarBlue: {fileID: 300275991}
   powerIconBlue: {fileID: 795439261}
+  textNamePink: {fileID: 2121704370}
+  textNameBlue: {fileID: 154811077}
 --- !u!1 &1627097295
 GameObject:
   m_ObjectHideFlags: 0
@@ -8666,6 +8650,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spark
       objectReference: {fileID: 0}
+    - target: {fileID: 1891231915648054181, guid: 6a624f0b063a34908aa418fd3ce54f31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1891231915648054178, guid: 6a624f0b063a34908aa418fd3ce54f31,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10714,6 +10703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mdlKirbyObjs
+      objectReference: {fileID: 0}
+    - target: {fileID: 949779881565100353, guid: ede9ce02d393f40319d331db754dc232,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 949779881565586721, guid: ede9ce02d393f40319d331db754dc232,
         type: 3}
