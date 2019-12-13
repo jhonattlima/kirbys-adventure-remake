@@ -69,14 +69,7 @@ public class Kirby_movement : NetworkBehaviour
         if (!_kirby.isFullOfEnemy
             && Input.GetKeyDown(KirbyConstants.KEY_FLY))
         {
-            if (_kirby.characterController.isGrounded)
-            {
-                _verticalSpeed = _flySpeed;
-            }
-            else
-            {
-                _verticalSpeed = _flySpeed / 1.8f;
-            }
+            _verticalSpeed = _flySpeed * 1.5f;
             _kirby.isFullOfAir = true;
             isFlying = true;
             AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyFly);
@@ -117,6 +110,7 @@ public class Kirby_movement : NetworkBehaviour
     {
         _verticalSpeed += Physics.gravity.y * Time.deltaTime;
         movement.y += _verticalSpeed * Time.deltaTime;
+        if(isFlying) movement.y *= 0.5f;
     }
 
     private void updateFlags()
