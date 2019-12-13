@@ -78,6 +78,9 @@ DONE DESIGN
 - Colocar um tile a mais na úlima plataforma; - Done
 - Ajustar tamanho do nome do player no painel, bem como fonte e etc. -Done
 - Fazer a tela de "esperando outro player opaca com uma mensagem bonita. -Done
+- Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
+    Obs: não deixar nenhum spawner proximo ao ponto de inicio da fase pra não triggar automaticamente quando um kirby nascer. -Done
+- Fazer flecha animada pra pôr na porta. -Done
 
 Requisitos para a disciplina de Redes:
 ● Arquitetura servidor e clientes, utilizando as bibliotecas de rede da Unity;
