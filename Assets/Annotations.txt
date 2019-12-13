@@ -12,7 +12,6 @@ TO DO DESIGN
 - Fazer flecha animada pra pôr na porta
 - Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
     Obs: não deixar nenhum spawner proximo ao ponto de inicio da fase pra não triggar automaticamente quando um kirby nascer.
-- Fazer a tela de "esperando outro player opaca com uma mensagem bonita.
 
 BUGS
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
@@ -78,6 +77,7 @@ DONE DESIGN
 - fazer alguma frescura pra diferenciar os kirbys. - Done
 - Colocar um tile a mais na úlima plataforma; - Done
 - Ajustar tamanho do nome do player no painel, bem como fonte e etc. -Done
+- Fazer a tela de "esperando outro player opaca com uma mensagem bonita. -Done
 
 Requisitos para a disciplina de Redes:
 ● Arquitetura servidor e clientes, utilizando as bibliotecas de rede da Unity;
