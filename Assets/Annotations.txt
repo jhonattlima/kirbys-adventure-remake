@@ -12,11 +12,12 @@ TO DO DESIGN
 
 BUGS
 - kirby continua cheio após cuspir o inimigo;
+- Throwing air ta bugando e quebrando o flow de animações;
 
 DONE
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba. - nothing i could do;
 
-- inimigos estão sendo spawnados duas vezes quando o client entra nos colliders;
+- inimigos estão sendo spawnados duas vezes quando o client entra nos colliders; - Done;
 - throwing air não ta replicando nos servers; - Done;
 - colocar o outro kirby (só a aureola nele) - Done;
 - Spawner bugado do lado do cliente; - Done;

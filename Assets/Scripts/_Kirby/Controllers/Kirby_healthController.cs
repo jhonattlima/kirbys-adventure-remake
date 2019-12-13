@@ -19,6 +19,7 @@ public class Kirby_healthController : NetworkBehaviour
             && !_kirby.isInvulnerable)
         {
             // Debug.Log("KirbyHealthController: Kirby hit someone.");
+            AudioPlayerSFXController.instance._audioSource.Stop();
             takeDamage(hit.gameObject.GetComponent<Enemy_actor>().touchDamage);
             hit.gameObject.GetComponent<Enemy_healthController>().takeDamage(KirbyConstants.PLAYER_NORMAL_DAMAGE);
         }

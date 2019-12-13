@@ -6,33 +6,29 @@ using UnityEngine.Networking;
 public class EnemySpawnerController : NetworkBehaviour
 {
     public GameObject enemyToBeInstantiated; 
-    [SyncVar]
     public GameObject enemyAlreadyInstantiated = null;
-    [SyncVar]
     public bool isBecomingInstantiated = false;
-
-    // private void OnBecameVisible()
-    // {
-    //     if (!enemyAlreadyInstantiated)
-    //     {
-    //         // Debug.Log("EnemySpawnerController: No enemy instantiated. Will do now...");
-    //         if(isBecomingInstantiated) return;
-    //         isBecomingInstantiated = true;
-    //         GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(this.gameObject);
-    //     }
-    // }
+    public int playersInArea;
     
     private void OnTriggerEnter(Collider other) 
     {
-        if (isServer && !enemyAlreadyInstantiated && other.CompareTag(KirbyConstants.TAG_PLAYER))
+        if(other.CompareTag(KirbyConstants.TAG_PLAYER)) playersInArea ++;
+        if (!isBecomingInstantiated 
+            && enemyAlreadyInstantiated == null 
+            && other.CompareTag(KirbyConstants.TAG_PLAYER)
+            && playersInArea == 1)
         {
-        Debug.Log("Is server? " + isServer);
             isBecomingInstantiated = true;
-            GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(this.gameObject);
-            // Debug.Log("EnemySpawnerController: No enemy instantiated. Will do now...");
-            // if(isBecomingInstantiated) return;
-            // isBecomingInstantiated = true;
-            // GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(this.gameObject);
+            GameObject enemyInstantiated = Instantiate(enemyToBeInstantiated, transform.position, Quaternion.identity);
+            NetworkServer.Spawn(enemyInstantiated);
+            enemyAlreadyInstantiated = enemyInstantiated;
+            isBecomingInstantiated = false;
+            //GameManager.instance.localPlayer.GetComponent<Kirby_actor>().kirbyServerController.CmdSpawnEnemyPrefab(this.gameObject);
         }
+    }
+
+    private void OnTriggerExit(Collider other) 
+    {
+        if(other.CompareTag(KirbyConstants.TAG_PLAYER)) playersInArea --;
     }
 }
