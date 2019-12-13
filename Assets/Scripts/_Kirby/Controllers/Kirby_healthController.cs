@@ -32,7 +32,8 @@ public class Kirby_healthController : NetworkBehaviour
         _kirby.isFullOfEnemy = false;
         isTakingDamage = true;
         healthPoints -= amountOfDamage;
-        Debug.Log("Ouch, took damage! Life points now: " + healthPoints);
+        // Debug.Log("Ouch, took damage! Life points now: " + healthPoints);
+        AudioPlayerSFXController.instance._audioSource.Stop();
         _kirby.kirbyServerController.CmdSetKirbyLife(healthPoints, _kirby.kirbyType);
         if (healthPoints <= 0)
         {
