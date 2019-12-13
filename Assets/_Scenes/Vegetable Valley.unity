@@ -11486,6 +11486,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: arrowDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 4480633397229517317, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4480633397229282853, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11541,6 +11546,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4480633397231707333, guid: 5334a7a61c78742f58f3e6b23ac6f6ff,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a9131d253cd0f4592b16ea7a4ed7676b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5334a7a61c78742f58f3e6b23ac6f6ff, type: 3}
 --- !u!1001 &1891231916603213191
