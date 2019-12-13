@@ -49,7 +49,6 @@ public class Kirby_serverController : NetworkBehaviour
             {
                 actor.kirbyType = kirbyTypesPlayer1.Equals(Enum_kirbyTypes.pink) ? Enum_kirbyTypes.blue : Enum_kirbyTypes.pink;
             }
-            //Debug.Log("Is server " + isServer + "Name should be " + actor.playerName);
             UIPanelKirbyStatusController.instance.setName(actor.playerName, actor.kirbyType);
             actor.isParalyzed = false;
         }

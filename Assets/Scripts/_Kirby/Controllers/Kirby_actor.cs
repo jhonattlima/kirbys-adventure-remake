@@ -28,7 +28,7 @@ public class Kirby_actor : NetworkBehaviour
     public bool isFullOfEnemy = false;
     public bool isFullOfAir = false;
     public bool isSucking = false;
-    public bool isParalyzed = false;
+    public bool isParalyzed;
     public bool isInvulnerable = false;
     public float cooldownAction = 0;
 
@@ -75,6 +75,7 @@ public class Kirby_actor : NetworkBehaviour
         powerFire = GetComponent<Kirby_powerFire>();
         powerShock = GetComponent<Kirby_powerShock>();
         powerBeam = GetComponent<Kirby_powerBeam>();
+        isParalyzed = true;
     }
 
     void Start()

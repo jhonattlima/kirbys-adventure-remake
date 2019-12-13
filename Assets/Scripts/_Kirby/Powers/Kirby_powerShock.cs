@@ -31,21 +31,21 @@ public class Kirby_powerShock : NetworkBehaviour
 
     public void shockOn()
     {
-        _kirby.isParalyzed = true;
         if (!_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK))
         {
-            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, true);
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_SHOCK, true, this.gameObject);
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, true);
+            _kirby.isParalyzed = true;
         }
     }
 
     public void shockOff()
     {
-        _kirby.isParalyzed = false;
         if (_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK))
         {
-            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false);
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false, this.gameObject);
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SHOCK, false);
+            _kirby.isParalyzed = false;
         }
     }
 }

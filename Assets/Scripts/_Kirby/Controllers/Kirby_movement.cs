@@ -63,7 +63,7 @@ public class Kirby_movement : NetworkBehaviour
             isWalking = true;
             AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyWalk);
         }
-        else if( (!_kirby.characterController.isGrounded || movement.x == 0) && isWalking)
+        else if(!_kirby.characterController.isGrounded || (_kirby.characterController.isGrounded && movement.x == 0) && isWalking)
         {
             isWalking = false;
         }

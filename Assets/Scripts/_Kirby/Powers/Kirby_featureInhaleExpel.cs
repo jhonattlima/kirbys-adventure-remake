@@ -98,20 +98,20 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
 
     public void suckOn()
     {
+        _kirby.isSucking = true;
         if(!_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK))
         {
             _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, true);
-            _kirby.isSucking = true;
             AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyInhale);
         }
     }
 
     public void suckOff()
     {
+        _kirby.isSucking = false;
         if(_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK))
         {
             _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_SUCK, false);
-            _kirby.isSucking = false;
             AudioPlayerSFXController.instance._audioSource.Stop();
         }
     }

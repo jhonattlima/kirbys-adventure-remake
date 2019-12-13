@@ -2,22 +2,22 @@ SpawnSpot1 - 2 2 -1
 SpawnSpot2 - 6,5 2 -1
 
 TO DO PROGRAMMING
-- Arrumar animação do airball;
 - Diminuir tamanho da antfarm pra que os kirbys nao possam andar para o fundo ou frente
 
 TO DO DESIGN
-
-
 - Fazer flecha animada pra pôr na porta
 - Distribuir os enemyPrefabs pelo mapa (é só copiar o que já tem dentro da lista de spawners e trocar o objeto "enemyToBeSpawned" dentro dele arrastando outro inimigo);
     Obs: não deixar nenhum spawner proximo ao ponto de inicio da fase pra não triggar automaticamente quando um kirby nascer.
+- colocar o outro kirby
 
 BUGS
+- Spawner bugado do lado do cliente;
 - Ver com o professor o que tá gerando exception sempre no server quando o jogo acaba.
 - kirby fica em idle animation se usar poder e andar;
-- Spawner bugado do lado do cliente
+- Ver pq kirby fica invulneravel;
 
 DONE
+- Arrumar animação do airball; - Done
 - Arrumar animação do starBullet; - Done;
 - Arrumar animação do starPrefab; - Done;
 - Arrumar spawner;

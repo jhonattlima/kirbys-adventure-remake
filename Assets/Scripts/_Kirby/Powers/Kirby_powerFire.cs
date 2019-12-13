@@ -31,21 +31,21 @@ public class Kirby_powerFire : NetworkBehaviour
 
     public void fireOn()
     {
-        _kirby.isParalyzed = true;
         if(!_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE))
         {
-            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, true);
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_FIRE, true, this.gameObject);
+            _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, true);
+            _kirby.isParalyzed = true;
         }
     }
 
     public void fireOff()
     {
-        _kirby.isParalyzed = false;
         if(_kirby.animator.GetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE))
         {
             _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_POWER_FIRE, false);
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_POWER_FIRE, false, this.gameObject);
+            _kirby.isParalyzed = false;
         }
     }
 }
