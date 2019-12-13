@@ -28,6 +28,8 @@ public class Kirby_healthController : NetworkBehaviour
     public void takeDamage(int amountOfDamage)
     {
         if (isTakingDamage || !_kirby.isLocalPlayer) return;
+        _kirby.isFullOfAir = false;
+        _kirby.isFullOfEnemy = false;
         isTakingDamage = true;
         healthPoints -= amountOfDamage;
         Debug.Log("Ouch, took damage! Life points now: " + healthPoints);

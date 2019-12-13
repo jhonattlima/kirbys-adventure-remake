@@ -363,6 +363,12 @@ AnimatorStateTransition:
     m_ConditionEvent: IsFull
     m_EventTreshold: 0
   - m_ConditionMode: 2
+    m_ConditionEvent: IsThrowingAir
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsFlying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
     m_ConditionEvent: Power_Shock
     m_EventTreshold: 0
   - m_ConditionMode: 2
@@ -372,16 +378,10 @@ AnimatorStateTransition:
     m_ConditionEvent: Power_Suck
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsFlying
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
     m_ConditionEvent: GetDamaged
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Power_Beam
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsThrowingAir
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102420403211381360}
@@ -437,16 +437,16 @@ AnimatorStateTransition:
     m_ConditionEvent: IsJumping
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Power_Fire
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Power_Shock
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
     m_ConditionEvent: IsFalling
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: GetDamaged
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Power_Fire
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Power_Shock
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Power_Beam
@@ -555,15 +555,6 @@ AnimatorStateTransition:
     m_ConditionEvent: IsFalling
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Power_Fire
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Power_Shock
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Power_Suck
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
     m_ConditionEvent: IsJumping
     m_EventTreshold: 0
   - m_ConditionMode: 2
@@ -573,13 +564,22 @@ AnimatorStateTransition:
     m_ConditionEvent: IsFlying
     m_EventTreshold: 0
   - m_ConditionMode: 2
+    m_ConditionEvent: IsThrowingAir
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
     m_ConditionEvent: IsFull
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: GetDamaged
+    m_ConditionEvent: Power_Fire
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsThrowingAir
+    m_ConditionEvent: Power_Shock
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Power_Suck
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: GetDamaged
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102076101202467412}
@@ -659,6 +659,18 @@ AnimatorStateTransition:
     m_ConditionEvent: Power_Fire
     m_EventTreshold: 0
   - m_ConditionMode: 2
+    m_ConditionEvent: Power_Suck
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Power_Shock
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Power_Beam
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: GetDamaged
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
     m_ConditionEvent: IsJumping
     m_EventTreshold: 0
   - m_ConditionMode: 2
@@ -672,9 +684,6 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsThrowingAir
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: GetDamaged
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102736449929101156}
@@ -782,13 +791,19 @@ AnimatorStateTransition:
     m_ConditionEvent: Power_Shock
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsJumping
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
     m_ConditionEvent: Power_Fire
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Power_Suck
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Power_Beam
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: GetDamaged
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsJumping
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsFalling
@@ -801,12 +816,6 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsThrowingAir
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Power_Beam
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: GetDamaged
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102608043859452020}

@@ -123,8 +123,8 @@ public class Kirby_featureInhaleExpel : NetworkBehaviour
         {
             _kirby.kirbyServerController.changeBoolAnimationStatus(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, true, this.gameObject);
             _kirby.animator.SetBool(KirbyConstants.ANIM_CHECK_MOV_IS_THROWING_AIRBALL, true);
-            _kirby.isFullOfAir = false;
             AudioPlayerSFXController.instance.play(AudioPlayerSFXController.instance.kirbyExpelAirBall);
+            _kirby.isFullOfAir = false;
             _kirby.cooldownAction = KirbyConstants.COOLDOWN_ACTION;
         }
     }

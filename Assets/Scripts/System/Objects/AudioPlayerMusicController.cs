@@ -29,6 +29,6 @@ public class AudioPlayerMusicController : MonoBehaviour
     {
         _audioSource.Stop();
         _audioSource.clip = music;
-        // _audioSource.Play();
+        _audioSource.Play();
     }
 }
