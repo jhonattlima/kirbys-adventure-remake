@@ -1,37 +1,11 @@
-## Welcome to GitHub Pages
+# SUMMARY
+  This game was made in 2021 using Unity framework (version 2019.4.16f1).
 
-You can use the [editor on GitHub](https://github.com/jhonattlima/kirbys-adventure-remake/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+  Kirby's adventure game remake was developed as practice task form the online multiplayer game discipline. The game uses Kirby's game logic but allows two players to play together and remotely. There are a lot of bugs identified during the development but, since it was a practice (all rights reserved to Nintendo), the follow up is postponed indefinitely.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# HOW TO PLAY
+  The executable version of the game is available for download at 
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jhonattlima/kirbys-adventure-remake/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+TEAM
+  * Jhonatt Lima as developer, level designer, tech artist and writer;
+  * Vicente Raiol as 3D designer, game designer, VFX|SFX|UI/UX;
